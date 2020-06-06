@@ -1,0 +1,17 @@
+{
+  "name": "@arnat/sdk-frontend",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnat-technologies/sdk-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arnat-technologies/sdk-frontend/issues"
+  },
+  "homepage": "https://github.com/arnat-technologies/sdk-frontend#readme"
+}
