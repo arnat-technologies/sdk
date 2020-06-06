@@ -1,6 +1,7 @@
 {
   "name": "@arnat/sdk-frontend",
   "version": "0.0.1",
+  "description": "Manage feature toggles across frontend, backend, mobile & desktop apps. Management app + feature flag SDKs. https://www.arnat.digital",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
