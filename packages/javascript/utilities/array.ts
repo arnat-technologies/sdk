@@ -12,7 +12,7 @@
  * @param arr
  * @param value
  */
-export const isEqual = (arr, value) => !arr.some((item) => item !== value);
+export const isEqual = (arr: [], value: string) => !arr.some((item) => item !== value);
 
 // // Check if all items in an array are equal
 //
@@ -20,8 +20,7 @@ export const isEqual = (arr, value) => !arr.some((item) => item !== value);
 // areEqual([1, 2, 3, 4]);                 // false
 // areEqual(['hello', 'hello', 'hello']);  // true
 //
-export const areEqual = (arr) =>
-  arr.length > 0 && arr.every((item) => item === arr[0]);
+export const areEqual = (arr) => arr.length > 0 && arr.every((item) => item === arr[0]);
 
 // Check if an array contains a value matching some criterias
 //
@@ -38,8 +37,7 @@ export const contains = (arr, criteria) => arr.some((v) => criteria(v));
 // isNotEmpty([]);             // false
 // isNotEmpty([1, 2, 3]);      // true
 //
-export const isNotEmpty = (arr) =>
-  Array.isArray(arr) && Object.keys(arr).length > 0;
+export const isNotEmpty = (arr) => Array.isArray(arr) && Object.keys(arr).length > 0;
 
 // Check if an array is subset of other array
 //
@@ -55,42 +53,41 @@ export const isSubset = (a, b) => new Set(b).size === new Set(b.concat(a)).size;
 //
 export const isArray = (obj) => Array.isArray(obj);
 
-const cloneBySlice = (arr) => arr.slice(0);
+export const cloneBySlice = (arr) => arr.slice(0);
 
-const cloneBySpread = (arr) => [...arr];
+export const cloneBySpread = (arr) => [...arr];
 
-const cloneByFrom = (arr) => Array.from(arr);
+export const cloneByFrom = (arr) => Array.from(arr);
 
-const cloneByMap = (arr) => arr.map((x) => x);
+export const cloneByMap = (arr) => arr.map((x) => x);
 
-const cloneByStringify = (arr) => JSON.parse(JSON.stringify(arr));
+export const cloneByStringify = (arr) => JSON.parse(JSON.stringify(arr));
 
-const cloneByConcat = (arr) => arr.concat([]);
+export const cloneByConcat = (arr) => arr.concat([]);
 
 // Clone an array
-const clone = (kind: string, ...args) => {
+export const clone = (kind: string, ...args) => {
   switch (kind) {
-    case "slice":
+    case 'slice':
       // `arr` is an array
       return cloneBySlice(args);
-    case "spread":
+    case 'spread':
       return cloneBySpread(args);
-    case "from":
+    case 'from':
       return cloneByFrom(args);
-    case "from":
+    case 'from':
       return cloneByFrom(args);
-    case "map":
+    case 'map':
       return cloneByMap(args);
-    case "stringify":
+    case 'stringify':
       return cloneByStringify(args);
-    case "concat":
+    case 'concat':
       return cloneByConcat(args);
     default:
-      return 'should provide a valid option'
+      return 'should provide a valid option';
       break;
   }
 };
-
 
 // Compare two arrays regardless of order
 //
@@ -103,14 +100,12 @@ const clone = (kind: string, ...args) => {
 //
 export const isEqual = (a, b) => a.length === b.length && a.every((v) => b.includes(v));
 
-
 // Compare Two arrays
 // //
 // // Examples
 // isEqual([1, 2, 3], [1, 2, 3]);      // true
 // isEqual([1, 2, 3], [1, '2', 3]);    // false
 export const isEqual = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
-
 
 // Convert an array of objects to a single object
 //
@@ -132,15 +127,14 @@ export const isEqual = (a, b) => a.length === b.length && a.every((v, i) => v ==
 // */
 export const toObject = (arr, key) => arr.reduce((a, b) => ({ ...a, [b[key]]: b }), {});
 
-
 // Convert an array of strings to numbers
 //
 // // Example
 // toNumbers(['2', '3', '4']);     // [2, 3, 4]
-export const toNumbers = arr => arr.map(Number);
+export const toNumbers = (arr) => arr.map(Number);
 //
 // // Or
-export const toNumbers = arr => arr.map(x => +x);
+export const toNumbers = (arr) => arr.map((x) => +x);
 
 // Create an array of cumulative sum
 //
@@ -151,15 +145,16 @@ export const toNumbers = arr => arr.map(x => +x);
 // // 1 + 2         = 3
 // // 1 + 2 + 3     = 6
 // // 1 + 2 + 3 + 4 = 10
-export const accumulate = arr => arr.map((sum => value => sum += value)(0));
+export const accumulate = (arr) => arr.map(((sum) => (value) => (sum += value))(0));
 //
 // Or
-export const accumulate = arr => arr.reduce((a, b, i) => i === 0 ? [b] : [...a, b + a[i - 1]], []);
+export const accumulate = (arr) =>
+  arr.reduce((a, b, i) => (i === 0 ? [b] : [...a, b + a[i - 1]]), []);
 //
 // Or
-export const accumulate = arr => arr.reduce((a, b, i) => i === 0 ? [b] : [...a, b + a[i - 1]], 0);
+export const accumulate = (arr) =>
+  arr.reduce((a, b, i) => (i === 0 ? [b] : [...a, b + a[i - 1]]), 0);
 //
-
 
 //Create an array of numbers in the given range
 //
@@ -167,21 +162,22 @@ export const accumulate = arr => arr.reduce((a, b, i) => i === 0 ? [b] : [...a, 
 // // Example
 // range(5, 10);   // [5, 6, 7, 8, 9, 10]
 //
-export const range = (min, max) => [...Array(max - min + 1).keys()].map(i => i + min);
+export const range = (min, max) => [...Array(max - min + 1).keys()].map((i) => i + min);
 //
 // Or
-export const range = (min, max) => Array(max - min + 1).fill(0).map((_, i) => min + i);
+export const range = (min, max) =>
+  Array(max - min + 1)
+    .fill(0)
+    .map((_, i) => min + i);
 //
 // Or
 export const range = (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i);
 
-
 // Empty an array
-const empty = arr => arr.length = 0;
+export const empty = (arr) => (arr.length = 0);
 //
 // Or
 // arr = [];
-
 
 // Find the closest number from an array
 //
@@ -190,7 +186,8 @@ const empty = arr => arr.length = 0;
 // closest([29, 87, 8, 78, 97, 20, 75, 33, 24, 17], 50);   // 33
 //
 // Find the number from `arr` which is closest to `n`
-export const closest = (arr, n) => arr.reduce((prev, curr) => Math.abs(curr - n) < Math.abs(prev - n) ? curr : prev);
+export const closest = (arr, n) =>
+  arr.reduce((prev, curr) => (Math.abs(curr - n) < Math.abs(prev - n) ? curr : prev));
 //
 // Or
 export const closest = (arr, n) => arr.sort((a, b) => Math.abs(a - n) - Math.abs(b - n))[0];
@@ -200,30 +197,24 @@ export const closest = (arr, n) => arr.sort((a, b) => Math.abs(a - n) - Math.abs
 // //
 // // Example
 // findLongest(['always','look','on','the','bright','side','of','life']);  // 6
-export const findLongest = words => Math.max(...(words.map(el => el.length)));
-
+export const findLongest = (words) => Math.max(...words.map((el) => el.length));
 
 // Find the maximum item of an array
-export const max = arr => Math.max(...arr);
-
+export const max = (arr) => Math.max(...arr);
 
 // Find the minimum item of an array
-export const min = arr => Math.min(...arr);
-
+export const min = (arr) => Math.min(...arr);
 
 // Flatten an array
 // //
 // //
 // // Example
 // flat(['cat', ['lion', 'tiger']]);   // ['cat', 'lion', 'tiger']
-const flat = arr => [].concat.apply([], arr.map(a => Array.isArray(a) ? flat(a) : a));
-// Or
-const flat = arr => arr.reduce((a, b) => Array.isArray(b) ? [...a, ...flat(b)] : [...a, b], []);
+const flat = (arr) => arr.reduce((a, b) => (Array.isArray(b) ? [...a, ...flat(b)] : [...a, b]), []);
 //
 // Or
 // See the browser compatibility at https://caniuse.com/#feat=array-flat
-const flat = arr => arr.flat();
-
+const flat = (arr) => arr.flat();
 
 // Generate an array of random integers in a given range
 //
@@ -232,16 +223,14 @@ const flat = arr => arr.flat();
 // // Example
 // randomArrayInRange(1, 100, 10);     // [11, 82, 41, 35, 76, 83, 43, 15, 60, 54]
 //
-const randomArrayInRange = (min, max, n) => Array.from({ length: n }, () => Math.floor(Math.random() * (max - min + 1)) + min);
-
+const randomArrayInRange = (min, max, n) =>
+  Array.from({ length: n }, () => Math.floor(Math.random() * (max - min + 1)) + min);
 
 // Get a random item from an array
-const randomItem = arr => arr[(Math.random() * arr.length) | 0];
-
+const randomItem = (arr) => arr[(Math.random() * arr.length) | 0];
 
 // Get the average of an array
-const average = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
-
+const average = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
 // Get the intersection of arrays
 //
@@ -253,34 +242,35 @@ const average = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
 //
 // space: O(n)
 // time: O(n)
-const getIntersection = (...arr) => [...(arr.flat().reduce((map, v) => map.set(v, (map.get(v) || 0) + 1), new Map()))].reduce((acc, [v, count]) => void (count === arr.length && acc.push(v)) || acc, []);
+export const getIntersection = (...arr) =>
+  [...arr.flat().reduce((map, v) => map.set(v, (map.get(v) || 0) + 1), new Map())].reduce(
+    (acc, [v, count]) => void (count === arr.length && acc.push(v)) || acc,
+    [],
+  );
 //
 // Or
 // Only support two arrays
-const getIntersection = (a, b) => [...new Set(a)].filter(v => b.includes(v));
-
+export const getIntersection = (a, b) => [...new Set(a)].filter((v) => b.includes(v));
 
 // Get the sum of array of numbers
-const sum = arr => arr.reduce((a, b) => a + b, 0);
+export const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
 // Get the unique values of an array
 //
-const unique = arr => [...new Set(arr)];
+export const unique = (arr) => [...new Set(arr)];
 //
 // Or
-const unique = arr => arr.filter((el, i, array) => array.indexOf(el) === i);
+export const unique = (arr) => arr.filter((el, i, array) => array.indexOf(el) === i);
 //
 // Or
-const unique = arr => arr.reduce((acc, el) => acc.includes(el) ? acc : [...acc, el], []);
-
+const unique = (arr) => arr.reduce((acc, el) => (acc.includes(el) ? acc : [...acc, el]), []);
 
 // Get union of arrays
 //
 // // Example
 // union([1, 2], [2, 3], [3]);     // [1, 2, 3]
 //
-const union = (...arr) => [...new Set(arr.flat())];
-
+export const union = (...arr) => [...new Set(arr.flat())];
 
 // Group an array of objects by a key
 //
@@ -312,21 +302,20 @@ const union = (...arr) => [...new Set(arr.flat())];
 // */
 //
 //
-const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
-
+export const groupBy = (arr, key) =>
+  arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});
 
 // Merge two arrays
 //
 // Merge but don't remove the duplications
-const merge = (a, b) => a.concat(b);
+export const merge = (a, b) => a.concat(b);
 // Or
-const merge = (a, b) => [...a, ...b];
+export const merge = (a, b) => [...a, ...b];
 //
 // Merge and remove the duplications
-const merge = [...new Set(a.concat(b))];
+export const merge = [...new Set(a.concat(b))];
 // Or
-const merge = [...new Set([...a, ...b])];
-
+export const merge = [...new Set([...a, ...b])];
 
 // Partition an array based on a condition
 //
@@ -334,15 +323,15 @@ const merge = [...new Set([...a, ...b])];
 // // Example
 // partition([1, 2, 3, 4, 5], n => n % 2);     // [[2, 4], [1, 3, 5]]
 //
-const partition = (arr, criteria) => arr.reduce((acc, i) => (acc[criteria(i) ? 0 : 1].push(i), acc), [[], []]);
-
+export const partition = (arr, criteria) =>
+  arr.reduce((acc, i) => (acc[criteria(i) ? 0 : 1].push(i), acc), [[], []]);
 
 // Remove falsy values from array
 // //
 // // Example
 // removeFalsy([0, 'a string', '', NaN, true, 5, undefined, 'another string', false]); // ['a string', true, 5, 'another string']
 //
-const removeFalsy = arr => arr.filter(Boolean);
+export const removeFalsy = (arr) => arr.filter(Boolean);
 
 // Shuffle an array
 //
@@ -350,10 +339,14 @@ const removeFalsy = arr => arr.filter(Boolean);
 // // Example
 // shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);   // [9, 1, 10, 6, 8, 5, 2, 3, 7, 4]
 //
-const shuffle = arr => arr.map(a => ({ sort: Math.random(), value: a })).sort((a, b) => a.sort - b.sort).map(a => a.value);
+export const shuffle = (arr) =>
+  arr
+    .map((a) => ({ sort: Math.random(), value: a }))
+    .sort((a, b) => a.sort - b.sort)
+    .map((a) => a.value);
 //
 // Or
-const shuffle = arr => arr.sort(() => .5 - Math.random());
+export const shuffle = (arr) => arr.sort(() => 0.5 - Math.random());
 
 // Sort an array of numbers
 //
@@ -361,7 +354,7 @@ const shuffle = arr => arr.sort(() => .5 - Math.random());
 // // Example
 // sort([1, 5, 2, 4, 3]);      // [1, 2, 3, 4, 5]
 //
-const sort = arr => arr.sort((a, b) => a - b);
+export const sort = (arr) => arr.sort((a, b) => a - b);
 
 // Split an array into chunks
 //
@@ -369,7 +362,8 @@ const sort = arr => arr.sort((a, b) => a - b);
 // // Examples
 // chunk([1, 2, 3, 4, 5, 6, 7, 8], 3);     // [[1, 2, 3], [4, 5, 6], [7, 8]]
 // chunk([1, 2, 3, 4, 5, 6, 7, 8], 4);     // [[1, 2, 3, 4], [5, 6, 7, 8]]
-const chunk = (arr, size) => arr.reduce((acc, e, i) => (i % size ? acc[acc.length - 1].push(e) : acc.push([e]), acc), []);
+export const chunk = (arr, size) =>
+  arr.reduce((acc, e, i) => (i % size ? acc[acc.length - 1].push(e) : acc.push([e]), acc), []);
 
 // Swap the rows and columns of a matrix
 //
@@ -381,13 +375,15 @@ const chunk = (arr, size) => arr.reduce((acc, e, i) => (i % size ? acc[acc.lengt
 //     [7, 8, 9],          //      [3, 6, 9],
 // ]);                     //  ]
 //
-const transpose = matrix => matrix[0].map((col, i) => matrix.map(row => row[i]));
+export const transpose = (matrix) => matrix[0].map((col, i) => matrix.map((row) => row[i]));
 //
 // Or
-const transpose = matrix => matrix[0].map((col, c) => matrix.map((row, r) => matrix[r][c]));
+export const transpose = (matrix) =>
+  matrix[0].map((col, c) => matrix.map((row, r) => matrix[r][c]));
 //
 // Or
-const transpose = matrix => matrix.reduce((prev, next) => next.map((item, i) => (prev[i] || []).concat(next[i])), []);
+export const transpose = (matrix) =>
+  matrix.reduce((prev, next) => next.map((item, i) => (prev[i] || []).concat(next[i])), []);
 
 // Unzip an array of arrays
 //
@@ -403,8 +399,11 @@ const transpose = matrix => matrix.reduce((prev, next) => next.map((item, i) => 
 //       e 5
 // */
 //
-const unzip = arr => arr.reduce((acc, c) => (c.forEach((v, i) => acc[i].push(v)), acc), Array.from({ length: Math.max(...arr.map(a => a.length)) }, (_) => []));
-
+export const unzip = (arr) =>
+  arr.reduce(
+    (acc, c) => (c.forEach((v, i) => acc[i].push(v)), acc),
+    Array.from({ length: Math.max(...arr.map((a) => a.length)) }, (_) => []),
+  );
 
 // Zip multiple arrays
 //
@@ -421,4 +420,5 @@ const unzip = arr => arr.reduce((acc, c) => (c.forEach((v, i) => acc[i].push(v))
 //      e       5
 // */
 //
-const zip = (...arr) => Array.from({ length: Math.max(...arr.map(a => a.length)) }, (_, i) => arr.map(a => a[i]));
+export const zip = (...arr) =>
+  Array.from({ length: Math.max(...arr.map((a) => a.length)) }, (_, i) => arr.map((a) => a[i]));
