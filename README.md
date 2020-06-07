@@ -1,4 +1,4 @@
-# Arnat SDK JavaScript
+# SDK JavaScript
 
 ## Overview
 
