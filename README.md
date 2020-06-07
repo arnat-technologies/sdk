@@ -14,6 +14,8 @@ We currently will support the following JavaScript platforms:
 - [Vue](packages/javascript)
 - [HTML5](packages/javascript)
 
+## Running the Tests
+
 ## Contributing
 
 ## Feedback
