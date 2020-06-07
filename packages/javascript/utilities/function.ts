@@ -1,20 +1,26 @@
 // getting inspired by: https://1loc.dev
 
-
 //  Check if a value is a function
 //
 // // Examples
 // isFunction(function() {});          // true
 // isFunction(function*() {});         // true
 // isFunction(async function() {});    // true
-const isFunction = v => ['[object Function]', '[object GeneratorFunction]', '[object AsyncFunction]', '[object Promise]'].includes(Object.prototype.toString.call(v));
+export const isFunction = (v) =>
+  [
+    '[object Function]',
+    '[object GeneratorFunction]',
+    '[object AsyncFunction]',
+    '[object Promise]',
+  ].includes(Object.prototype.toString.call(v));
 
 // Check if a value is a generator function
 //
 // // Examples
 // isGeneratorFunction(function() {});     // false
 // isGeneratorFunction(function*() {});    // true
-const isGeneratorFunction = v => Object.prototype.toString.call(v) === '[object GeneratorFunction]';
+export const isGeneratorFunction = (v) =>
+  Object.prototype.toString.call(v) === '[object GeneratorFunction]';
 
 // Check if a value is an async function
 //
@@ -22,7 +28,8 @@ const isGeneratorFunction = v => Object.prototype.toString.call(v) === '[object 
 // isAsyncFunction(function() {});         // false
 // isAsyncFunction(function*() {});        // false
 // isAsyncFunction(async function() {});   // true
-const isAsyncFunction = v => Object.prototype.toString.call(v) === '[object AsyncFunction]';
+export const isAsyncFunction = (v) =>
+  Object.prototype.toString.call(v) === '[object AsyncFunction]';
 
 // Compose functions from left to right
 //
@@ -37,7 +44,7 @@ const isAsyncFunction = v => Object.prototype.toString.call(v) === '[object Asyn
 // // We will execute `lowercase`, `capitalize` and `reverse` in order
 // fn('Hello World') === 'dlrow olleH';
 // Compose functions from left to right
-const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x);
+export const pipe = (...fns) => (x) => fns.reduce((y, f) => f(y), x);
 
 // Compose functions
 //
@@ -53,15 +60,7 @@ const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x);
 // fn('Hello World') === 'dlrow olleH';
 //
 // Compose functions from right to left
-const compose = (...fns) => x => fns.reduceRight((y, f) => f(y), x);
-
-// Create an empty function
-//
-const noop = () => {};
-//
-// Or
-const noop = Function();
-// calling Function() might be detected as using eval by some security tools
+export const compose = (...fns) => (x) => fns.reduceRight((y, f) => f(y), x);
 
 // Curry a function
 //
@@ -75,7 +74,8 @@ const noop = Function();
 // curry(sum, 1, 2)(3);    // 6
 // curry(sum, 1, 2, 3);    // 6
 //
-const curry = (fn, ...args) => fn.length <= args.length ? fn(...args) : curry.bind(null, fn, ...args);
+export const curry = (fn, ...args) =>
+  fn.length <= args.length ? fn(...args) : curry.bind(null, fn, ...args);
 
 // Delay the evaluation of a function
 //
@@ -88,7 +88,7 @@ const curry = (fn, ...args) => fn.length <= args.length ? fn(...args) : curry.bi
 //     .find(thunk => thunk().criteria);
 //
 // returns a new version of `fn` that returns values as lazy evaluable
-const thunkfy = fn => (...args) => () => fn(...args);
+export const thunkfy = (fn) => (...args) => () => fn(...args);
 
 // Execute a function once
 //
@@ -100,7 +100,7 @@ const thunkfy = fn => (...args) => () => fn(...args);
 // incOnce();      // n = 1
 // incOnce();      // n = 1
 //
-const once = fn => ((ran = false) => () => ran ? fn : (ran = !ran, fn = fn()))();
+export const once = (fn) => ((ran = false) => () => (ran ? fn : ((ran = !ran), (fn = fn()))))();
 
 // Flip the arguments of a function
 //
@@ -110,17 +110,17 @@ const once = fn => ((ran = false) => () => ran ? fn : (ran = !ran, fn = fn()))()
 // const isChild = flip(isParent);
 //
 // Reverse the order of arguments
-const flip = fn => (...args) => fn(...args.reverse());
+export const flip = (fn) => (...args) => fn(...args.reverse());
 //
 // For binary functions
-const flip = fn => (b, a) => fn(a, b);
+export const flip = (fn) => (b, a) => fn(a, b);
 //
 // Or for curried functions
-const flip = fn => b => a => fn(a)(b);
+export const flip = (fn) => (b) => (a) => fn(a)(b);
 
 // Identity function
 //
-const identity = x => x;
+export const identity = (x) => x;
 
 // Logical xor operator
 //
@@ -133,13 +133,13 @@ const identity = x => x;
 //
 // returns `true` if one of the arguments is truthy and the other is falsy
 //
-const xor = (a, b) => (a && !b) || (!a && b);
+export const xor = (a, b) => (a && !b) || (!a && b);
 //
 // Or
-const xor = (a, b) => !(!a && !b) && !(a && b);
+export const xor = (a, b) => !(!a && !b) && !(a && b);
 //
 // Or
-const xor = (a, b) => Boolean(!a ^ !b);
+export const xor = (a, b) => Boolean(!a ^ !b);
 
 // Memoize a function
 //
@@ -155,7 +155,7 @@ const xor = (a, b) => Boolean(!a ^ !b);
 // fibo(4);    // 3
 // fibo(5);    // 5
 // fibo(6);    // 8
-const memoize = fn => ((cache = {}) => arg => cache[arg] || (cache[arg] = fn(arg)))();
+export const memoize = (fn) => ((cache = {}) => (arg) => cache[arg] || (cache[arg] = fn(arg)))();
 
 // Partially apply a function
 //
@@ -164,7 +164,7 @@ const memoize = fn => ((cache = {}) => arg => cache[arg] || (cache[arg] = fn(arg
 // const sum = (x, y) => x + y;
 // const inc = partial(sum, 1);
 // inc(9);     // 10
-const partial = (fn, ...a) => (...b) => fn(...a, ...b);
+export const partial = (fn, ...a) => (...b) => fn(...a, ...b);
 
 // Uncurry a function
 //
@@ -177,4 +177,5 @@ const partial = (fn, ...a) => (...b) => fn(...a, ...b);
 //
 // `fn` is a curried function
 // `n` is the depth of parameters
-const uncurry = (fn, n = 1) => (...args) => (acc => args => args.reduce((x, y) => x(y), acc))(fn)(args.slice(0, n));
+export const uncurry = (fn, n = 1) => (...args) =>
+  ((acc) => (args) => args.reduce((x, y) => x(y), acc))(fn)(args.slice(0, n));
