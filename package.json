@@ -1,5 +1,5 @@
 {
-  "name": "@arnat/sdk-frontend",
+  "name": "@arnat/sdk-javascript",
   "version": "0.0.1",
   "description": "Manage feature toggles across frontend, backend, mobile & desktop apps. Management app + feature flag SDKs. https://www.arnat.digital",
   "scripts": {
