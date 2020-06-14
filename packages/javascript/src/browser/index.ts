@@ -2,7 +2,6 @@ export {
   getBrowser,
   getBrowserName,
   getBrowserVersion,
-  test,
   getEngine,
   getEngineName,
   getOS,
@@ -16,9 +15,9 @@ export {
   isEngine,
   isOS,
   isPlatform,
-  getAll,
+  getAllBrowser,
   some,
   satisfies,
-} from './parser';
+} from './src/parser';
 
-export { BROWSER_MAP, ENGINE_MAP, OS_MAP, PLATFORMS_MAP } from './constants';
+export { BROWSER_MAP, ENGINE_MAP, OS_MAP, PLATFORMS_MAP } from './src/constants';

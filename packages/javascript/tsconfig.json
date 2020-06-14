@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "ES2019"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "sourceMap": true,
+    "target": "ES2019",
+    "types": ["reflect-metadata", "jest"],
+    "typeRoots": ["../../node_modules/@types"]
+  },
+  "include": ["src/**/*", "tsconfig.json"],
+  "exclude": ["node_modules"]
+}

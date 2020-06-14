@@ -8,9 +8,16 @@
 scratchpad.*
 
 # folders
+.cache
+.idea
 node_modules/
 coverage/
+dist
+demo
 
 # files
 package-lock.json
 yarn.lock
+demo.ts
+index.html
+yarn-error.log

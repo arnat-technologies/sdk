@@ -193,7 +193,7 @@ export const getEngine = (): Engine => {
  * Parse full information about the browser
  * @returns BrowserDetail
  */
-export const getAll = (): BrowserDetail => ({
+export const getAllBrowser = (): BrowserDetail => ({
   browser: getBrowser(),
   os: getOS(),
   platform: getPlatform(),

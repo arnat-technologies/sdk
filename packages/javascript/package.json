@@ -1,0 +1,43 @@
+{
+  "name": "@arnat/sdk-javascript",
+  "main": "dist/index-nomodules.js",
+  "module": "dist/index-modules.js",
+  "typings": "dist/types/index-modules",
+  "types": "dist/types/index-modules.d.ts",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test": "jest --coverage",
+    "build": "BABEL_ENV=esmodules rollup -c --config rollup.config.ts",
+    "build:watch": "BABEL_ENV=esmodules rollup -c --config rollup.config.ts -w",
+    "codecov": "codecov -f coverage/*.json",
+    "yalc": "yalc publish --push --files --changed",
+    "prepublishOnly": "yarn build"
+  },
+  "sideEffects": false,
+  "jest": {
+    "coverageDirectory": "coverage",
+    "preset": "ts-jest",
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "setupFiles": [
+      "jest-useragent-mock"
+    ]
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "arnat",
+    "sdk",
+    "UI",
+    "javascript",
+    "react",
+    "browser",
+    "angular",
+    "node",
+    "react-native",
+    "nativescript",
+    "vue",
+    "html5"
+  ]
+}

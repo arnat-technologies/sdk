@@ -1,0 +1,13 @@
+# FOLDERS
+coverage
+demo
+index
+src
+
+# FILES
+demo.ts
+index.html
+index.ts
+jest.config.js
+rollup.config.ts
+tsconfig.json

@@ -1,6 +1,6 @@
 import { clear, mockUserAgent } from 'jest-useragent-mock';
 
-import { getAll } from '../../src';
+import { getAllBrowser } from '../../.';
 import listOfUA from './useragentstrings';
 
 const browserNames = Object.keys(listOfUA);
@@ -10,7 +10,7 @@ browserNames.forEach((browserName) => {
     it(`should render all useragentstrings.yml ${browserName} ${index}`, async () => {
       mockUserAgent(browser.ua);
 
-      const parsed = getAll();
+      const parsed = getAllBrowser();
       expect(parsed.browser.name).toBe(browserName);
       clear();
     });

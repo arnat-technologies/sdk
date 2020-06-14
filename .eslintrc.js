@@ -3,7 +3,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'prettier',
-    'prettier/@typescript-eslint'
+    'prettier/@typescript-eslint',
   ],
   root: true,
   parser: '@typescript-eslint/parser',
@@ -21,7 +21,7 @@ module.exports = {
     },
     'import/resolver': {
       typescript: {},
-    }
+    },
   },
   parserOptions: {
     ecmaVersion: 2018,

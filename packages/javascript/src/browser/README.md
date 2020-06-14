@@ -2,7 +2,7 @@
 
 A small, fast and rich-API browser/platform/engine detector for both browser and node.
 
-- **Small.** Use plain ES5-version which is ~1.3kB gzipped.
+- **Small.** Use plain ES5-version which is ~2.9kB gzipped.
 - **Optimized.** Use only those parsers you need — it doesn't do useless work.
 - **Multi-platform.** It's browser- and node-ready, so you can use it in any environment.
 
@@ -53,8 +53,8 @@ console.log(getBrowser());
 or
 
 ```javascript
-import {getAll} from '@arnat/sdk-js';
-console.log(getAll());
+import {getAllBrowser} from '@arnat/sdk-js';
+console.log(getAllBrowser());
 
 // outputs
 {
