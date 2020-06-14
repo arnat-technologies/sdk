@@ -9,6 +9,7 @@ scratchpad.*
 
 # folders
 node_modules/
+coverage/
 
 # files
 package-lock.json
