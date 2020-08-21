@@ -27,8 +27,6 @@
   },
   "private": true,
   "dependencies": {
-    "@nrwl/angular": "^10.1.0",
-    "@nrwl/react": "^10.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
@@ -37,6 +35,8 @@
     "@babel/preset-env": "7.9.6",
     "@babel/preset-react": "7.9.4",
     "@babel/preset-typescript": "7.9.0",
+    "@nrwl/angular": "^10.1.0",
+    "@nrwl/react": "^10.1.0",
     "@nrwl/eslint-plugin-nx": "10.0.13",
     "@nrwl/jest": "10.0.13",
     "@nrwl/storybook": "^10.0.13",
