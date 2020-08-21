@@ -24,7 +24,8 @@
       "@arnat-sdk/webcomponents-angular": [
         "libs/webcomponents-angular/src/index.ts"
       ],
-      "@arnat-sdk/utils": ["libs/utils/src/index.ts"]
+      "@arnat-sdk/utils": ["libs/utils/src/index.ts"],
+      "@arnat-sdk/javascript": ["libs/javascript/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,24 @@
+{
+  "name": "@glidejs/glide",
+  "version": "3.4.0",
+  "description": "",
+  "main": "dist/glide.js",
+  "module": "dist/glide.esm.js",
+  "unpkg": "dist/glide.js",
+  "keywords": [],
+  "scripts": {
+    "sass:core": "node-sass src/assets/sass/glide.core.scss dist/css/glide.core.css && node-sass src/assets/sass/glide.core.scss dist/css/glide.core.min.css --output-style=compressed",
+    "sass:theme": "node-sass src/assets/sass/glide.theme.scss dist/css/glide.theme.css && node-sass src/assets/sass/glide.theme.scss dist/css/glide.theme.min.css --output-style=compressed",
+    "build:css": "yarn sass:core && yarn sass:theme",
+    "build:esm": "rollup --config build/esm.js && rollup --config build/esm.modular.js",
+    "build:umd": "rollup --config build/umd.js && rollup --config build/umd.min.js",
+    "build:js": "yarn build:esm && yarn build:umd",
+    "build": "yarn build:css && yarn build:js",
+    "test": "jest tests/**/*.test.js",
+    "lint": "eslint {src,tests}/**/*.js"
+  },
+  "devDependencies": {
+    "jsdom": "11.11.0",
+    "node-sass": "^4.11.0"
+  }
+}

@@ -1,0 +1,10 @@
+#FOLDERS
+node_modules/
+coverage/
+
+#FILES
+.editorconfig
+.vscode
+
+#MAC
+.DS_Store

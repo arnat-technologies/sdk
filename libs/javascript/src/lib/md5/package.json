@@ -1,0 +1,21 @@
+{
+  "name": "md5",
+  "description": "",
+  "version": "0.0.1",
+  "contributors": [
+    "salba"
+  ],
+  "tags": [
+    "md5",
+    "hash",
+    "encryption",
+    "message digest"
+  ],
+  "main": "md5.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "webpack": "~2.4.1"
+  }
+}
