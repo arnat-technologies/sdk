@@ -40,6 +40,9 @@
     },
     "webcomponents-angular": {
       "tags": []
+    },
+    "utils": {
+      "tags": []
     }
   }
 }

@@ -1,0 +1,25 @@
+// split([]); // []
+// split([1, 2, 3, 4, 5]); // [[1, 2, 3, 4, 5]]
+// split([1, 2, 3, 4, 5, 6, 7, 8, 9], 3); [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+// split([1, 2, 3, 4, 5, 6, 7, 8, 9], '3'); [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+// split(['a', 'b', 'c', 'd', 'e'], 2); [['a', 'b'], ['c', 'd'], ['e']]
+// split([1, 2, 3, 4, 5, 6, 7, 8], 3); [[1, 2, 3], [4, 5, 6], [7, 8]]
+// split(null, 3); // throws
+// split([1, 2, 3, 4, 5, 6], '3'); // throws
+// split([1, 2, 3, 4, 5, 6], null); // throws
+
+export default function split(arr?, n?) {
+  if (!arr || !Array.isArray(arr)) {
+    throw new Error('expected an array for the first argument');
+  }
+  if (n != null && typeof n != 'number') {
+    throw new Error('expected a number or null for the second argument');
+  }
+  n = n != null ? n : arr.length;
+  const len = arr.length;
+  const groups = [];
+  for (let i = 0; i < len; i += n) {
+    groups.push(arr.slice(i, i + n));
+  }
+  return groups;
+}
