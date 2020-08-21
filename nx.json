@@ -21,13 +21,24 @@
           "build",
           "lint",
           "test",
-          "e2e"
+          "e2e",
+          "build-storybook"
         ]
       }
     }
   },
   "projects": {
     "webcomponents": {
+      "tags": []
+    },
+    "webcomponents-e2e": {
+      "tags": [],
+      "implicitDependencies": ["webcomponents"]
+    },
+    "webcomponents-react": {
+      "tags": []
+    },
+    "webcomponents-angular": {
       "tags": []
     }
   }

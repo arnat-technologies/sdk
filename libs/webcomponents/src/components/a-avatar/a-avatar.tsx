@@ -1,12 +1,11 @@
-import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'my-component',
-  styleUrl: 'my-component.scss',
-  shadow: true,
+  tag: 'a-avatar',
+  styleUrl: 'a-avatar.scss',
+  scoped: true,
 })
-export class MyComponent {
+export class Avatar {
   /**
    * The first name
    */
@@ -23,7 +22,7 @@ export class MyComponent {
   @Prop() last: string;
 
   private getText(): string {
-    return format(this.first, this.middle, this.last);
+    return `${this.first} ${this.middle}, ${this.last}`;
   }
 
   render() {

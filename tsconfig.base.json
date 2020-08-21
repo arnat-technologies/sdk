@@ -10,27 +10,21 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@arnat-sdk/webcomponents": [
-        "libs/webcomponents/src/index.ts"
+      "@arnat-sdk/webcomponents": ["libs/webcomponents/src/index.ts"],
+      "@arnat-sdk/webcomponents/loader": ["dist/libs/webcomponents/loader"],
+      "@arnat-sdk/webcomponents-react": [
+        "libs/webcomponents-react/src/index.ts"
       ],
-      "@arnat-sdk/webcomponents/loader": [
-        "dist/libs/webcomponents/loader"
+      "@arnat-sdk/webcomponents-angular": [
+        "libs/webcomponents-angular/src/index.ts"
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
