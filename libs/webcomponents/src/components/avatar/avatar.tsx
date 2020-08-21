@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'a-avatar',
-  styleUrl: 'a-avatar.scss',
+  styleUrl: 'avatar.scss',
   scoped: true,
 })
 export class Avatar {
