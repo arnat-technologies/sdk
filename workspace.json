@@ -216,5 +216,6 @@
   },
   "cli": {
     "defaultCollection": "@nxext/stencil"
-  }
+  },
+  "defaultProject": "frontend"
 }
