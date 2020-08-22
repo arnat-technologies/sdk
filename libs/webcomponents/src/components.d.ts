@@ -8,17 +8,35 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AAvatar {
         /**
-          * The first name
+          * Alternative text for the image.
          */
-        "first": string;
+        "alt": string;
         /**
-          * The last name
+          * The image source to use for the avatar.
          */
-        "last": string;
+        "image": string;
         /**
-          * The middle name
+          * Initials to use as a fallback when no image is available (1-2 characters max recommended).
          */
-        "middle": string;
+        "initials": string;
+        /**
+          * The shape of the avatar.
+         */
+        "shape": 'circle' | 'square' | 'rounded';
+    }
+    interface AIcon {
+        /**
+          * An alternative description to use for accessibility. If omitted, the name or src will be used to generate it.
+         */
+        "label": string;
+        /**
+          * The name of the icon to draw.
+         */
+        "name": string;
+        /**
+          * An external URL of an SVG file.
+         */
+        "src": string;
     }
 }
 declare global {
@@ -28,27 +46,61 @@ declare global {
         prototype: HTMLAAvatarElement;
         new (): HTMLAAvatarElement;
     };
+    interface HTMLAIconElement extends Components.AIcon, HTMLStencilElement {
+    }
+    var HTMLAIconElement: {
+        prototype: HTMLAIconElement;
+        new (): HTMLAIconElement;
+    };
     interface HTMLElementTagNameMap {
         "a-avatar": HTMLAAvatarElement;
+        "a-icon": HTMLAIconElement;
     }
 }
 declare namespace LocalJSX {
     interface AAvatar {
         /**
-          * The first name
+          * Alternative text for the image.
          */
-        "first"?: string;
+        "alt"?: string;
         /**
-          * The last name
+          * The image source to use for the avatar.
          */
-        "last"?: string;
+        "image"?: string;
         /**
-          * The middle name
+          * Initials to use as a fallback when no image is available (1-2 characters max recommended).
          */
-        "middle"?: string;
+        "initials"?: string;
+        /**
+          * The shape of the avatar.
+         */
+        "shape"?: 'circle' | 'square' | 'rounded';
+    }
+    interface AIcon {
+        /**
+          * An alternative description to use for accessibility. If omitted, the name or src will be used to generate it.
+         */
+        "label"?: string;
+        /**
+          * The name of the icon to draw.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the icon failed to load.
+         */
+        "onAError"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the icon has loaded.
+         */
+        "onALoad"?: (event: CustomEvent<any>) => void;
+        /**
+          * An external URL of an SVG file.
+         */
+        "src"?: string;
     }
     interface IntrinsicElements {
         "a-avatar": AAvatar;
+        "a-icon": AIcon;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +108,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "a-avatar": LocalJSX.AAvatar & JSXBase.HTMLAttributes<HTMLAAvatarElement>;
+            "a-icon": LocalJSX.AIcon & JSXBase.HTMLAttributes<HTMLAIconElement>;
         }
     }
 }

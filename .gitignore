@@ -39,3 +39,6 @@ testem.log
 Thumbs.db
 libs/webcomponents-react/**/generated
 libs/webcomponents-angular/**/generated
+
+# Styles
+shoelace/

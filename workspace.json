@@ -47,6 +47,7 @@
           "options": {
             "uiFramework": "@storybook/html",
             "port": 4400,
+            "staticDir": ["dist/libs/webcomponents/dist/webcomponents"],
             "config": {
               "configFolder": "libs/webcomponents/.storybook"
             }
