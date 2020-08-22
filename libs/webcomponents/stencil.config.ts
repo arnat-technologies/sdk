@@ -8,6 +8,7 @@ const angularValueAccessorBindings = [];
 export const config: Config = {
   namespace: 'webcomponents',
   taskQueue: 'async',
+  globalStyle: 'src/styles/shoelace/shoelace.scss',
   outputTargets: [
     {
       type: 'dist',
@@ -35,5 +36,9 @@ export const config: Config = {
     }),
   ],
 
-  plugins: [sass()],
+  plugins: [
+    sass({
+      includePaths: ['./node_modules', './src/styles'],
+    }),
+  ],
 };

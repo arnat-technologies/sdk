@@ -6,6 +6,42 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface AAlert {
+        /**
+          * Set to true to make the alert closable.
+         */
+        "closable": boolean;
+        /**
+          * Hides the alert
+         */
+        "hide": () => Promise<void>;
+        /**
+          * Indicates whether or not the alert is open. You can use this in lieu of the show/hide methods.
+         */
+        "open": boolean;
+        /**
+          * Shows the alert.
+         */
+        "show": () => Promise<void>;
+        /**
+          * The type of alert.
+         */
+        "type": 'primary' | 'success' | 'info' | 'warning' | 'danger';
+    }
+    interface AAnimation {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
     interface AAvatar {
         /**
           * Alternative text for the image.
@@ -24,6 +60,160 @@ export namespace Components {
          */
         "shape": 'circle' | 'square' | 'rounded';
     }
+    interface ABadge {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AButton {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AButtonGroup {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ACard {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ACheckbox {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AColorPicker {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ADetails {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ADialog {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ADrawer {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ADropdown {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AForm {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
     interface AIcon {
         /**
           * An alternative description to use for accessibility. If omitted, the name or src will be used to generate it.
@@ -38,13 +228,385 @@ export namespace Components {
          */
         "src": string;
     }
+    interface AIconButton {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AIconInput {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AMenu {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AMenuDivider {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AMenuItem {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AMenuLabel {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AProgressBar {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface AProgressRing {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ARadio {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ARange {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ARating {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ASelect {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ASkeleton {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ASpinner {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ASwitch {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ATab {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ATabGroup {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ATabPanel {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ATag {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ATextarea {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
+    interface ATooltip {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
 }
 declare global {
+    interface HTMLAAlertElement extends Components.AAlert, HTMLStencilElement {
+    }
+    var HTMLAAlertElement: {
+        prototype: HTMLAAlertElement;
+        new (): HTMLAAlertElement;
+    };
+    interface HTMLAAnimationElement extends Components.AAnimation, HTMLStencilElement {
+    }
+    var HTMLAAnimationElement: {
+        prototype: HTMLAAnimationElement;
+        new (): HTMLAAnimationElement;
+    };
     interface HTMLAAvatarElement extends Components.AAvatar, HTMLStencilElement {
     }
     var HTMLAAvatarElement: {
         prototype: HTMLAAvatarElement;
         new (): HTMLAAvatarElement;
+    };
+    interface HTMLABadgeElement extends Components.ABadge, HTMLStencilElement {
+    }
+    var HTMLABadgeElement: {
+        prototype: HTMLABadgeElement;
+        new (): HTMLABadgeElement;
+    };
+    interface HTMLAButtonElement extends Components.AButton, HTMLStencilElement {
+    }
+    var HTMLAButtonElement: {
+        prototype: HTMLAButtonElement;
+        new (): HTMLAButtonElement;
+    };
+    interface HTMLAButtonGroupElement extends Components.AButtonGroup, HTMLStencilElement {
+    }
+    var HTMLAButtonGroupElement: {
+        prototype: HTMLAButtonGroupElement;
+        new (): HTMLAButtonGroupElement;
+    };
+    interface HTMLACardElement extends Components.ACard, HTMLStencilElement {
+    }
+    var HTMLACardElement: {
+        prototype: HTMLACardElement;
+        new (): HTMLACardElement;
+    };
+    interface HTMLACheckboxElement extends Components.ACheckbox, HTMLStencilElement {
+    }
+    var HTMLACheckboxElement: {
+        prototype: HTMLACheckboxElement;
+        new (): HTMLACheckboxElement;
+    };
+    interface HTMLAColorPickerElement extends Components.AColorPicker, HTMLStencilElement {
+    }
+    var HTMLAColorPickerElement: {
+        prototype: HTMLAColorPickerElement;
+        new (): HTMLAColorPickerElement;
+    };
+    interface HTMLADetailsElement extends Components.ADetails, HTMLStencilElement {
+    }
+    var HTMLADetailsElement: {
+        prototype: HTMLADetailsElement;
+        new (): HTMLADetailsElement;
+    };
+    interface HTMLADialogElement extends Components.ADialog, HTMLStencilElement {
+    }
+    var HTMLADialogElement: {
+        prototype: HTMLADialogElement;
+        new (): HTMLADialogElement;
+    };
+    interface HTMLADrawerElement extends Components.ADrawer, HTMLStencilElement {
+    }
+    var HTMLADrawerElement: {
+        prototype: HTMLADrawerElement;
+        new (): HTMLADrawerElement;
+    };
+    interface HTMLADropdownElement extends Components.ADropdown, HTMLStencilElement {
+    }
+    var HTMLADropdownElement: {
+        prototype: HTMLADropdownElement;
+        new (): HTMLADropdownElement;
+    };
+    interface HTMLAFormElement extends Components.AForm, HTMLStencilElement {
+    }
+    var HTMLAFormElement: {
+        prototype: HTMLAFormElement;
+        new (): HTMLAFormElement;
     };
     interface HTMLAIconElement extends Components.AIcon, HTMLStencilElement {
     }
@@ -52,12 +614,216 @@ declare global {
         prototype: HTMLAIconElement;
         new (): HTMLAIconElement;
     };
+    interface HTMLAIconButtonElement extends Components.AIconButton, HTMLStencilElement {
+    }
+    var HTMLAIconButtonElement: {
+        prototype: HTMLAIconButtonElement;
+        new (): HTMLAIconButtonElement;
+    };
+    interface HTMLAIconInputElement extends Components.AIconInput, HTMLStencilElement {
+    }
+    var HTMLAIconInputElement: {
+        prototype: HTMLAIconInputElement;
+        new (): HTMLAIconInputElement;
+    };
+    interface HTMLAMenuElement extends Components.AMenu, HTMLStencilElement {
+    }
+    var HTMLAMenuElement: {
+        prototype: HTMLAMenuElement;
+        new (): HTMLAMenuElement;
+    };
+    interface HTMLAMenuDividerElement extends Components.AMenuDivider, HTMLStencilElement {
+    }
+    var HTMLAMenuDividerElement: {
+        prototype: HTMLAMenuDividerElement;
+        new (): HTMLAMenuDividerElement;
+    };
+    interface HTMLAMenuItemElement extends Components.AMenuItem, HTMLStencilElement {
+    }
+    var HTMLAMenuItemElement: {
+        prototype: HTMLAMenuItemElement;
+        new (): HTMLAMenuItemElement;
+    };
+    interface HTMLAMenuLabelElement extends Components.AMenuLabel, HTMLStencilElement {
+    }
+    var HTMLAMenuLabelElement: {
+        prototype: HTMLAMenuLabelElement;
+        new (): HTMLAMenuLabelElement;
+    };
+    interface HTMLAProgressBarElement extends Components.AProgressBar, HTMLStencilElement {
+    }
+    var HTMLAProgressBarElement: {
+        prototype: HTMLAProgressBarElement;
+        new (): HTMLAProgressBarElement;
+    };
+    interface HTMLAProgressRingElement extends Components.AProgressRing, HTMLStencilElement {
+    }
+    var HTMLAProgressRingElement: {
+        prototype: HTMLAProgressRingElement;
+        new (): HTMLAProgressRingElement;
+    };
+    interface HTMLARadioElement extends Components.ARadio, HTMLStencilElement {
+    }
+    var HTMLARadioElement: {
+        prototype: HTMLARadioElement;
+        new (): HTMLARadioElement;
+    };
+    interface HTMLARangeElement extends Components.ARange, HTMLStencilElement {
+    }
+    var HTMLARangeElement: {
+        prototype: HTMLARangeElement;
+        new (): HTMLARangeElement;
+    };
+    interface HTMLARatingElement extends Components.ARating, HTMLStencilElement {
+    }
+    var HTMLARatingElement: {
+        prototype: HTMLARatingElement;
+        new (): HTMLARatingElement;
+    };
+    interface HTMLASelectElement extends Components.ASelect, HTMLStencilElement {
+    }
+    var HTMLASelectElement: {
+        prototype: HTMLASelectElement;
+        new (): HTMLASelectElement;
+    };
+    interface HTMLASkeletonElement extends Components.ASkeleton, HTMLStencilElement {
+    }
+    var HTMLASkeletonElement: {
+        prototype: HTMLASkeletonElement;
+        new (): HTMLASkeletonElement;
+    };
+    interface HTMLASpinnerElement extends Components.ASpinner, HTMLStencilElement {
+    }
+    var HTMLASpinnerElement: {
+        prototype: HTMLASpinnerElement;
+        new (): HTMLASpinnerElement;
+    };
+    interface HTMLASwitchElement extends Components.ASwitch, HTMLStencilElement {
+    }
+    var HTMLASwitchElement: {
+        prototype: HTMLASwitchElement;
+        new (): HTMLASwitchElement;
+    };
+    interface HTMLATabElement extends Components.ATab, HTMLStencilElement {
+    }
+    var HTMLATabElement: {
+        prototype: HTMLATabElement;
+        new (): HTMLATabElement;
+    };
+    interface HTMLATabGroupElement extends Components.ATabGroup, HTMLStencilElement {
+    }
+    var HTMLATabGroupElement: {
+        prototype: HTMLATabGroupElement;
+        new (): HTMLATabGroupElement;
+    };
+    interface HTMLATabPanelElement extends Components.ATabPanel, HTMLStencilElement {
+    }
+    var HTMLATabPanelElement: {
+        prototype: HTMLATabPanelElement;
+        new (): HTMLATabPanelElement;
+    };
+    interface HTMLATagElement extends Components.ATag, HTMLStencilElement {
+    }
+    var HTMLATagElement: {
+        prototype: HTMLATagElement;
+        new (): HTMLATagElement;
+    };
+    interface HTMLATextareaElement extends Components.ATextarea, HTMLStencilElement {
+    }
+    var HTMLATextareaElement: {
+        prototype: HTMLATextareaElement;
+        new (): HTMLATextareaElement;
+    };
+    interface HTMLATooltipElement extends Components.ATooltip, HTMLStencilElement {
+    }
+    var HTMLATooltipElement: {
+        prototype: HTMLATooltipElement;
+        new (): HTMLATooltipElement;
+    };
     interface HTMLElementTagNameMap {
+        "a-alert": HTMLAAlertElement;
+        "a-animation": HTMLAAnimationElement;
         "a-avatar": HTMLAAvatarElement;
+        "a-badge": HTMLABadgeElement;
+        "a-button": HTMLAButtonElement;
+        "a-button-group": HTMLAButtonGroupElement;
+        "a-card": HTMLACardElement;
+        "a-checkbox": HTMLACheckboxElement;
+        "a-color-picker": HTMLAColorPickerElement;
+        "a-details": HTMLADetailsElement;
+        "a-dialog": HTMLADialogElement;
+        "a-drawer": HTMLADrawerElement;
+        "a-dropdown": HTMLADropdownElement;
+        "a-form": HTMLAFormElement;
         "a-icon": HTMLAIconElement;
+        "a-icon-button": HTMLAIconButtonElement;
+        "a-icon-input": HTMLAIconInputElement;
+        "a-menu": HTMLAMenuElement;
+        "a-menu-divider": HTMLAMenuDividerElement;
+        "a-menu-item": HTMLAMenuItemElement;
+        "a-menu-label": HTMLAMenuLabelElement;
+        "a-progress-bar": HTMLAProgressBarElement;
+        "a-progress-ring": HTMLAProgressRingElement;
+        "a-radio": HTMLARadioElement;
+        "a-range": HTMLARangeElement;
+        "a-rating": HTMLARatingElement;
+        "a-select": HTMLASelectElement;
+        "a-skeleton": HTMLASkeletonElement;
+        "a-spinner": HTMLASpinnerElement;
+        "a-switch": HTMLASwitchElement;
+        "a-tab": HTMLATabElement;
+        "a-tab-group": HTMLATabGroupElement;
+        "a-tab-panel": HTMLATabPanelElement;
+        "a-tag": HTMLATagElement;
+        "a-textarea": HTMLATextareaElement;
+        "a-tooltip": HTMLATooltipElement;
     }
 }
 declare namespace LocalJSX {
+    interface AAlert {
+        /**
+          * Set to true to make the alert closable.
+         */
+        "closable"?: boolean;
+        /**
+          * Emitted after the alert closes and all transitions are complete.
+         */
+        "onSlAfterHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted after the alert opens and all transitions are complete.
+         */
+        "onSlAfterShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the alert closes. Calling `event.preventDefault()` will prevent it from being closed.
+         */
+        "onSlHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the alert opens. Calling `event.preventDefault()` will prevent it from being opened.
+         */
+        "onSlShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Indicates whether or not the alert is open. You can use this in lieu of the show/hide methods.
+         */
+        "open"?: boolean;
+        /**
+          * The type of alert.
+         */
+        "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
+    }
+    interface AAnimation {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
     interface AAvatar {
         /**
           * Alternative text for the image.
@@ -75,6 +841,160 @@ declare namespace LocalJSX {
           * The shape of the avatar.
          */
         "shape"?: 'circle' | 'square' | 'rounded';
+    }
+    interface ABadge {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AButton {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AButtonGroup {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ACard {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ACheckbox {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AColorPicker {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ADetails {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ADialog {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ADrawer {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ADropdown {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AForm {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
     }
     interface AIcon {
         /**
@@ -98,17 +1018,379 @@ declare namespace LocalJSX {
          */
         "src"?: string;
     }
+    interface AIconButton {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AIconInput {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AMenu {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AMenuDivider {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AMenuItem {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AMenuLabel {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AProgressBar {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface AProgressRing {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ARadio {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ARange {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ARating {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ASelect {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ASkeleton {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ASpinner {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ASwitch {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ATab {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ATabGroup {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ATabPanel {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ATag {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ATextarea {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
+    interface ATooltip {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
     interface IntrinsicElements {
+        "a-alert": AAlert;
+        "a-animation": AAnimation;
         "a-avatar": AAvatar;
+        "a-badge": ABadge;
+        "a-button": AButton;
+        "a-button-group": AButtonGroup;
+        "a-card": ACard;
+        "a-checkbox": ACheckbox;
+        "a-color-picker": AColorPicker;
+        "a-details": ADetails;
+        "a-dialog": ADialog;
+        "a-drawer": ADrawer;
+        "a-dropdown": ADropdown;
+        "a-form": AForm;
         "a-icon": AIcon;
+        "a-icon-button": AIconButton;
+        "a-icon-input": AIconInput;
+        "a-menu": AMenu;
+        "a-menu-divider": AMenuDivider;
+        "a-menu-item": AMenuItem;
+        "a-menu-label": AMenuLabel;
+        "a-progress-bar": AProgressBar;
+        "a-progress-ring": AProgressRing;
+        "a-radio": ARadio;
+        "a-range": ARange;
+        "a-rating": ARating;
+        "a-select": ASelect;
+        "a-skeleton": ASkeleton;
+        "a-spinner": ASpinner;
+        "a-switch": ASwitch;
+        "a-tab": ATab;
+        "a-tab-group": ATabGroup;
+        "a-tab-panel": ATabPanel;
+        "a-tag": ATag;
+        "a-textarea": ATextarea;
+        "a-tooltip": ATooltip;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "a-alert": LocalJSX.AAlert & JSXBase.HTMLAttributes<HTMLAAlertElement>;
+            "a-animation": LocalJSX.AAnimation & JSXBase.HTMLAttributes<HTMLAAnimationElement>;
             "a-avatar": LocalJSX.AAvatar & JSXBase.HTMLAttributes<HTMLAAvatarElement>;
+            "a-badge": LocalJSX.ABadge & JSXBase.HTMLAttributes<HTMLABadgeElement>;
+            "a-button": LocalJSX.AButton & JSXBase.HTMLAttributes<HTMLAButtonElement>;
+            "a-button-group": LocalJSX.AButtonGroup & JSXBase.HTMLAttributes<HTMLAButtonGroupElement>;
+            "a-card": LocalJSX.ACard & JSXBase.HTMLAttributes<HTMLACardElement>;
+            "a-checkbox": LocalJSX.ACheckbox & JSXBase.HTMLAttributes<HTMLACheckboxElement>;
+            "a-color-picker": LocalJSX.AColorPicker & JSXBase.HTMLAttributes<HTMLAColorPickerElement>;
+            "a-details": LocalJSX.ADetails & JSXBase.HTMLAttributes<HTMLADetailsElement>;
+            "a-dialog": LocalJSX.ADialog & JSXBase.HTMLAttributes<HTMLADialogElement>;
+            "a-drawer": LocalJSX.ADrawer & JSXBase.HTMLAttributes<HTMLADrawerElement>;
+            "a-dropdown": LocalJSX.ADropdown & JSXBase.HTMLAttributes<HTMLADropdownElement>;
+            "a-form": LocalJSX.AForm & JSXBase.HTMLAttributes<HTMLAFormElement>;
             "a-icon": LocalJSX.AIcon & JSXBase.HTMLAttributes<HTMLAIconElement>;
+            "a-icon-button": LocalJSX.AIconButton & JSXBase.HTMLAttributes<HTMLAIconButtonElement>;
+            "a-icon-input": LocalJSX.AIconInput & JSXBase.HTMLAttributes<HTMLAIconInputElement>;
+            "a-menu": LocalJSX.AMenu & JSXBase.HTMLAttributes<HTMLAMenuElement>;
+            "a-menu-divider": LocalJSX.AMenuDivider & JSXBase.HTMLAttributes<HTMLAMenuDividerElement>;
+            "a-menu-item": LocalJSX.AMenuItem & JSXBase.HTMLAttributes<HTMLAMenuItemElement>;
+            "a-menu-label": LocalJSX.AMenuLabel & JSXBase.HTMLAttributes<HTMLAMenuLabelElement>;
+            "a-progress-bar": LocalJSX.AProgressBar & JSXBase.HTMLAttributes<HTMLAProgressBarElement>;
+            "a-progress-ring": LocalJSX.AProgressRing & JSXBase.HTMLAttributes<HTMLAProgressRingElement>;
+            "a-radio": LocalJSX.ARadio & JSXBase.HTMLAttributes<HTMLARadioElement>;
+            "a-range": LocalJSX.ARange & JSXBase.HTMLAttributes<HTMLARangeElement>;
+            "a-rating": LocalJSX.ARating & JSXBase.HTMLAttributes<HTMLARatingElement>;
+            "a-select": LocalJSX.ASelect & JSXBase.HTMLAttributes<HTMLASelectElement>;
+            "a-skeleton": LocalJSX.ASkeleton & JSXBase.HTMLAttributes<HTMLASkeletonElement>;
+            "a-spinner": LocalJSX.ASpinner & JSXBase.HTMLAttributes<HTMLASpinnerElement>;
+            "a-switch": LocalJSX.ASwitch & JSXBase.HTMLAttributes<HTMLASwitchElement>;
+            "a-tab": LocalJSX.ATab & JSXBase.HTMLAttributes<HTMLATabElement>;
+            "a-tab-group": LocalJSX.ATabGroup & JSXBase.HTMLAttributes<HTMLATabGroupElement>;
+            "a-tab-panel": LocalJSX.ATabPanel & JSXBase.HTMLAttributes<HTMLATabPanelElement>;
+            "a-tag": LocalJSX.ATag & JSXBase.HTMLAttributes<HTMLATagElement>;
+            "a-textarea": LocalJSX.ATextarea & JSXBase.HTMLAttributes<HTMLATextareaElement>;
+            "a-tooltip": LocalJSX.ATooltip & JSXBase.HTMLAttributes<HTMLATooltipElement>;
         }
     }
 }

@@ -10,7 +10,7 @@ import {
 
 @Component({
   tag: 'a-component',
-  styleUrl: 'component.ios.css',
+  styleUrl: 'component.scss',
   scoped: true,
 })
 export class Component {
@@ -49,7 +49,7 @@ export class Component {
   componentWillUpdate() {}
   componentDidUpdate() {}
   componentWillRender() {}
-  componentShouldRender(newVal: any, oldVal: any, propName: string) {}
+  componentShouldRender() {}
   componentDidRender() {}
 
   /**
