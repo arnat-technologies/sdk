@@ -13,10 +13,50 @@
     <link rel="stylesheet" href="/build/webcomponents.css" />
   </head>
   <body>
-    <a-alert type="primary" open>
+    <!-- <a-alert type="primary" open>
       <a-icon slot="icon" name="info-circle"></a-icon>
       <strong>This is super informative</strong><br />
       You can tell by how pretty the alert is.
-    </a-alert>
+    </a-alert> -->
+    <!-- <a-animation name="jello" duration="2000">
+      <a-icon name="info-circle"></a-icon>
+    </a-animation> -->
+    <!-- <a-badge type="primary">Badge</a-badge> -->
+    <!-- <a-button type="primary">Primary Button</a-button> -->
+    <!-- <a-card class="card-overview">
+      <img
+        slot="image"
+        src="https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+        alt="A kitten sits patiently between a terracotta pot and decorative grasses."
+      />
+
+      <strong>Mittens</strong><br />
+      This kitten is as cute as he is playful. Bring him home today!<br />
+      <small>6 weeks old</small>
+
+      <div slot="footer">
+        <a-button type="primary" pill>More Info</a-button>
+        <a-rating></a-rating>
+      </div>
+    </a-card> -->
+    <!-- <a-checkbox>Checkbox</a-checkbox> -->
+
+    <a-dialog label="Dialog" class="dialog-overview">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <a-button slot="footer" type="primary">Close</a-button>
+    </a-dialog>
+
+    <a-button>Open Dialog</a-button>
+
+    <script>
+      (() => {
+        const dialog = document.querySelector('.dialog-overview');
+        const openButton = dialog.nextElementSibling;
+        const closeButton = dialog.querySelector('sl-button[slot="footer"]');
+
+        openButton.addEventListener('click', () => dialog.show());
+        closeButton.addEventListener('click', () => dialog.hide());
+      })();
+    </script>
   </body>
 </html>

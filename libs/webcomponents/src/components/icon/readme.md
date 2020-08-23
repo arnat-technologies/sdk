@@ -34,11 +34,13 @@
 ### Used by
 
  - [a-avatar](../avatar)
+ - [a-details](../details)
 
 ### Graph
 ```mermaid
 graph TD;
   a-avatar --> a-icon
+  a-details --> a-icon
   style a-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

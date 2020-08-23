@@ -1,36 +1,36 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { Icon } from './icon';
+import { Card } from './card';
 
-describe('a-icon', () => {
+describe('a-card', () => {
   it('renders', async () => {
     const { root } = await newSpecPage({
-      components: [Icon],
-      html: '<a-icon></a-icon>',
+      components: [Card],
+      html: '<a-card></a-card>',
     });
     expect(root).toEqualHtml(`
-      <a-icon>
+      <a-card>
         <mock:shadow-root>
           <div>
             Hello, World! I'm
           </div>
         </mock:shadow-root>
-      </a-icon>
+      </a-card>
     `);
   });
 
   it('renders with values', async () => {
     const { root } = await newSpecPage({
-      components: [Icon],
-      html: `<a-icon first="Stencil" last="'Don't call me a framework' JS"></a-icon>`,
+      components: [Card],
+      html: `<a-card first="Stencil" last="'Don't call me a framework' JS"></a-card>`,
     });
     expect(root).toEqualHtml(`
-      <a-icon first="Stencil" last="'Don't call me a framework' JS">
+      <a-card first="Stencil" last="'Don't call me a framework' JS">
         <mock:shadow-root>
           <div>
             Hello, World! I'm Stencil 'Don't call me a framework' JS
           </div>
         </mock:shadow-root>
-      </a-icon>
+      </a-card>
     `);
   });
 });

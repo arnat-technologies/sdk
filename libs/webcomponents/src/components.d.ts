@@ -30,17 +30,77 @@ export namespace Components {
     }
     interface AAnimation {
         /**
-          * The first name
+          * Clears all KeyframeEffects caused by this animation and aborts its playback.
          */
-        "first": string;
+        "cancel": () => Promise<void>;
         /**
-          * The last name
+          * The number of milliseconds to delay the start of the animation.
          */
-        "last": string;
+        "delay": number;
         /**
-          * The middle name
+          * Determines the direction of playback as well as the behavior when reaching the end of an iteration.
          */
-        "middle": string;
+        "direction": PlaybackDirection;
+        /**
+          * The number of milliseconds each iteration of the animation takes to complete.
+         */
+        "duration": number;
+        /**
+          * The rate of the animation's change over time.
+         */
+        "easing": string;
+        /**
+          * The number of milliseconds to delay after the active period of an animation sequence.
+         */
+        "endDelay": number;
+        /**
+          * Sets how the animation applies styles to its target before and after its execution.
+         */
+        "fill": FillMode;
+        /**
+          * Sets the playback time to the end of the animation corresponding to the current playback direction.
+         */
+        "finish": () => Promise<void>;
+        /**
+          * Gets a list of all supported animation names.
+         */
+        "getAnimationNames": () => Promise<void>;
+        /**
+          * Gets the current time of the animation in milliseconds.
+         */
+        "getCurrentTime": () => Promise<number>;
+        /**
+          * Gets a list of all supported easing function names.
+         */
+        "getEasingNames": () => Promise<void>;
+        /**
+          * The offset at which to start the animation, usually between 0 (start) and 1 (end).
+         */
+        "iterationStart": number;
+        /**
+          * The number of iterations to run before the animation completes. Defaults to `Infinity`, which loops.
+         */
+        "iterations": number;
+        /**
+          * The keyframes to use for the animation. If this is set, `name` will be ignored.
+         */
+        "keyframes": Keyframe[];
+        /**
+          * The name of the animation to use.
+         */
+        "name": string;
+        /**
+          * Pauses the animation. The animation will resume when this prop is removed.
+         */
+        "pause": boolean;
+        /**
+          * Sets the animation's playback rate. The default is `1`, which plays the animation at a normal speed. Setting this to `2`, for example, will double the animation's speed. A negative value can be used to reverse the animation. This value can be changed without causing the animation to restart.
+         */
+        "playbackRate": number;
+        /**
+          * Sets the current time of the animation in milliseconds.
+         */
+        "setCurrentTime": (time: number) => Promise<void>;
     }
     interface AAvatar {
         /**
@@ -62,101 +122,145 @@ export namespace Components {
     }
     interface ABadge {
         /**
-          * The first name
+          * Set to true to draw a pill-style badge with rounded edges.
          */
-        "first": string;
+        "pill": boolean;
         /**
-          * The last name
+          * Set to true to make the badge pulsate to draw attention.
          */
-        "last": string;
+        "pulse": boolean;
         /**
-          * The middle name
+          * The badge's type.
          */
-        "middle": string;
+        "type": 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'text';
     }
     interface AButton {
         /**
-          * The first name
+          * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
          */
-        "first": string;
+        "caret": boolean;
         /**
-          * The last name
+          * Set to true to draw a circle button.
          */
-        "last": string;
+        "circle": boolean;
         /**
-          * The middle name
+          * Set to true to disable the button.
          */
-        "middle": string;
+        "disabled": boolean;
+        /**
+          * Tells the browser to download the linked file as this filename. Only used when `href` is set.
+         */
+        "download": string;
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href": string;
+        /**
+          * Set to true to draw the button in a loading state.
+         */
+        "loading": boolean;
+        /**
+          * An optional name for the button. Ignored when `href` is set.
+         */
+        "name": string;
+        /**
+          * Set to true to draw a pill-style button with rounded edges.
+         */
+        "pill": boolean;
+        /**
+          * Removes focus from the button.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus on the button.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The button's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Indicates if activating the button should submit the form. Ignored when `href` is set.
+         */
+        "submit": boolean;
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target": '_blank' | '_parent' | '_self' | '_top';
+        /**
+          * The button's type.
+         */
+        "type": | 'default'
+    | 'primary'
+    | 'success'
+    | 'info'
+    | 'warning'
+    | 'danger'
+    | 'text';
+        /**
+          * An optional value for the button. Ignored when `href` is set.
+         */
+        "value": string;
     }
     interface AButtonGroup {
         /**
-          * The first name
+          * A label to use for the button groups `aria-label` attribute.
          */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "label": string;
     }
     interface ACard {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
     }
     interface ACheckbox {
         /**
-          * The first name
+          * Set to true to draw the checkbox in a checked state.
          */
-        "first": string;
+        "checked": boolean;
         /**
-          * The last name
+          * Set to true to disable the checkbox.
          */
-        "last": string;
+        "disabled": boolean;
         /**
-          * The middle name
+          * Set to true to draw the checkbox in an indeterminate state.
          */
-        "middle": string;
-    }
-    interface AColorPicker {
+        "indeterminate": boolean;
         /**
-          * The first name
+          * The checkbox's name attribute.
          */
-        "first": string;
+        "name": string;
         /**
-          * The last name
+          * Removes focus from the checkbox.
          */
-        "last": string;
+        "removeFocus": () => Promise<void>;
         /**
-          * The middle name
+          * Sets focus on the checkbox.
          */
-        "middle": string;
+        "setFocus": () => Promise<void>;
+        /**
+          * The checkbox's value attribute.
+         */
+        "value": string;
     }
     interface ADetails {
         /**
-          * The first name
+          * Set to true to prevent the user from toggling the details.
          */
-        "first": string;
+        "disabled": boolean;
         /**
-          * The last name
+          * Hides the alert
          */
-        "last": string;
+        "hide": () => Promise<void>;
         /**
-          * The middle name
+          * Indicates whether or not the details is open. You can use this in lieu of the show/hide methods.
          */
-        "middle": string;
+        "open": boolean;
+        /**
+          * Shows the alert.
+         */
+        "show": () => Promise<void>;
+        /**
+          * The summary to show in the details header. If you need to display HTML, use the `summary` slot instead.
+         */
+        "summary": string;
     }
     interface ADialog {
         /**
@@ -370,17 +474,37 @@ export namespace Components {
     }
     interface ARating {
         /**
-          * The first name
+          * Disables the rating.
          */
-        "first": string;
+        "disabled": boolean;
         /**
-          * The last name
+          * A function that returns the symbols to display. Accepts an option `value` parameter you can use to map a specific symbol to a value.
          */
-        "last": string;
+        "getSymbol": (value?: number) => string;
         /**
-          * The middle name
+          * The highest rating to show.
          */
-        "middle": string;
+        "max": number;
+        /**
+          * The minimum increment value allowed by the control.
+         */
+        "precision": number;
+        /**
+          * Makes the rating readonly.
+         */
+        "readonly": boolean;
+        /**
+          * Removes focus from the rating.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus on the rating.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The current rating.
+         */
+        "value": number;
     }
     interface ASelect {
         /**
@@ -572,12 +696,6 @@ declare global {
         prototype: HTMLACheckboxElement;
         new (): HTMLACheckboxElement;
     };
-    interface HTMLAColorPickerElement extends Components.AColorPicker, HTMLStencilElement {
-    }
-    var HTMLAColorPickerElement: {
-        prototype: HTMLAColorPickerElement;
-        new (): HTMLAColorPickerElement;
-    };
     interface HTMLADetailsElement extends Components.ADetails, HTMLStencilElement {
     }
     var HTMLADetailsElement: {
@@ -749,7 +867,6 @@ declare global {
         "a-button-group": HTMLAButtonGroupElement;
         "a-card": HTMLACardElement;
         "a-checkbox": HTMLACheckboxElement;
-        "a-color-picker": HTMLAColorPickerElement;
         "a-details": HTMLADetailsElement;
         "a-dialog": HTMLADialogElement;
         "a-drawer": HTMLADrawerElement;
@@ -812,17 +929,65 @@ declare namespace LocalJSX {
     }
     interface AAnimation {
         /**
-          * The first name
+          * The number of milliseconds to delay the start of the animation.
          */
-        "first"?: string;
+        "delay"?: number;
         /**
-          * The last name
+          * Determines the direction of playback as well as the behavior when reaching the end of an iteration.
          */
-        "last"?: string;
+        "direction"?: PlaybackDirection;
         /**
-          * The middle name
+          * The number of milliseconds each iteration of the animation takes to complete.
          */
-        "middle"?: string;
+        "duration"?: number;
+        /**
+          * The rate of the animation's change over time.
+         */
+        "easing"?: string;
+        /**
+          * The number of milliseconds to delay after the active period of an animation sequence.
+         */
+        "endDelay"?: number;
+        /**
+          * Sets how the animation applies styles to its target before and after its execution.
+         */
+        "fill"?: FillMode;
+        /**
+          * The offset at which to start the animation, usually between 0 (start) and 1 (end).
+         */
+        "iterationStart"?: number;
+        /**
+          * The number of iterations to run before the animation completes. Defaults to `Infinity`, which loops.
+         */
+        "iterations"?: number;
+        /**
+          * The keyframes to use for the animation. If this is set, `name` will be ignored.
+         */
+        "keyframes"?: Keyframe[];
+        /**
+          * The name of the animation to use.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the animation is canceled.
+         */
+        "onACancel"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the animation finishes.
+         */
+        "onAFinish"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the animation starts or restarts.
+         */
+        "onAStart"?: (event: CustomEvent<any>) => void;
+        /**
+          * Pauses the animation. The animation will resume when this prop is removed.
+         */
+        "pause"?: boolean;
+        /**
+          * Sets the animation's playback rate. The default is `1`, which plays the animation at a normal speed. Setting this to `2`, for example, will double the animation's speed. A negative value can be used to reverse the animation. This value can be changed without causing the animation to restart.
+         */
+        "playbackRate"?: number;
     }
     interface AAvatar {
         /**
@@ -844,101 +1009,157 @@ declare namespace LocalJSX {
     }
     interface ABadge {
         /**
-          * The first name
+          * Set to true to draw a pill-style badge with rounded edges.
          */
-        "first"?: string;
+        "pill"?: boolean;
         /**
-          * The last name
+          * Set to true to make the badge pulsate to draw attention.
          */
-        "last"?: string;
+        "pulse"?: boolean;
         /**
-          * The middle name
+          * The badge's type.
          */
-        "middle"?: string;
+        "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'text';
     }
     interface AButton {
         /**
-          * The first name
+          * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
          */
-        "first"?: string;
+        "caret"?: boolean;
         /**
-          * The last name
+          * Set to true to draw a circle button.
          */
-        "last"?: string;
+        "circle"?: boolean;
         /**
-          * The middle name
+          * Set to true to disable the button.
          */
-        "middle"?: string;
+        "disabled"?: boolean;
+        /**
+          * Tells the browser to download the linked file as this filename. Only used when `href` is set.
+         */
+        "download"?: string;
+        /**
+          * When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+         */
+        "href"?: string;
+        /**
+          * Set to true to draw the button in a loading state.
+         */
+        "loading"?: boolean;
+        /**
+          * An optional name for the button. Ignored when `href` is set.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onSlBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the button gains focus.
+         */
+        "onSlFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * Set to true to draw a pill-style button with rounded edges.
+         */
+        "pill"?: boolean;
+        /**
+          * The button's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Indicates if activating the button should submit the form. Ignored when `href` is set.
+         */
+        "submit"?: boolean;
+        /**
+          * Tells the browser where to open the link. Only used when `href` is set.
+         */
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
+        /**
+          * The button's type.
+         */
+        "type"?: | 'default'
+    | 'primary'
+    | 'success'
+    | 'info'
+    | 'warning'
+    | 'danger'
+    | 'text';
+        /**
+          * An optional value for the button. Ignored when `href` is set.
+         */
+        "value"?: string;
     }
     interface AButtonGroup {
         /**
-          * The first name
+          * A label to use for the button groups `aria-label` attribute.
          */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "label"?: string;
     }
     interface ACard {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
     }
     interface ACheckbox {
         /**
-          * The first name
+          * Set to true to draw the checkbox in a checked state.
          */
-        "first"?: string;
+        "checked"?: boolean;
         /**
-          * The last name
+          * Set to true to disable the checkbox.
          */
-        "last"?: string;
+        "disabled"?: boolean;
         /**
-          * The middle name
+          * Set to true to draw the checkbox in an indeterminate state.
          */
-        "middle"?: string;
-    }
-    interface AColorPicker {
+        "indeterminate"?: boolean;
         /**
-          * The first name
+          * The checkbox's name attribute.
          */
-        "first"?: string;
+        "name"?: string;
         /**
-          * The last name
+          * Emitted when the control loses focus.
          */
-        "last"?: string;
+        "onSlBlur"?: (event: CustomEvent<any>) => void;
         /**
-          * The middle name
+          * Emitted when the control's checked state changes.
          */
-        "middle"?: string;
+        "onSlChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onSlFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The checkbox's value attribute.
+         */
+        "value"?: string;
     }
     interface ADetails {
         /**
-          * The first name
+          * Set to true to prevent the user from toggling the details.
          */
-        "first"?: string;
+        "disabled"?: boolean;
         /**
-          * The last name
+          * Emitted after the details closes and all transitions are complete.
          */
-        "last"?: string;
+        "onSlAfterHide"?: (event: CustomEvent<any>) => void;
         /**
-          * The middle name
+          * Emitted after the details opens and all transitions are complete.
          */
-        "middle"?: string;
+        "onSlAfterShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the details closes. Calling `event.preventDefault()` will prevent it from being closed.
+         */
+        "onSlHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the details opens. Calling `event.preventDefault()` will prevent it from being opened.
+         */
+        "onSlShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Indicates whether or not the details is open. You can use this in lieu of the show/hide methods.
+         */
+        "open"?: boolean;
+        /**
+          * The summary to show in the details header. If you need to display HTML, use the `summary` slot instead.
+         */
+        "summary"?: string;
     }
     interface ADialog {
         /**
@@ -1160,17 +1381,33 @@ declare namespace LocalJSX {
     }
     interface ARating {
         /**
-          * The first name
+          * Disables the rating.
          */
-        "first"?: string;
+        "disabled"?: boolean;
         /**
-          * The last name
+          * A function that returns the symbols to display. Accepts an option `value` parameter you can use to map a specific symbol to a value.
          */
-        "last"?: string;
+        "getSymbol"?: (value?: number) => string;
         /**
-          * The middle name
+          * The highest rating to show.
          */
-        "middle"?: string;
+        "max"?: number;
+        /**
+          * Emitted when the rating's value changes.
+         */
+        "onSlChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * The minimum increment value allowed by the control.
+         */
+        "precision"?: number;
+        /**
+          * Makes the rating readonly.
+         */
+        "readonly"?: boolean;
+        /**
+          * The current rating.
+         */
+        "value"?: number;
     }
     interface ASelect {
         /**
@@ -1321,7 +1558,6 @@ declare namespace LocalJSX {
         "a-button-group": AButtonGroup;
         "a-card": ACard;
         "a-checkbox": ACheckbox;
-        "a-color-picker": AColorPicker;
         "a-details": ADetails;
         "a-dialog": ADialog;
         "a-drawer": ADrawer;
@@ -1363,7 +1599,6 @@ declare module "@stencil/core" {
             "a-button-group": LocalJSX.AButtonGroup & JSXBase.HTMLAttributes<HTMLAButtonGroupElement>;
             "a-card": LocalJSX.ACard & JSXBase.HTMLAttributes<HTMLACardElement>;
             "a-checkbox": LocalJSX.ACheckbox & JSXBase.HTMLAttributes<HTMLACheckboxElement>;
-            "a-color-picker": LocalJSX.AColorPicker & JSXBase.HTMLAttributes<HTMLAColorPickerElement>;
             "a-details": LocalJSX.ADetails & JSXBase.HTMLAttributes<HTMLADetailsElement>;
             "a-dialog": LocalJSX.ADialog & JSXBase.HTMLAttributes<HTMLADialogElement>;
             "a-drawer": LocalJSX.ADrawer & JSXBase.HTMLAttributes<HTMLADrawerElement>;

@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { AAvatar } from './avatar';
+import { Avatar } from './avatar';
 
 describe('a-avatar', () => {
   it('renders', async () => {
     const { root } = await newSpecPage({
-      components: [AAvatar],
+      components: [Avatar],
       html: '<a-avatar></a-avatar>',
     });
     expect(root).toEqualHtml(`
@@ -20,7 +20,7 @@ describe('a-avatar', () => {
 
   it('renders with values', async () => {
     const { root } = await newSpecPage({
-      components: [AAvatar],
+      components: [Avatar],
       html: `<a-avatar first="Stencil" last="'Don't call me a framework' JS"></a-avatar>`,
     });
     expect(root).toEqualHtml(`
