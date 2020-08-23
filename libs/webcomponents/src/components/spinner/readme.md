@@ -5,13 +5,20 @@
 <!-- Auto Generated Below -->
 
 
-## Properties
+## Shadow Parts
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+| Part     | Description |
+| -------- | ----------- |
+| `"base"` |             |
+
+
+## CSS Custom Properties
+
+| Name                | Description                           |
+| ------------------- | ------------------------------------- |
+| `--indicator-color` | The color of the spinner's indicator. |
+| `--stroke-width`    | The width of the indicator.           |
+| `--track-color`     | The color of the spinner's track.     |
 
 
 ----------------------------------------------

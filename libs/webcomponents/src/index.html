@@ -41,7 +41,7 @@
     </a-card> -->
     <!-- <a-checkbox>Checkbox</a-checkbox> -->
 
-    <a-dialog label="Dialog" class="dialog-overview">
+    <!-- <a-dialog label="Dialog" class="dialog-overview">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       <a-button slot="footer" type="primary">Close</a-button>
     </a-dialog>
@@ -52,11 +52,89 @@
       (() => {
         const dialog = document.querySelector('.dialog-overview');
         const openButton = dialog.nextElementSibling;
-        const closeButton = dialog.querySelector('sl-button[slot="footer"]');
+        const closeButton = dialog.querySelector('a-button[slot="footer"]');
 
         openButton.addEventListener('click', () => dialog.show());
         closeButton.addEventListener('click', () => dialog.hide());
       })();
-    </script>
+    </script> -->
+
+    <!-- <a-drawer label="Drawer" class="drawer-overview">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <a-button slot="footer" type="primary">Close</a-button>
+    </a-drawer>
+
+    <a-button>Open Drawer</a-button>
+
+    <script>
+      (() => {
+        const drawer = document.querySelector('.drawer-overview');
+        const openButton = drawer.nextElementSibling;
+        const closeButton = drawer.querySelector('a-button[type="primary"]');
+
+        openButton.addEventListener('click', () => drawer.show());
+        closeButton.addEventListener('click', () => drawer.hide());
+      })();
+    </script> -->
+
+    <!-- <a-dropdown>
+      <a-button slot="trigger" caret>Dropdown</a-button>
+      <a-menu>
+        <a-menu-item>Dropdown Item 1</a-menu-item>
+        <a-menu-item>Dropdown Item 2</a-menu-item>
+        <a-menu-item>Dropdown Item 3</a-menu-item>
+        <a-menu-divider></a-menu-divider>
+        <a-menu-item checked>Checked</a-menu-item>
+        <a-menu-item disabled>Disabled</a-menu-item>
+        <a-menu-divider></a-menu-divider>
+        <a-menu-item>
+          Prefix
+          <a-icon slot="prefix" name="gift"></a-icon>
+        </a-menu-item>
+        <a-menu-item>
+          Suffix Icon
+          <a-icon slot="suffix" name="heart"></a-icon>
+        </a-menu-item>
+      </a-menu>
+    </a-dropdown> -->
+
+    <!-- <a-icon-button name="gear"></a-icon-button>
+    <a-icon-button name="sliders"></a-icon-button>
+    <a-icon-button name="x"></a-icon-button> -->
+
+    <!-- <a-input placeholder="Small" size="small">
+      <a-icon name="tag" slot="prefix"></a-icon>
+      <a-icon name="gear" slot="suffix"></a-icon>
+    </a-input>
+    <br />
+    <a-input placeholder="Medium" size="medium">
+      <a-icon name="tag" slot="prefix"></a-icon>
+      <a-icon name="gear" slot="suffix"></a-icon>
+    </a-input>
+    <br />
+    <a-input placeholder="Large" size="large">
+      <a-icon name="tag" slot="prefix"></a-icon>
+      <a-icon name="gear" slot="suffix"></a-icon>
+    </a-input> -->
+
+    <!-- <a-menu
+      style="max-width: 200px; border: solid 1px black; border-radius: 2.5rem;"
+    >
+      <a-menu-item>Option 1</a-menu-item>
+      <a-menu-item>Option 2</a-menu-item>
+      <a-menu-item>Option 3</a-menu-item>
+      <a-menu-divider></a-menu-divider>
+      <a-menu-item checked>Checked</a-menu-item>
+      <a-menu-item disabled>Disabled</a-menu-item>
+      <a-menu-divider></a-menu-divider>
+      <a-menu-item>
+        Prefix Icon
+        <a-icon slot="prefix" name="gift"></a-icon>
+      </a-menu-item>
+      <a-menu-item>
+        Suffix Icon
+        <a-icon slot="suffix" name="heart"></a-icon>
+      </a-menu-item>
+    </a-menu> -->
   </body>
 </html>

@@ -7,11 +7,26 @@
 
 ## Properties
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+| Property | Attribute | Description                                    | Type                           | Default   |
+| -------- | --------- | ---------------------------------------------- | ------------------------------ | --------- |
+| `effect` | `effect`  | Determines which effect the skeleton will use. | `"none" \| "pulse" \| "sheen"` | `'sheen'` |
+
+
+## Shadow Parts
+
+| Part          | Description |
+| ------------- | ----------- |
+| `"base"`      |             |
+| `"indicator"` |             |
+
+
+## CSS Custom Properties
+
+| Name              | Description                                                |
+| ----------------- | ---------------------------------------------------------- |
+| `--border-radius` | The skeleton's border radius.                              |
+| `--color`         | The color of the skeleton.                                 |
+| `--sheen-color`   | The sheen color when the skeleton is in its loading state. |
 
 
 ----------------------------------------------

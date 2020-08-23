@@ -35,12 +35,20 @@
 
  - [a-avatar](../avatar)
  - [a-details](../details)
+ - [a-icon-button](../icon-button)
+ - [a-input](../input)
+ - [a-menu-item](../menu-item)
+ - [a-select](../select)
 
 ### Graph
 ```mermaid
 graph TD;
   a-avatar --> a-icon
   a-details --> a-icon
+  a-icon-button --> a-icon
+  a-input --> a-icon
+  a-menu-item --> a-icon
+  a-select --> a-icon
   style a-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

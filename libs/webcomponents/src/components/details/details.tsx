@@ -17,7 +17,7 @@ let id = 0;
   styleUrl: 'details.scss',
   scoped: true,
 })
-export class Detail {
+export class Details {
   /**
    * 1. Own Properties
    */

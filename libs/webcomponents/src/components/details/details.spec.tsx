@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { ADetails } from './details';
+import { Details } from './details';
 
 describe('a-details', () => {
   it('renders', async () => {
     const { root } = await newSpecPage({
-      components: [ADetails],
+      components: [Details],
       html: '<a-details></a-details>',
     });
     expect(root).toEqualHtml(`
@@ -20,7 +20,7 @@ describe('a-details', () => {
 
   it('renders with values', async () => {
     const { root } = await newSpecPage({
-      components: [ADetails],
+      components: [Details],
       html: `<a-details first="Stencil" last="'Don't call me a framework' JS"></a-details>`,
     });
     expect(root).toEqualHtml(`

@@ -7,11 +7,17 @@
 
 ## Properties
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+| Property | Attribute | Description                             | Type      | Default |
+| -------- | --------- | --------------------------------------- | --------- | ------- |
+| `active` | `active`  | When true, the tab panel will be shown. | `boolean` | `false` |
+| `name`   | `name`    | The tab panel's name.                   | `string`  | `''`    |
+
+
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"base"` |             |
 
 
 ----------------------------------------------

@@ -58,6 +58,16 @@ Type: `Promise<void>`
 | `"summary-icon"` |             |
 
 
+## CSS Custom Properties
+
+| Name                     | Description                                                  |
+| ------------------------ | ------------------------------------------------------------ |
+| `--hide-duration`        | The length of the hide transition.                           |
+| `--hide-timing-function` | The timing function (easing) to use for the hide transition. |
+| `--show-duration`        | The length of the show transition.                           |
+| `--show-timing-function` | The timing function (easing) to use for the show transition. |
+
+
 ## Dependencies
 
 ### Depends on

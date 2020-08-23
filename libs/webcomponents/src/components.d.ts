@@ -264,45 +264,100 @@ export namespace Components {
     }
     interface ADialog {
         /**
-          * The first name
+          * Hides the dialog
          */
-        "first": string;
+        "hide": () => Promise<void>;
         /**
-          * The last name
+          * The dialog's label as displayed in the header. You should always include a relevant label even when using `no-header`, as it is required for proper accessibility.
          */
-        "last": string;
+        "label": string;
         /**
-          * The middle name
+          * Set to true to disable the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the dialog.
          */
-        "middle": string;
+        "noHeader": boolean;
+        /**
+          * Indicates whether or not the dialog is open. You can use this in lieu of the show/hide methods.
+         */
+        "open": boolean;
+        /**
+          * Shows the dialog
+         */
+        "show": () => Promise<void>;
     }
     interface ADrawer {
         /**
-          * The first name
+          * By default, the drawer slides out of its containing block (usually the viewport). To make the drawer slide out of its parent element, set this prop and add `position: relative` to the parent.
          */
-        "first": string;
+        "contained": boolean;
         /**
-          * The last name
+          * Hides the drawer
          */
-        "last": string;
+        "hide": () => Promise<void>;
         /**
-          * The middle name
+          * The drawer's label as displayed in the header. You should always include a relevant label even when using `no-header`, as it is required for proper accessibility.
          */
-        "middle": string;
+        "label": string;
+        /**
+          * Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
+         */
+        "noHeader": boolean;
+        /**
+          * Indicates whether or not the drawer is open. You can use this in lieu of the show/hide methods.
+         */
+        "open": boolean;
+        /**
+          * The direction from which the drawer will open.
+         */
+        "placement": 'top' | 'right' | 'bottom' | 'left';
+        /**
+          * Shows the drawer
+         */
+        "show": () => Promise<void>;
     }
     interface ADropdown {
         /**
-          * The first name
+          * Determines whether the dropdown should hide when a menu item is selected.
          */
-        "first": string;
+        "closeOnSelect": boolean;
         /**
-          * The last name
+          * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
-        "last": string;
+        "containingElement": HTMLElement;
         /**
-          * The middle name
+          * The distance in pixels from which to offset the panel away from its trigger.
          */
-        "middle": string;
+        "distance": number;
+        /**
+          * Hides the dropdown panel
+         */
+        "hide": () => Promise<void>;
+        /**
+          * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
+         */
+        "open": boolean;
+        /**
+          * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
+         */
+        "placement": | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
+        /**
+          * Shows the dropdown panel
+         */
+        "show": () => Promise<void>;
+        /**
+          * The distance in pixels from which to offset the panel along its trigger.
+         */
+        "skidding": number;
     }
     interface AForm {
         /**
@@ -334,143 +389,280 @@ export namespace Components {
     }
     interface AIconButton {
         /**
-          * The first name
+          * Set to true to disable the button.
          */
-        "first": string;
+        "disabled": boolean;
         /**
-          * The last name
+          * An alternative description to use for accessibility. If omitted, the name or src will be used to generate it.
          */
-        "last": string;
+        "label": string;
         /**
-          * The middle name
+          * The name of the icon to draw. See the icon component for a full list of icons.
          */
-        "middle": string;
+        "name": string;
+        /**
+          * An external URL of an SVG file.
+         */
+        "src": string;
     }
-    interface AIconInput {
+    interface AInput {
         /**
-          * The first name
+          * The input's autocaptialize attribute.
          */
-        "first": string;
+        "autocapitalize": string;
         /**
-          * The last name
+          * The input's autocomplete attribute.
          */
-        "last": string;
+        "autocomplete": string;
         /**
-          * The middle name
+          * The input's autocorrect attribute.
          */
-        "middle": string;
+        "autocorrect": string;
+        /**
+          * The input's autofocus attribute.
+         */
+        "autofocus": boolean;
+        /**
+          * Set to true to add a clear button when the input is populated.
+         */
+        "clearable": boolean;
+        /**
+          * Set to true to disable the input.
+         */
+        "disabled": boolean;
+        /**
+          * The input's inputmode attribute.
+         */
+        "inputmode": | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
+        /**
+          * Set to true to indicate that the user input is invalid.
+         */
+        "invalid": boolean;
+        /**
+          * The input's label.
+         */
+        "label": string;
+        /**
+          * The input's max attribute.
+         */
+        "max": number;
+        /**
+          * The input's maxlength attribute.
+         */
+        "maxlength": number;
+        /**
+          * The input's min attribute.
+         */
+        "min": number;
+        /**
+          * The input's minlength attribute.
+         */
+        "minlength": number;
+        /**
+          * The input's name attribute.
+         */
+        "name": string;
+        /**
+          * The input's pattern attribute.
+         */
+        "pattern": string;
+        /**
+          * Set to true to draw a pill-style input with rounded edges.
+         */
+        "pill": boolean;
+        /**
+          * The input's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * Set to true for a readonly input.
+         */
+        "readonly": boolean;
+        /**
+          * Removes focus from the input.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * The input's required attribute.
+         */
+        "required": boolean;
+        /**
+          * Selects all the text in the input.
+         */
+        "select": () => Promise<void>;
+        /**
+          * Sets focus on the input.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Replaces a range of text with a new string.
+         */
+        "setRangeText": (replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>;
+        /**
+          * Sets the start and end positions of the text selection (0-based).
+         */
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
+        /**
+          * The input's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The input's step attribute.
+         */
+        "step": number;
+        /**
+          * Set to true to add a password toggle button for password inputs.
+         */
+        "togglePassword": boolean;
+        /**
+          * The input's type.
+         */
+        "type": | 'email'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'url';
+        /**
+          * Set to true to indicate that the user input is valid.
+         */
+        "valid": boolean;
+        /**
+          * The input's value attribute.
+         */
+        "value": string;
     }
     interface AMenu {
         /**
-          * The first name
+          * Removes focus from the menu.
          */
-        "first": string;
+        "removeFocus": () => Promise<void>;
         /**
-          * The last name
+          * Sets focus on the menu.
          */
-        "last": string;
+        "setFocus": () => Promise<void>;
         /**
-          * The middle name
+          * Initiates type-to-select logic, which automatically selects an option based on what the user is currently typing. The key passed will be appended to the internal query and the selection will be updated. After a brief period, the internal query is cleared automatically. This method is intended to be used with the keydown event. Useful for enabling type-to-select when the menu doesn't have focus.
          */
-        "middle": string;
+        "typeToSelect": (key: string) => Promise<void>;
     }
     interface AMenuDivider {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
     }
     interface AMenuItem {
         /**
-          * The first name
+          * Set to true to draw the menu item in an active state.
          */
-        "first": string;
+        "active": boolean;
         /**
-          * The last name
+          * Set to true to draw the item in a checked state.
          */
-        "last": string;
+        "checked": boolean;
         /**
-          * The middle name
+          * Set to true to draw the menu item in a disabled state.
          */
-        "middle": string;
+        "disabled": boolean;
+        /**
+          * A unique value to store in the menu item.
+         */
+        "value": string;
     }
     interface AMenuLabel {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
     }
     interface AProgressBar {
         /**
-          * The first name
+          * The progress bar's percentage, 0 to 100.
          */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "percentage": number;
     }
     interface AProgressRing {
         /**
-          * The first name
+          * The current progress percentage, 0 - 100.
          */
-        "first": string;
+        "percentage": number;
         /**
-          * The last name
+          * The size of the progress ring in pixels.
          */
-        "last": string;
+        "size": number;
         /**
-          * The middle name
+          * The stroke width of the progress ring in pixels.
          */
-        "middle": string;
+        "strokeWidth": number;
     }
     interface ARadio {
         /**
-          * The first name
+          * Set to true to draw the radio in a checked state.
          */
-        "first": string;
+        "checked": boolean;
         /**
-          * The last name
+          * Set to true to disable the radio.
          */
-        "last": string;
+        "disabled": boolean;
         /**
-          * The middle name
+          * The radio's name attribute.
          */
-        "middle": string;
+        "name": string;
+        /**
+          * Removes focus from the radio.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus on the radio.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The radio's value attribute.
+         */
+        "value": string;
     }
     interface ARange {
         /**
-          * The first name
+          * Set to true to disable the input.
          */
-        "first": string;
+        "disabled": boolean;
         /**
-          * The last name
+          * The input's max attribute.
          */
-        "last": string;
+        "max": number;
         /**
-          * The middle name
+          * The input's min attribute.
          */
-        "middle": string;
+        "min": number;
+        /**
+          * The input's name attribute.
+         */
+        "name": string;
+        /**
+          * Removes focus from the input.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus on the input.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The input's step attribute.
+         */
+        "step": number;
+        /**
+          * The preferred placedment of the tooltip.
+         */
+        "tooltip": 'top' | 'bottom' | 'none';
+        /**
+          * A function used to format the tooltip's value.
+         */
+        "tooltipFormatter": (value: number) => string;
+        /**
+          * The input's value attribute.
+         */
+        "value": number;
     }
     interface ARating {
         /**
@@ -508,143 +700,298 @@ export namespace Components {
     }
     interface ASelect {
         /**
-          * The first name
+          * Set to true to disable the select control.
          */
-        "first": string;
+        "disabled": boolean;
         /**
-          * The last name
+          * Set to true to indicate that the user input is invalid.
          */
-        "last": string;
+        "invalid": boolean;
         /**
-          * The middle name
+          * The select's label.
          */
-        "middle": string;
+        "label": string;
+        /**
+          * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.
+         */
+        "maxTagsVisible": number;
+        /**
+          * Set to true to enable multiselect.
+         */
+        "multiple": boolean;
+        /**
+          * The select's name.
+         */
+        "name": string;
+        /**
+          * Set to true to draw a pill-style select with rounded edges.
+         */
+        "pill": boolean;
+        /**
+          * The select's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * The select's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Set to true to indicate that the user input is valid.
+         */
+        "valid": boolean;
+        /**
+          * The value of the control. This will be a string or an array depending on `multiple`.
+         */
+        "value": string | Array<string>;
     }
     interface ASkeleton {
         /**
-          * The first name
+          * Determines which effect the skeleton will use.
          */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "effect": 'pulse' | 'sheen' | 'none';
     }
     interface ASpinner {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
     }
     interface ASwitch {
         /**
-          * The first name
+          * Set to true to draw the switch in a checked state.
          */
-        "first": string;
+        "checked": boolean;
         /**
-          * The last name
+          * Set to true to disable the switch.
          */
-        "last": string;
+        "disabled": boolean;
         /**
-          * The middle name
+          * The switch's name attribute.
          */
-        "middle": string;
+        "name": string;
+        /**
+          * Removes focus from the switch.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus on the switch.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The switch's value attribute.
+         */
+        "value": string;
     }
     interface ATab {
         /**
-          * The first name
+          * Set to true to draw the tab in an active state.
          */
-        "first": string;
+        "active": boolean;
         /**
-          * The last name
+          * Set to true to draw the tab in a disabled state.
          */
-        "last": string;
+        "disabled": boolean;
         /**
-          * The middle name
+          * The name of the tab panel the tab will control. The panel must be located in the same tab group.
          */
-        "middle": string;
+        "panel": string;
+        /**
+          * Removes focus from the tab.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus to the tab.
+         */
+        "setFocus": () => Promise<void>;
     }
     interface ATabGroup {
         /**
-          * The first name
+          * The placement of the tabs.
          */
-        "first": string;
+        "placement": 'top' | 'bottom' | 'left' | 'right';
         /**
-          * The last name
+          * Shows the specified tab panel.
          */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "show": (panel: string) => Promise<void>;
     }
     interface ATabPanel {
         /**
-          * The first name
+          * When true, the tab panel will be shown.
          */
-        "first": string;
+        "active": boolean;
         /**
-          * The last name
+          * The tab panel's name.
          */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "name": string;
     }
     interface ATag {
         /**
-          * The first name
+          * Set to true to make the tag clearable.
          */
-        "first": string;
+        "clearable": boolean;
         /**
-          * The last name
+          * Set to true to draw a pill-style tag with rounded edges.
          */
-        "last": string;
+        "pill": boolean;
         /**
-          * The middle name
+          * The tag's size.
          */
-        "middle": string;
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The tag's type.
+         */
+        "type": | 'primary'
+    | 'success'
+    | 'info'
+    | 'warning'
+    | 'danger'
+    | 'text';
     }
     interface ATextarea {
         /**
-          * The first name
+          * The textarea's autocaptialize attribute.
          */
-        "first": string;
+        "autocapitalize": string;
         /**
-          * The last name
+          * The textarea's autocomplete attribute.
          */
-        "last": string;
+        "autocomplete": string;
         /**
-          * The middle name
+          * The textarea's autocorrect attribute.
          */
-        "middle": string;
+        "autocorrect": string;
+        /**
+          * The textarea's autofocus attribute.
+         */
+        "autofocus": boolean;
+        /**
+          * Set to true to disable the textarea.
+         */
+        "disabled": boolean;
+        /**
+          * The textarea's inputmode attribute.
+         */
+        "inputmode": | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
+        /**
+          * Set to true to indicate that the user input is invalid.
+         */
+        "invalid": boolean;
+        /**
+          * The textarea's label.
+         */
+        "label": string;
+        /**
+          * The textarea's maxlength attribute.
+         */
+        "maxlength": number;
+        /**
+          * The textarea's name attribute.
+         */
+        "name": string;
+        /**
+          * The textarea's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * Set to true for a readonly textarea.
+         */
+        "readonly": boolean;
+        /**
+          * Removes focus fromt the textarea.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * The textarea's required attribute.
+         */
+        "required": boolean;
+        /**
+          * Controls how the textarea can be resized.
+         */
+        "resize": 'none' | 'vertical' | 'auto';
+        /**
+          * The number of rows to display by default.
+         */
+        "rows": number;
+        /**
+          * Selects all the text in the input.
+         */
+        "select": () => Promise<void>;
+        /**
+          * Sets focus on the textarea.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Replaces a range of text with a new string.
+         */
+        "setRangeText": (replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>;
+        /**
+          * Sets the start and end positions of the text selection (0-based).
+         */
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
+        /**
+          * The textarea's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Set to true to indicate that the user input is valid.
+         */
+        "valid": boolean;
+        /**
+          * The textarea's value attribute.
+         */
+        "value": string;
     }
     interface ATooltip {
         /**
-          * The first name
+          * The tooltip's content.
          */
-        "first": string;
+        "content": string;
         /**
-          * The last name
+          * Set to true to disable the tooltip so it won't show when triggered.
          */
-        "last": string;
+        "disabled": boolean;
         /**
-          * The middle name
+          * The distance in pixels from which to offset the tooltip away from its target.
          */
-        "middle": string;
+        "distance": number;
+        /**
+          * Shows the tooltip.
+         */
+        "hide": () => Promise<void>;
+        /**
+          * Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods.
+         */
+        "open": boolean;
+        /**
+          * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside of the viewport.
+         */
+        "placement": | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
+        /**
+          * Shows the tooltip.
+         */
+        "show": () => Promise<void>;
+        /**
+          * The distance in pixels from which to offset the tooltip along its target.
+         */
+        "skidding": number;
+        /**
+          * Controls how the tooltip is activated. Possible options include `click`, `hover`, `focus`, and `manual`. Multiple options can be passed by separating them with a space. When manual is used, the tooltip must be activated programmatically.
+         */
+        "trigger": string;
     }
 }
 declare global {
@@ -738,11 +1085,11 @@ declare global {
         prototype: HTMLAIconButtonElement;
         new (): HTMLAIconButtonElement;
     };
-    interface HTMLAIconInputElement extends Components.AIconInput, HTMLStencilElement {
+    interface HTMLAInputElement extends Components.AInput, HTMLStencilElement {
     }
-    var HTMLAIconInputElement: {
-        prototype: HTMLAIconInputElement;
-        new (): HTMLAIconInputElement;
+    var HTMLAInputElement: {
+        prototype: HTMLAInputElement;
+        new (): HTMLAInputElement;
     };
     interface HTMLAMenuElement extends Components.AMenu, HTMLStencilElement {
     }
@@ -874,7 +1221,7 @@ declare global {
         "a-form": HTMLAFormElement;
         "a-icon": HTMLAIconElement;
         "a-icon-button": HTMLAIconButtonElement;
-        "a-icon-input": HTMLAIconInputElement;
+        "a-input": HTMLAInputElement;
         "a-menu": HTMLAMenuElement;
         "a-menu-divider": HTMLAMenuDividerElement;
         "a-menu-item": HTMLAMenuItemElement;
@@ -1163,45 +1510,132 @@ declare namespace LocalJSX {
     }
     interface ADialog {
         /**
-          * The first name
+          * The dialog's label as displayed in the header. You should always include a relevant label even when using `no-header`, as it is required for proper accessibility.
          */
-        "first"?: string;
+        "label"?: string;
         /**
-          * The last name
+          * Set to true to disable the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the dialog.
          */
-        "last"?: string;
+        "noHeader"?: boolean;
         /**
-          * The middle name
+          * Emitted after the dialog closes and all transitions are complete.
          */
-        "middle"?: string;
+        "onSlAfterHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted after the dialog opens and all transitions are complete.
+         */
+        "onSlAfterShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the dialog closes. Calling `event.preventDefault()` will prevent it from being closed.
+         */
+        "onSlHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the dialog from closing.
+         */
+        "onSlOverlayDismiss"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the dialog opens. Calling `event.preventDefault()` will prevent it from being opened.
+         */
+        "onSlShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Indicates whether or not the dialog is open. You can use this in lieu of the show/hide methods.
+         */
+        "open"?: boolean;
     }
     interface ADrawer {
         /**
-          * The first name
+          * By default, the drawer slides out of its containing block (usually the viewport). To make the drawer slide out of its parent element, set this prop and add `position: relative` to the parent.
          */
-        "first"?: string;
+        "contained"?: boolean;
         /**
-          * The last name
+          * The drawer's label as displayed in the header. You should always include a relevant label even when using `no-header`, as it is required for proper accessibility.
          */
-        "last"?: string;
+        "label"?: string;
         /**
-          * The middle name
+          * Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
          */
-        "middle"?: string;
+        "noHeader"?: boolean;
+        /**
+          * Emitted after the drawer closes and all transitions are complete.
+         */
+        "onSlAfterHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted after the drawer opens and all transitions are complete.
+         */
+        "onSlAfterShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the drawer closes. Calling `event.preventDefault()` will prevent it from being closed.
+         */
+        "onSlHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the overlay is clicked. Calling `event.preventDefault()` will prevent the drawer from closing.
+         */
+        "onSlOverlayDismiss"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the drawer opens. Calling `event.preventDefault()` will prevent it from being opened.
+         */
+        "onSlShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Indicates whether or not the drawer is open. You can use this in lieu of the show/hide methods.
+         */
+        "open"?: boolean;
+        /**
+          * The direction from which the drawer will open.
+         */
+        "placement"?: 'top' | 'right' | 'bottom' | 'left';
     }
     interface ADropdown {
         /**
-          * The first name
+          * Determines whether the dropdown should hide when a menu item is selected.
          */
-        "first"?: string;
+        "closeOnSelect"?: boolean;
         /**
-          * The last name
+          * The dropdown will close when the user interacts outside of this element (e.g. clicking).
          */
-        "last"?: string;
+        "containingElement"?: HTMLElement;
         /**
-          * The middle name
+          * The distance in pixels from which to offset the panel away from its trigger.
          */
-        "middle"?: string;
+        "distance"?: number;
+        /**
+          * Emitted after the dropdown closes and all transitions are complete.
+         */
+        "onSlAfterHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted after the dropdown opens and all transitions are complete.
+         */
+        "onSlAfterShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed.
+         */
+        "onSlHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.
+         */
+        "onSlShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
+         */
+        "open"?: boolean;
+        /**
+          * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
+         */
+        "placement"?: | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
+        /**
+          * The distance in pixels from which to offset the panel along its trigger.
+         */
+        "skidding"?: number;
     }
     interface AForm {
         /**
@@ -1241,143 +1675,292 @@ declare namespace LocalJSX {
     }
     interface AIconButton {
         /**
-          * The first name
+          * Set to true to disable the button.
          */
-        "first"?: string;
+        "disabled"?: boolean;
         /**
-          * The last name
+          * An alternative description to use for accessibility. If omitted, the name or src will be used to generate it.
          */
-        "last"?: string;
+        "label"?: string;
         /**
-          * The middle name
+          * The name of the icon to draw. See the icon component for a full list of icons.
          */
-        "middle"?: string;
+        "name"?: string;
+        /**
+          * An external URL of an SVG file.
+         */
+        "src"?: string;
     }
-    interface AIconInput {
+    interface AInput {
         /**
-          * The first name
+          * The input's autocaptialize attribute.
          */
-        "first"?: string;
+        "autocapitalize"?: string;
         /**
-          * The last name
+          * The input's autocomplete attribute.
          */
-        "last"?: string;
+        "autocomplete"?: string;
         /**
-          * The middle name
+          * The input's autocorrect attribute.
          */
-        "middle"?: string;
+        "autocorrect"?: string;
+        /**
+          * The input's autofocus attribute.
+         */
+        "autofocus"?: boolean;
+        /**
+          * Set to true to add a clear button when the input is populated.
+         */
+        "clearable"?: boolean;
+        /**
+          * Set to true to disable the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * The input's inputmode attribute.
+         */
+        "inputmode"?: | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
+        /**
+          * Set to true to indicate that the user input is invalid.
+         */
+        "invalid"?: boolean;
+        /**
+          * The input's label.
+         */
+        "label"?: string;
+        /**
+          * The input's max attribute.
+         */
+        "max"?: number;
+        /**
+          * The input's maxlength attribute.
+         */
+        "maxlength"?: number;
+        /**
+          * The input's min attribute.
+         */
+        "min"?: number;
+        /**
+          * The input's minlength attribute.
+         */
+        "minlength"?: number;
+        /**
+          * The input's name attribute.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onSlBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's value changes.
+         */
+        "onSlChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onSlFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control receives input.
+         */
+        "onSlInput"?: (event: CustomEvent<any>) => void;
+        /**
+          * The input's pattern attribute.
+         */
+        "pattern"?: string;
+        /**
+          * Set to true to draw a pill-style input with rounded edges.
+         */
+        "pill"?: boolean;
+        /**
+          * The input's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Set to true for a readonly input.
+         */
+        "readonly"?: boolean;
+        /**
+          * The input's required attribute.
+         */
+        "required"?: boolean;
+        /**
+          * The input's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The input's step attribute.
+         */
+        "step"?: number;
+        /**
+          * Set to true to add a password toggle button for password inputs.
+         */
+        "togglePassword"?: boolean;
+        /**
+          * The input's type.
+         */
+        "type"?: | 'email'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'url';
+        /**
+          * Set to true to indicate that the user input is valid.
+         */
+        "valid"?: boolean;
+        /**
+          * The input's value attribute.
+         */
+        "value"?: string;
     }
     interface AMenu {
         /**
-          * The first name
+          * Emitted when the menu loses focus.
          */
-        "first"?: string;
+        "onSlBlur"?: (event: CustomEvent<any>) => void;
         /**
-          * The last name
+          * Emitted when the menu gains focus.
          */
-        "last"?: string;
+        "onSlFocus"?: (event: CustomEvent<any>) => void;
         /**
-          * The middle name
+          * Emitted when a menu item is selected.
          */
-        "middle"?: string;
+        "onSlSelect"?: (event: CustomEvent<any>) => void;
     }
     interface AMenuDivider {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
     }
     interface AMenuItem {
         /**
-          * The first name
+          * Set to true to draw the menu item in an active state.
          */
-        "first"?: string;
+        "active"?: boolean;
         /**
-          * The last name
+          * Set to true to draw the item in a checked state.
          */
-        "last"?: string;
+        "checked"?: boolean;
         /**
-          * The middle name
+          * Set to true to draw the menu item in a disabled state.
          */
-        "middle"?: string;
+        "disabled"?: boolean;
+        /**
+          * Emitted when the menu item becomes active.
+         */
+        "onSlActivate"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the menu item becomes inactive.
+         */
+        "onSlDeactivate"?: (event: CustomEvent<any>) => void;
+        /**
+          * A unique value to store in the menu item.
+         */
+        "value"?: string;
     }
     interface AMenuLabel {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
     }
     interface AProgressBar {
         /**
-          * The first name
+          * The progress bar's percentage, 0 to 100.
          */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "percentage"?: number;
     }
     interface AProgressRing {
         /**
-          * The first name
+          * The current progress percentage, 0 - 100.
          */
-        "first"?: string;
+        "percentage"?: number;
         /**
-          * The last name
+          * The size of the progress ring in pixels.
          */
-        "last"?: string;
+        "size"?: number;
         /**
-          * The middle name
+          * The stroke width of the progress ring in pixels.
          */
-        "middle"?: string;
+        "strokeWidth"?: number;
     }
     interface ARadio {
         /**
-          * The first name
+          * Set to true to draw the radio in a checked state.
          */
-        "first"?: string;
+        "checked"?: boolean;
         /**
-          * The last name
+          * Set to true to disable the radio.
          */
-        "last"?: string;
+        "disabled"?: boolean;
         /**
-          * The middle name
+          * The radio's name attribute.
          */
-        "middle"?: string;
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onSlBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's checked state changes.
+         */
+        "onSlChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onSlFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The radio's value attribute.
+         */
+        "value"?: string;
     }
     interface ARange {
         /**
-          * The first name
+          * Set to true to disable the input.
          */
-        "first"?: string;
+        "disabled"?: boolean;
         /**
-          * The last name
+          * The input's max attribute.
          */
-        "last"?: string;
+        "max"?: number;
         /**
-          * The middle name
+          * The input's min attribute.
          */
-        "middle"?: string;
+        "min"?: number;
+        /**
+          * The input's name attribute.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onSlBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's value changes.
+         */
+        "onSlChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onSlFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The input's step attribute.
+         */
+        "step"?: number;
+        /**
+          * The preferred placedment of the tooltip.
+         */
+        "tooltip"?: 'top' | 'bottom' | 'none';
+        /**
+          * A function used to format the tooltip's value.
+         */
+        "tooltipFormatter"?: (value: number) => string;
+        /**
+          * The input's value attribute.
+         */
+        "value"?: number;
     }
     interface ARating {
         /**
@@ -1411,143 +1994,318 @@ declare namespace LocalJSX {
     }
     interface ASelect {
         /**
-          * The first name
+          * Set to true to disable the select control.
          */
-        "first"?: string;
+        "disabled"?: boolean;
         /**
-          * The last name
+          * Set to true to indicate that the user input is invalid.
          */
-        "last"?: string;
+        "invalid"?: boolean;
         /**
-          * The middle name
+          * The select's label.
          */
-        "middle"?: string;
+        "label"?: string;
+        /**
+          * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.
+         */
+        "maxTagsVisible"?: number;
+        /**
+          * Set to true to enable multiselect.
+         */
+        "multiple"?: boolean;
+        /**
+          * The select's name.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus
+         */
+        "onSlBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's value changes.
+         */
+        "onSlChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus
+         */
+        "onSlFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * Set to true to draw a pill-style select with rounded edges.
+         */
+        "pill"?: boolean;
+        /**
+          * The select's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * The select's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Set to true to indicate that the user input is valid.
+         */
+        "valid"?: boolean;
+        /**
+          * The value of the control. This will be a string or an array depending on `multiple`.
+         */
+        "value"?: string | Array<string>;
     }
     interface ASkeleton {
         /**
-          * The first name
+          * Determines which effect the skeleton will use.
          */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "effect"?: 'pulse' | 'sheen' | 'none';
     }
     interface ASpinner {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
     }
     interface ASwitch {
         /**
-          * The first name
+          * Set to true to draw the switch in a checked state.
          */
-        "first"?: string;
+        "checked"?: boolean;
         /**
-          * The last name
+          * Set to true to disable the switch.
          */
-        "last"?: string;
+        "disabled"?: boolean;
         /**
-          * The middle name
+          * The switch's name attribute.
          */
-        "middle"?: string;
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onSlBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's checked state changes.
+         */
+        "onSlChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onSlFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The switch's value attribute.
+         */
+        "value"?: string;
     }
     interface ATab {
         /**
-          * The first name
+          * Set to true to draw the tab in an active state.
          */
-        "first"?: string;
+        "active"?: boolean;
         /**
-          * The last name
+          * Set to true to draw the tab in a disabled state.
          */
-        "last"?: string;
+        "disabled"?: boolean;
         /**
-          * The middle name
+          * The name of the tab panel the tab will control. The panel must be located in the same tab group.
          */
-        "middle"?: string;
+        "panel"?: string;
     }
     interface ATabGroup {
         /**
-          * The first name
+          * Emitted when a tab is hidden.
          */
-        "first"?: string;
+        "onSlTabHide"?: (event: CustomEvent<any>) => void;
         /**
-          * The last name
+          * Emitted when a tab is shown.
          */
-        "last"?: string;
+        "onSlTabShow"?: (event: CustomEvent<any>) => void;
         /**
-          * The middle name
+          * The placement of the tabs.
          */
-        "middle"?: string;
+        "placement"?: 'top' | 'bottom' | 'left' | 'right';
     }
     interface ATabPanel {
         /**
-          * The first name
+          * When true, the tab panel will be shown.
          */
-        "first"?: string;
+        "active"?: boolean;
         /**
-          * The last name
+          * The tab panel's name.
          */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "name"?: string;
     }
     interface ATag {
         /**
-          * The first name
+          * Set to true to make the tag clearable.
          */
-        "first"?: string;
+        "clearable"?: boolean;
         /**
-          * The last name
+          * Emitted when the clear button is activated.
          */
-        "last"?: string;
+        "onSlClear"?: (event: CustomEvent<any>) => void;
         /**
-          * The middle name
+          * Set to true to draw a pill-style tag with rounded edges.
          */
-        "middle"?: string;
+        "pill"?: boolean;
+        /**
+          * The tag's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The tag's type.
+         */
+        "type"?: | 'primary'
+    | 'success'
+    | 'info'
+    | 'warning'
+    | 'danger'
+    | 'text';
     }
     interface ATextarea {
         /**
-          * The first name
+          * The textarea's autocaptialize attribute.
          */
-        "first"?: string;
+        "autocapitalize"?: string;
         /**
-          * The last name
+          * The textarea's autocomplete attribute.
          */
-        "last"?: string;
+        "autocomplete"?: string;
         /**
-          * The middle name
+          * The textarea's autocorrect attribute.
          */
-        "middle"?: string;
+        "autocorrect"?: string;
+        /**
+          * The textarea's autofocus attribute.
+         */
+        "autofocus"?: boolean;
+        /**
+          * Set to true to disable the textarea.
+         */
+        "disabled"?: boolean;
+        /**
+          * The textarea's inputmode attribute.
+         */
+        "inputmode"?: | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
+        /**
+          * Set to true to indicate that the user input is invalid.
+         */
+        "invalid"?: boolean;
+        /**
+          * The textarea's label.
+         */
+        "label"?: string;
+        /**
+          * The textarea's maxlength attribute.
+         */
+        "maxlength"?: number;
+        /**
+          * The textarea's name attribute.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onSlBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's value changes.
+         */
+        "onSlChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onSlFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control receives input.
+         */
+        "onSlInput"?: (event: CustomEvent<any>) => void;
+        /**
+          * The textarea's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Set to true for a readonly textarea.
+         */
+        "readonly"?: boolean;
+        /**
+          * The textarea's required attribute.
+         */
+        "required"?: boolean;
+        /**
+          * Controls how the textarea can be resized.
+         */
+        "resize"?: 'none' | 'vertical' | 'auto';
+        /**
+          * The number of rows to display by default.
+         */
+        "rows"?: number;
+        /**
+          * The textarea's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Set to true to indicate that the user input is valid.
+         */
+        "valid"?: boolean;
+        /**
+          * The textarea's value attribute.
+         */
+        "value"?: string;
     }
     interface ATooltip {
         /**
-          * The first name
+          * The tooltip's content.
          */
-        "first"?: string;
+        "content"?: string;
         /**
-          * The last name
+          * Set to true to disable the tooltip so it won't show when triggered.
          */
-        "last"?: string;
+        "disabled"?: boolean;
         /**
-          * The middle name
+          * The distance in pixels from which to offset the tooltip away from its target.
          */
-        "middle"?: string;
+        "distance"?: number;
+        /**
+          * Emitted after the tooltip has hidden and all transitions are complete.
+         */
+        "onSlAfterHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted after the tooltip has shown and all transitions are complete.
+         */
+        "onSlAfterShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the tooltip begins to hide. Calling `event.preventDefault()` will prevent it from being hidden.
+         */
+        "onSlHide"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the tooltip begins to show. Calling `event.preventDefault()` will prevent it from being shown.
+         */
+        "onSlShow"?: (event: CustomEvent<any>) => void;
+        /**
+          * Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods.
+         */
+        "open"?: boolean;
+        /**
+          * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip inside of the viewport.
+         */
+        "placement"?: | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
+        /**
+          * The distance in pixels from which to offset the tooltip along its target.
+         */
+        "skidding"?: number;
+        /**
+          * Controls how the tooltip is activated. Possible options include `click`, `hover`, `focus`, and `manual`. Multiple options can be passed by separating them with a space. When manual is used, the tooltip must be activated programmatically.
+         */
+        "trigger"?: string;
     }
     interface IntrinsicElements {
         "a-alert": AAlert;
@@ -1565,7 +2323,7 @@ declare namespace LocalJSX {
         "a-form": AForm;
         "a-icon": AIcon;
         "a-icon-button": AIconButton;
-        "a-icon-input": AIconInput;
+        "a-input": AInput;
         "a-menu": AMenu;
         "a-menu-divider": AMenuDivider;
         "a-menu-item": AMenuItem;
@@ -1606,7 +2364,7 @@ declare module "@stencil/core" {
             "a-form": LocalJSX.AForm & JSXBase.HTMLAttributes<HTMLAFormElement>;
             "a-icon": LocalJSX.AIcon & JSXBase.HTMLAttributes<HTMLAIconElement>;
             "a-icon-button": LocalJSX.AIconButton & JSXBase.HTMLAttributes<HTMLAIconButtonElement>;
-            "a-icon-input": LocalJSX.AIconInput & JSXBase.HTMLAttributes<HTMLAIconInputElement>;
+            "a-input": LocalJSX.AInput & JSXBase.HTMLAttributes<HTMLAInputElement>;
             "a-menu": LocalJSX.AMenu & JSXBase.HTMLAttributes<HTMLAMenuElement>;
             "a-menu-divider": LocalJSX.AMenuDivider & JSXBase.HTMLAttributes<HTMLAMenuDividerElement>;
             "a-menu-item": LocalJSX.AMenuItem & JSXBase.HTMLAttributes<HTMLAMenuItemElement>;
