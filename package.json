@@ -32,7 +32,10 @@
     "document-register-element": "1.13.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "resize-observer-polyfill": "^1.5.1"
+    "resize-observer-polyfill": "^1.5.1",
+    "@docusaurus/core": "^2.0.0-alpha.61",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.61",
+    "clsx": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
@@ -47,6 +50,7 @@
     "@nrwl/storybook": "^10.0.13",
     "@nrwl/web": "10.1.0",
     "@nrwl/workspace": "10.0.13",
+    "@nx-plus/docusaurus": "^0.6.0",
     "@nxext/stencil": "^10.1.0",
     "@stencil/angular-output-target": "^0.0.3",
     "@stencil/core": "1.17.3",

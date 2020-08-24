@@ -42,3 +42,7 @@ libs/webcomponents-angular/**/generated
 
 # Styles
 shoelace/
+
+# Generated Docusaurus files
+.docusaurus/
+.cache-loader/
