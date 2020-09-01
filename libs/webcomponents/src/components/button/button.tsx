@@ -1,11 +1,13 @@
 import {
   State,
   Component,
+  Host,
   h,
   Prop,
   Element,
   EventEmitter,
   Event,
+  // Host,
   Method,
 } from '@stencil/core';
 
@@ -13,6 +15,7 @@ import {
   tag: 'a-button',
   styleUrl: 'button.scss',
   scoped: true,
+  shadow: false,
 })
 export class Button {
   /**
@@ -155,78 +158,133 @@ export class Button {
   /**
    * 10. render() function
    */
-  render() {
-    const isLink = this.href ? true : false;
-    const isButton = !isLink;
-    const Button = isLink ? 'a' : 'button';
 
+  renderGatito() {
     return (
-      <Button
-        ref={(el) => (this.button = el)}
-        part="base"
-        class={{
-          button: true,
-
-          // Types
-          'button--default': this.type === 'default',
-          'button--primary': this.type === 'primary',
-          'button--success': this.type === 'success',
-          'button--info': this.type === 'info',
-          'button--warning': this.type === 'warning',
-          'button--danger': this.type === 'danger',
-          'button--text': this.type === 'text',
-
-          // Sizes
-          'button--small': this.size === 'small',
-          'button--medium': this.size === 'medium',
-          'button--large': this.size === 'large',
-
-          // Modifiers
-          'button--caret': this.caret,
-          'button--circle': this.circle,
-          'button--disabled': this.disabled,
-          'button--focused': this.hasFocus,
-          'button--loading': this.loading,
-          'button--pill': this.pill,
-        }}
-        disabled={this.disabled}
-        type={isButton ? (this.submit ? 'submit' : 'button') : null}
-        name={isButton ? this.name : null}
-        value={isButton ? this.value : null}
-        href={isLink && this.href}
-        target={isLink && this.target ? this.target : null}
-        download={isLink && this.download ? this.download : null}
-        rel={isLink && this.target ? 'noreferrer noopener' : null}
-        onBlur={this.handleBlur}
-        onFocus={this.handleFocus}
-        onClick={this.handleClick}
-      >
-        <span part="prefix" class="button__prefix">
-          <slot name="prefix" />
-        </span>
-        <span part="label" class="button__label">
-          <slot />
-        </span>
-        <span part="suffix" class="button__suffix">
-          <slot name="suffix" />
-        </span>
-        {this.caret && (
-          <span part="caret" class="button__caret">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </span>
-        )}
-
-        {this.loading && <sl-spinner />}
-      </Button>
+      <button class="mb-3 rounded-full flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-400">
+        Default gatito
+      </button>
     );
   }
+  renderConejito() {
+    return (
+      <button class="flex items-center shadow border-blue-500 border-2 rounded-full  px-4 py-2 text-blue-500 hover:bg-blue-500 hover:text-white">
+        Default conejito
+      </button>
+    );
+  }
+
+  selectStrategy(template = 'rounded') {
+    switch (template) {
+      case 'rounded':
+        return this.renderGatito();
+      case 'conejito':
+        return this.renderConejito();
+      default:
+        break;
+    }
+  }
+
+  /**
+   * 10. render() function
+   * Always the last one in the class.
+   */
+  render() {
+    //
+    //
+    return <Host>{this.selectStrategy('rounded')}</Host>;
+    // return (
+    //   <div class="flex items-center shadow border-blue-500 border-2 rounded-full  px-4 py-2 text-blue-500 hover:bg-blue-500 hover:text-white">
+    //     Default conejito
+    //   </div>
+    // );
+  }
+
+  // render() {
+  //   return (
+  //     //
+  //     //
+  //     // <button class="mb-3 rounded-full flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-400">
+  //     //   Default gatito
+  //     // </button>
+  //     // <button class="flex items-center shadow border-blue-500 border-2 rounded-full  px-4 py-2 text-blue-500 hover:bg-blue-500 hover:text-white">
+  //     //   Default conejito
+  //     // </button>
+  //     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+  //       Button
+  //     </button>
+  //   );
+  //   // const isLink = this.href ? true : false;
+  //   // const isButton = !isLink;
+  //   // const Button = isLink ? 'a' : 'button';
+
+  //   // return (
+  //   //   <Button
+  //   //     ref={(el) => (this.button = el)}
+  //   //     part="base"
+  //   //     class={{
+  //   //       button: true,
+
+  //   //       // Types
+  //   //       'button--default': this.type === 'default',
+  //   //       'button--primary': this.type === 'primary',
+  //   //       'button--success': this.type === 'success',
+  //   //       'button--info': this.type === 'info',
+  //   //       'button--warning': this.type === 'warning',
+  //   //       'button--danger': this.type === 'danger',
+  //   //       'button--text': this.type === 'text',
+
+  //   //       // Sizes
+  //   //       'button--small': this.size === 'small',
+  //   //       'button--medium': this.size === 'medium',
+  //   //       'button--large': this.size === 'large',
+
+  //   //       // Modifiers
+  //   //       'button--caret': this.caret,
+  //   //       'button--circle': this.circle,
+  //   //       'button--disabled': this.disabled,
+  //   //       'button--focused': this.hasFocus,
+  //   //       'button--loading': this.loading,
+  //   //       'button--pill': this.pill,
+  //   //     }}
+  //   //     disabled={this.disabled}
+  //   //     type={isButton ? (this.submit ? 'submit' : 'button') : null}
+  //   //     name={isButton ? this.name : null}
+  //   //     value={isButton ? this.value : null}
+  //   //     href={isLink && this.href}
+  //   //     target={isLink && this.target ? this.target : null}
+  //   //     download={isLink && this.download ? this.download : null}
+  //   //     rel={isLink && this.target ? 'noreferrer noopener' : null}
+  //   //     onBlur={this.handleBlur}
+  //   //     onFocus={this.handleFocus}
+  //   //     onClick={this.handleClick}
+  //   //   >
+  //   //     <span part="prefix" class="button__prefix">
+  //   //       <slot name="prefix" />
+  //   //     </span>
+  //   //     <span part="label" class="button__label">
+  //   //       <slot />
+  //   //     </span>
+  //   //     <span part="suffix" class="button__suffix">
+  //   //       <slot name="suffix" />
+  //   //     </span>
+  //   //     {this.caret && (
+  //   //       <span part="caret" class="button__caret">
+  //   //         <svg
+  //   //           viewBox="0 0 24 24"
+  //   //           fill="none"
+  //   //           stroke="currentColor"
+  //   //           stroke-width="2"
+  //   //           stroke-linecap="round"
+  //   //           stroke-linejoin="round"
+  //   //         >
+  //   //           <polyline points="6 9 12 15 18 9"></polyline>
+  //   //         </svg>
+  //   //       </span>
+  //   //     )}
+
+  //   //     {this.loading && <sl-spinner />}
+  //   //   </Button>
+  //   // );
+  // }
 }

@@ -55,17 +55,6 @@ Type: `Promise<void>`
 
 
 
-## Shadow Parts
-
-| Part       | Description |
-| ---------- | ----------- |
-| `"base"`   |             |
-| `"caret"`  |             |
-| `"label"`  |             |
-| `"prefix"` |             |
-| `"suffix"` |             |
-
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
