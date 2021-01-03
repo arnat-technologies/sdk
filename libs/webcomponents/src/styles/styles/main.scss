@@ -1,0 +1,199 @@
+// @import "~tailwindcss/base";
+// @import "~tailwindcss/components";
+// @import "~tailwindcss/utilities";
+
+$foo: "true";
+
+// @import "tailwindcss/base";
+
+// @import "tailwindcss/components";
+
+// @import "tailwindcss/utilities";
+
+// @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Dosis:200,400,500,600");
+// @import "~bootstrap/scss/bootstrap";
+
+//--------------------------------------------------------------------------
+// Theme
+//--------------------------------------------------------------------------
+//
+// Change the default theme color, fonts, sizing, etc. by modifying
+// the following variables.
+
+//----------------------------------------
+// Navbar
+//----------------------------------------
+// $navbar-min-height: 56px;
+// $navbar-offset-top: 10px;
+
+// 01. Settings
+// @import "01-settings/settings.config";
+// @import "01-settings/settings.global";
+// @import "01-settings/settings.z-layers";
+// @import "01-settings/settings.animations";
+// @import "01-settings/settings.breakpoints";
+// @import "01-settings/settings.colors";
+// @import "01-settings/settings.spacing";
+// @import "01-settings/settings.typography";
+// @import "01-settings/settings.core";
+// @import "01-settings/settings.bootstrap";
+
+// 02. Tools
+// @import "../node_modules/sass-mq/mq";
+// @import "02-tools/tools.animations";
+// @import "02-tools/tools.clearfix";
+// @import "02-tools/tools.hidden";
+// @import "02-tools/tools.on-event";
+// @import "02-tools/tools.placeholder";
+// @import "02-tools/tools.spacing";
+// // Import after Bootstrap to override mixins.
+// @import "02-tools/tools.buttons";
+// @import "02-tools/tools.forms";
+// @import "02-tools/tools.grid";
+// @import "02-tools/tools.navbar";
+// @import "02-tools/tools.text";
+// @import "02-tools/tools.colors";
+// @import "02-tools/tools.string";
+// @import "02-tools/tools.image";
+
+// // 03. Generic
+// @import "03-generic/generic.normalize";
+// @import "03-generic/generic.box-sizing";
+// // @import "03-generic/generic.reset";
+// // @import "03-generic/generic.selection";
+// // @import "03-generic/generic.shared";
+// // @import "03-generic/generic.bootstrap";
+
+// // 04. Elements
+// @import "04-elements/elements.all";
+// @import "04-elements/elements.body";
+// @import "04-elements/elements.html";
+// @import "04-elements/elements.links";
+
+// // 05. Objects
+// @import "05-objects/objects.container";
+// @import "05-objects/objects.wrapper";
+// @import "05-objects/objects.modal";
+
+// // 06. Components
+// @import "06-components/components.alert";
+// @import "06-components/components.button";
+// @import "06-components/components.accordion";
+// // @import "06-components/components.dropdown";
+// @import "06-components/components.badge";
+// @import "06-components/components.breadcrumb";
+
+// @import "06-components/components.badge";
+// @import "06-components/components.breadcrumb";
+// @import "06-components/components.button";
+// @import "06-components/components.dropdown";
+// @import "06-components/components.gallery";
+// @import "06-components/components.modal";
+// @import "06-components/components.nav";
+// @import "06-components/components.overlay";
+// @import "06-components/components.pagination";
+// @import "06-components/components.popover";
+// @import "06-components/components.process";
+// @import "06-components/components.progress";
+// @import "06-components/components.rating";
+// @import "06-components/components.scroll";
+// @import "06-components/components.social";
+// @import "06-components/components.spinner";
+// @import "06-components/components.tab";
+// @import "06-components/components.tooltip";
+
+// // 07. Content
+// @import "07-content/content.typography";
+// @import "07-content/content.image";
+// @import "07-content/content.table";
+// @import "07-content/content.media";
+// @import "07-content/content.video";
+// @import "07-content/content.card";
+// @import "07-content/content.code";
+// @import "07-content/content.icon";
+
+// // 08. Form
+// @import "08-form/form.control";
+// @import "08-form/form.switch";
+// @import "08-form/form.input";
+// @import "08-form/form.input-group";
+// @import "08-form/form.input-border";
+// @import "08-form/form.input-line";
+// @import "08-form/form.input-round";
+// @import "08-form/form.input-glass";
+// @import "08-form/form.input-transparent";
+
+// // 07. Externals
+// @import "07-externals/external.aos";
+// @import "07-externals/external.constellation";
+// @import "07-externals/external.countdown";
+// @import "07-externals/external.countup";
+// @import "07-externals/external.fontawesome";
+// //@import "07-externals/external.fontawesome5";
+// @import "07-externals/external.et-line-icon";
+// @import "07-externals/external.themify-icons";
+// @import "07-externals/external.jarallax";
+// @import "07-externals/external.slick";
+// @import "07-externals/external.lity";
+// @import "07-externals/external.photoswipe";
+// @import "07-externals/external.typedjs";
+
+// // 08. Override
+
+// // 99. Utilities
+// @import "99-utilities/utilities.clearfix";
+// @import "99-utilities/utilities.text";
+// @import "99-utilities/utilities.visibility";
+// //
+// //
+// @import "99-utilities/utilities.border";
+// @import "99-utilities/utilities.color";
+// @import "99-utilities/utilities.bg-img";
+// @import "99-utilities/utilities.misc";
+// @import "99-utilities/utilities.no";
+// @import "99-utilities/utilities.sizing";
+// @import "99-utilities/utilities.spacing";
+// @import "99-utilities/utilities.typography";
+// @import "99-utilities/utilities.inverse";
+
+// //--------------------------------------------------------------------------
+// // Core
+// //--------------------------------------------------------------------------
+// //
+// // Include core functionality of the template, including Bootstrap. This
+// // file is required.
+// //
+
+// // @import "plugins/theme";
+
+// //--------------------------------------------------------------------------
+// // Partials
+// //--------------------------------------------------------------------------
+// //
+// // Split the application code to several files. It includes most of the
+// // functionalities that you see in demo. This file is required.
+// //
+
+// // Blocks
+// //
+// @import "block/feature";
+// @import "block/partner";
+// @import "block/portfolio";
+// @import "block/press";
+// @import "block/pricing";
+// @import "block/shop";
+// @import "block/team";
+
+// // Layout
+// //
+// @import "layout/scafolding";
+// @import "layout/footer";
+// @import "layout/grid";
+// @import "layout/topbar";
+// @import "layout/navbar";
+// @import "layout/offcanvas";
+// @import "layout/popup";
+// @import "layout/header";
+// @import "layout/section";
+// @import "layout/sidebar";
+// @import "layout/sticky";

@@ -1,0 +1,64 @@
+/*
+ _____                      _       ______               _
+|  __ \                    (_)      | ___ \             | |
+| |  \/ ___ _ __   ___ _ __ _  ___  | |_/ /___  ___  ___| |_
+| | __ / _ \ '_ \ / _ \ '__| |/ __| |    // _ \/ __|/ _ \ __|
+| |_\ \  __/ | | |  __/ |  | | (__  | |\ \  __/\__ \  __/ |_
+ \____/\___|_| |_|\___|_|  |_|\___| \_| \_\___||___/\___|\__|
+*/
+
+/**
+ * A very simple reset that sits on top of Normalize.css.
+ */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+p,
+pre,
+dl,
+dd,
+ol,
+ul,
+figure,
+hr,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Remove trailing margins from nested lists.
+ */
+
+li > {
+  ol,
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * Remove default table spacing.
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**
+ * 1. Reset Chrome and Firefox behaviour which sets a `min-width: min-content;`
+ *    on fieldsets.
+ */
+
+fieldset {
+  min-width: 0; /* [1] */
+  border: 0;
+}

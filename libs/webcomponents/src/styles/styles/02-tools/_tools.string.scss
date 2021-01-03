@@ -1,0 +1,33 @@
+/*
+ _____           _       _____ _        _
+|_   _|         | |     /  ___| |      (_)
+  | | ___   ___ | |___  \ `--.| |_ _ __ _ _ __   __ _
+  | |/ _ \ / _ \| / __|  `--. \ __| '__| | '_ \ / _` |
+  | | (_) | (_) | \__ \ /\__/ / |_| |  | | | | | (_| |
+  \_/\___/ \___/|_|___/ \____/ \__|_|  |_|_| |_|\__, |
+                                                 __/ |
+                                                |___/
+*/
+
+// Replace `$search` with `$replace` in `$string`
+// Used on our SVG icon backgrounds for custom forms.
+//
+// @author Hugo Giraudel
+// @param {String} $string - Initial string
+// @param {String} $search - Substring to replace
+// @param {String} $replace ('') - New value
+// @return {String} - Updated string
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+
+  @return $string;
+}

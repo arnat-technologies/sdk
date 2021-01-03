@@ -1,0 +1,31 @@
+/*
+______                _                _       _
+| ___ \              | |              (_)     | |
+| |_/ /_ __ ___  __ _| | ___ __   ___  _ _ __ | |_ ___
+| ___ \ '__/ _ \/ _` | |/ / '_ \ / _ \| | '_ \| __/ __|
+| |_/ / | |  __/ (_| |   <| |_) | (_) | | | | | |_\__ \
+\____/|_|  \___|\__,_|_|\_\ .__/ \___/|_|_| |_|\__|___/
+                          | |
+                          |_|
+*/
+
+$bkp-mobile: 320px;
+$bkp-phablet: 640px;
+$bkp-tablet: 768px;
+$bkp-desktop: 980px;
+$bkp-wide: 1280px;
+$bkp-hd: 1920px;
+
+$breakpoints: (
+  mobile: $bkp-mobile,
+  phablet: $bkp-phablet,
+  tablet: $bkp-tablet,
+  desktop: $bkp-desktop,
+  wide: $bkp-wide,
+  hd: $bkp-hd,
+);
+
+/**
+ * Breakpoints needed for sass-mq mixin
+ */
+$mq-breakpoints: $breakpoints !default;

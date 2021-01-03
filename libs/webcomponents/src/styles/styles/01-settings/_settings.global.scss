@@ -1,0 +1,327 @@
+/*
+ _____      _   _   _                   _____ _       _           _
+/  ___|    | | | | (_)                 |  __ \ |     | |         | |
+\ `--.  ___| |_| |_ _ _ __   __ _ ___  | |  \/ | ___ | |__   __ _| |
+ `--. \/ _ \ __| __| | '_ \ / _` / __| | | __| |/ _ \| '_ \ / _` | |
+/\__/ /  __/ |_| |_| | | | | (_| \__ \ | |_\ \ | (_) | |_) | (_| | |
+\____/ \___|\__|\__|_|_| |_|\__, |___/  \____/_|\___/|_.__/ \__,_|_|
+                             __/ |
+                            |___/
+*/
+
+// The global settings file contains any project-wide variables; things that
+// need to be made available to the entire codebase.
+
+// Standardise some UI treatments.
+
+// $global-radius: 3px !default;
+// $global-transition: all 300ms ease-in-out !default;
+
+/*
+____ ____ _  _ ___ ____
+|___ |  | |\ |  |  [__
+|    |__| | \|  |  ___]
+*/
+$font-family-title: inherit !default;
+$font-icon-fontawesome: FontAwesome !default;
+$font-icon-themify: themify !default;
+
+$font-body: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen-Sans,
+  Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$base-font-size: 16px;
+$letter-spacing: 0.1em;
+
+// $fonts-dir: "../fonts/";
+$fonts-dir: "../fonts/" !default;
+
+$font-family-base: "Open Sans", sans-serif;
+$font-family-title: Dosis, sans-serif;
+
+$font-size-base: 0.9375rem;
+
+$font-weight-base: 300;
+$line-height-base: 1.9;
+
+/*
+____ ____ _    ____ ____ ____
+|    |  | |    |  | |__/ [__
+|___ |__| |___ |__| |  \ ___]
+*/
+
+// Request a theme color level
+@function color-level($color, $level: 0) {
+  $color-base: if($level > 0, #000, #fff);
+  $level: abs($level);
+
+  @return mix($color-base, $color, $level * $theme-color-interval);
+}
+
+@function pale-color($value) {
+  @return change-color($value, $saturation: 70, $lightness: 96);
+}
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default; //#3b4752
+
+$blue: #50a1ff !default; //0facf3
+$indigo: #6610f2 !default;
+$purple: #926dde !default;
+$pink: #e83e8c !default;
+$red: #ff4954 !default;
+$orange: #ffbe00 !default;
+$yellow: #ffba00 !default;
+$green: #3cd458 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+
+// Context colors
+$color-primary: $blue !default;
+$color-secondary: #e9ecf0 !default; //e4e7ea
+$color-success: $green !default;
+$color-info: $purple !default;
+$color-warning: $yellow !default;
+$color-danger: $red !default;
+$color-light: #f8f9fa !default;
+$color-dark: #191919 !default;
+
+// Background colors
+$color-bg-lightest: #fcfdfe !default;
+$color-bg-lighter: #f9fafb !default;
+$color-bg-light: #f5f6f7 !default;
+$color-bg-body: #ffffff !default;
+$color-bg-dark: #191919 !default;
+$color-bg-gray: #fafbfb !default;
+
+// Text colors
+$color-text-darker: #323d47 !default;
+$color-text-dark: #555555 !default;
+$color-text: #757575 !default;
+$color-text-light: #999999 !default;
+$color-text-lighter: #bfc5ca !default;
+$color-text-lightest: #d3d3d3 !default;
+$color-text-secondary: #929daf !default;
+$color-text-disable: #a5b3c7 !default;
+$color-text-placeholder: #c9ccce !default;
+$color-title: $color-text-darker !default;
+$color-subtitle: $color-text-light !default;
+
+// Divider color
+$color-divider: #eaeff4 !default;
+$color-divider-light: #f1f2f3 !default;
+$color-divider-dark: #e8e8e8 !default;
+
+// Alpha channel colors
+$color-alpha-dark-text: rgba($color-text, 0.7) !default;
+$color-alpha-dark-text-light: rgba($color-text, 0.4) !default;
+$color-alpha-dark-text-active: rgba($color-text, 1) !default;
+$color-alpha-dark-bg: rgba($color-text, 0.04) !default;
+$color-alpha-dark-bg-hover: rgba($color-text, 0.05) !default;
+$color-alpha-dark-divider: rgba($color-text, 0.09) !default;
+
+$color-alpha-light-text: rgba(#fff, 0.7) !default;
+$color-alpha-light-text-light: rgba(#fff, 0.4) !default;
+$color-alpha-light-text-active: rgba(#fff, 1) !default;
+$color-alpha-light-bg: rgba(#fff, 0.1) !default;
+$color-alpha-light-bg-hover: rgba(#fff, 0.15) !default;
+$color-alpha-light-divider: rgba(#fff, 0.15) !default;
+$color-alpha-light-divider-light: rgba(#fff, 0.05) !default;
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval: 8% !default;
+
+$box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05) !default;
+
+// Pale colors
+//
+$pale-colors: () !default;
+$pale-colors: map-merge(
+  (
+    "primary": pale-color($color-primary),
+    "secondary": #f0f4f7,
+    "success": pale-color($color-success),
+    "danger": pale-color($color-danger),
+    "warning": pale-color($color-warning),
+    "info": pale-color($color-info),
+    "light": #ffffff,
+    "dark": #e5e5e5,
+  ),
+  $pale-colors
+);
+
+// Gradient colors
+//
+$gradient-colors: () !default;
+$gradient-colors: map-merge(
+  (
+    "primary":
+      linear-gradient(
+        45deg,
+        $color-primary 0%,
+        color-level($color-primary, -4) 100%
+      ),
+    "secondary":
+      linear-gradient(
+        45deg,
+        $color-secondary 0%,
+        color-level($color-secondary, -4) 100%
+      ),
+    "success":
+      linear-gradient(
+        45deg,
+        $color-success 0%,
+        color-level($color-success, -4) 100%
+      ),
+    "danger":
+      linear-gradient(
+        45deg,
+        $color-danger 0%,
+        color-level($color-danger, -4) 100%
+      ),
+    "warning":
+      linear-gradient(
+        45deg,
+        $color-warning 0%,
+        color-level($color-warning, -4) 100%
+      ),
+    "info":
+      linear-gradient(45deg, $color-info 0%, color-level($color-info, -4) 100%),
+    "dark":
+      linear-gradient(45deg, $color-dark 0%, color-level($color-dark, -4) 100%),
+  ),
+  $gradient-colors
+);
+
+// Social icons
+//
+$brand-colors: () !default;
+$brand-colors: map-merge(
+  (
+    "facebook": #3b5998,
+    "google": #dd4b39,
+    "gplus": #dd4b39,
+    "twitter": #00aced,
+    "linkedin": #007bb6,
+    "pinterest": #cb2027,
+    "git": #666666,
+    "tumblr": #32506d,
+    "vimeo": #aad450,
+    "youtube": #bb0000,
+    "flickr": #ff0084,
+    "reddit": #ff4500,
+    "dribbble": #ea4c89,
+    "skype": #00aff0,
+    "instagram": #517fa4,
+    "lastfm": #c3000d,
+    "soundcloud": #ff8800,
+    "behance": #1769ff,
+    "envato": #82b541,
+    "medium": #00ab6c,
+    "spotify": #1db954,
+    "quora": #a82400,
+    "xing": #026466,
+    "snapchat": #fffc00,
+    "telegram": #0088cc,
+    "whatsapp": #075e54,
+    "rss": #f26522,
+  ),
+  $brand-colors
+);
+
+/*
+____ ____ _  _ ___ ____
+|___ |  | |\ |  |  [__
+|    |__| | \|  |  ___]
+*/
+
+$font-lead: (
+  1: (
+    $font-size-base * 1.125,
+  ),
+  2: (
+    $font-size-base * 1.25,
+  ),
+  3: (
+    $font-size-base * 1.5,
+  ),
+  4: (
+    $font-size-base * 1.75,
+  ),
+  5: (
+    $font-size-base * 2,
+  ),
+  6: (
+    $font-size-base * 2.5,
+  ),
+  7: (
+    $font-size-base * 3.25,
+  ),
+  8: (
+    $font-size-base * 4,
+  ),
+  9: (
+    $font-size-base * 5,
+  ),
+) !default;
+
+$font-small: (
+  1: (
+    $font-size-base * 0.9375,
+  ),
+  2: (
+    $font-size-base * 0.875,
+  ),
+  3: (
+    $font-size-base * 0.8125,
+  ),
+  4: (
+    $font-size-base * 0.75,
+  ),
+  5: (
+    $font-size-base * 0.6875,
+  ),
+  6: (
+    $font-size-base * 0.625,
+  ),
+  7: (
+    $font-size-base * 0.5625,
+  ),
+  8: (
+    $font-size-base * 0.5,
+  ),
+  9: (
+    $font-size-base * 0.4375,
+  ),
+) !default;
+
+/*
+____ _    ____ _  _ ____ _  _ ___ ____
+|___ |    |___ |\/| |___ |\ |  |  [__
+|___ |___ |___ |  | |___ | \|  |  ___]
+*/
+
+// Elements height
+$height-xs: 24px;
+$height-sm: 32px;
+$height-md: 38px;
+$height-lg: 48px;
+$height-xl: 64px;
+$height-xxl: 96px;
+$height-xxxl: 128px;
+
+/*
+____ _  _ ____
+[__  |  | | __
+___]  \/  |__]
+*/
+
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (("<", "%3c"), (">", "%3e"), ("#", "%23")) !default;

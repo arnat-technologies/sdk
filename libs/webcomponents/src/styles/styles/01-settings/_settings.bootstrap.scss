@@ -1,0 +1,539 @@
+// /*
+//  _                 _       _
+// | |               | |     | |
+// | |__   ___   ___ | |_ ___| |_ _ __ __ _ _ __
+// | '_ \ / _ \ / _ \| __/ __| __| '__/ _` | '_ \
+// | |_) | (_) | (_) | |_\__ \ |_| | | (_| | |_) |
+// |_.__/ \___/ \___/ \__|___/\__|_|  \__,_| .__/
+//                                         | |
+//                                         |_|
+// */
+
+// //
+// // Color system
+// //
+// $primary: $color-primary !default;
+// $secondary: $color-secondary !default;
+// $success: $color-success !default;
+// $info: $color-info !default;
+// $warning: $color-warning !default;
+// $danger: $color-danger !default;
+// $light: $color-light !default;
+// $dark: $color-dark !default;
+
+// // The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+// $yiq-contrasted-threshold: 195 !default;
+
+// // Customize the light and dark text colors for use in our YIQ color contrast function.
+// $yiq-text-dark: $color-text !default;
+// $yiq-text-light: $white !default;
+
+// // Spacing
+// //
+// // Control the default styling of most Bootstrap elements by modifying these
+// // variables. Mostly focused on spacing.
+// // You can add more entries to the $spacers map, should you need more variation.
+
+// $spacer: 1rem !default;
+// $spacers: (
+//   0: 0,
+//   1: (
+//     $spacer * 0.25,
+//   ),
+//   2: (
+//     $spacer * 0.5,
+//   ),
+//   3: (
+//     $spacer * 0.75,
+//   ),
+//   4: (
+//     $spacer * 1,
+//   ),
+//   5: (
+//     $spacer * 1.5,
+//   ),
+//   6: (
+//     $spacer * 2,
+//   ),
+//   7: (
+//     $spacer * 3,
+//   ),
+//   8: (
+//     $spacer * 5,
+//   ),
+//   9: (
+//     $spacer * 7,
+//   ),
+//   10: (
+//     $spacer * 9,
+//   ),
+//   11: (
+//     $spacer * 11,
+//   ),
+//   12: (
+//     $spacer * 13,
+//   ),
+//   13: (
+//     $spacer * 16,
+//   ),
+// ) !default;
+
+// // This variable affects the `.h-*` and `.w-*` classes.
+// $sizes: (
+//   5: 5%,
+//   10: 10%,
+//   15: 15%,
+//   20: 20%,
+//   25: 25%,
+//   30: 30%,
+//   40: 40%,
+//   50: 50%,
+//   60: 60%,
+//   70: 70%,
+//   75: 75%,
+//   80: 80%,
+//   90: 90%,
+//   100: 100%,
+// ) !default;
+
+// // Body
+// //
+// // Settings for the `<body>` element.
+
+// $body-bg: $color-bg-body !default;
+// $body-color: $color-text !default;
+
+// // Links
+// //
+// // Style anchor elements.
+
+// $link-color: $color-primary !default;
+// $link-decoration: none !default;
+// $link-hover-color: darken($link-color, 15%) !default;
+// $link-hover-decoration: underline !default;
+
+// // Navbar
+// //
+// $navbar-min-height: 56px !default;
+// $navbar-offset-top: 10px !default;
+// $navbar-brand-padding-y: 0 !default;
+
+// $navbar-dark-color: rgba($color-text, 0.8) !default;
+// $navbar-dark-color-hover: $color-text-dark !default;
+// $navbar-dark-color-active: $color-text-darker !default;
+// $navbar-light-color: rgba($white, 0.65) !default;
+// $navbar-light-color-hover: $white !default;
+// $navbar-light-color-active: $white !default;
+
+// $navbar-submenu-min-width: 11rem !default;
+
+// // Sidebar
+// //
+// $sidebar-width: 240px !default;
+
+// // Drawer
+// //
+// $drawer-width: 300px !default;
+
+// // Components
+// //
+// // Define common padding and border radius sizes and more.
+
+// $line-height-xs: 1.3 !default;
+// $line-height-sm: 1.5 !default;
+// $line-height-lg: 2.2 !default;
+// $line-height-xl: 2.5 !default;
+
+// $border-width: 1px !default;
+// $border-color: $color-divider-light !default;
+
+// $border-radius: 0.25rem !default;
+// $border-radius-xs: 0.0625rem !default;
+// $border-radius-sm: 0.125rem !default;
+// $border-radius-lg: 0.3rem !default;
+// $border-radius-xl: 0.4rem !default;
+
+// $component-active-color: $white !default;
+// $component-active-bg: $color-primary !default;
+
+// $caret-width: 0.3em !default;
+
+// $transition-base: all 0.2s ease-in-out !default;
+// $transition-fade: opacity 0.15s linear !default;
+// $transition-collapse: height 0.35s ease !default;
+
+// // Fonts
+// //
+// // Font, line-height, and color for body text, headings, and more.
+// $font-size-base: 0.9375rem !default; // Assumes the browser default, typically `16px`
+// $font-size-xs: 0.875rem !default;
+// $font-size-sm: 0.9375rem !default;
+// $font-size-lg: 1.0625rem !default;
+// $font-size-xl: 1.125rem !default;
+
+// $font-weight-light: 300 !default;
+// $font-weight-normal: 400 !default;
+// $font-weight-semibold: 500 !default;
+// $font-weight-bold: 600 !default;
+
+// $font-weight-base: $font-weight-light !default;
+// $line-height-base: 1.9 !default;
+
+// $h1-font-size: $font-size-base * 2.75 !default;
+// $h2-font-size: $font-size-base * 2.25 !default;
+// $h3-font-size: $font-size-base * 1.875 !default;
+// $h4-font-size: $font-size-base * 1.625 !default;
+// $h5-font-size: $font-size-base * 1.3125 !default;
+// $h6-font-size: $font-size-base * 1.125 !default;
+
+// $h1-font-weight: 400 !default;
+// $h2-font-weight: 400 !default;
+// $h3-font-weight: 400 !default;
+// $h4-font-weight: 400 !default;
+// $h5-font-weight: 400 !default;
+// $h6-font-weight: 400 !default;
+
+// $headings-margin-bottom: ($spacer / 2) !default;
+// $headings-font-family: $font-family-title !default;
+// $headings-font-weight: 400 !default;
+// $headings-line-height: 1.5 !default;
+// $headings-color: $color-title !default;
+
+// $display1-size: 5rem !default;
+// $display2-size: 4rem !default;
+// $display3-size: 3.5rem !default;
+// $display4-size: 3rem !default;
+
+// $display1-weight: 300 !default;
+// $display2-weight: 300 !default;
+// $display3-weight: 300 !default;
+// $display4-weight: 300 !default;
+// $display-line-height: $headings-line-height !default;
+
+// $lead-font-size: ($font-size-base * 1.25) !default;
+// $lead-font-weight: 300 !default;
+
+// $small-font-size: 85% !default;
+
+// $text-muted: $gray-600 !default;
+
+// $blockquote-small-color: $gray-600 !default;
+// $blockquote-font-size: ($font-size-base * 1.25) !default;
+
+// $hr-border-color: rgba($black, 0.1) !default;
+// $hr-border-width: $border-width !default;
+
+// $mark-padding: 0.2em !default;
+
+// $dt-font-weight: $font-weight-bold !default;
+
+// $kbd-box-shadow: inset 0 -0.1rem 0 rgba($black, 0.25) !default;
+// $nested-kbd-font-weight: $font-weight-bold !default;
+
+// $list-inline-padding: 0.5rem !default;
+
+// $mark-bg: #fcf8e3 !default;
+
+// $hr-margin-y: $spacer !default;
+
+// // Tables
+// //
+// // Customizes the `.table` component with basic values, each used across all table variations.
+
+// $table-accent-bg: $color-bg-lightest !default;
+// $table-hover-bg: $color-bg-lighter !default;
+// $table-active-bg: $color-bg-light !default;
+
+// $table-border-color: $color-divider-light !default;
+
+// $table-head-bg: $color-bg-gray !default;
+// $table-head-color: $color-title !default;
+
+// // Buttons + Forms
+// //
+// // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+// $input-btn-padding-y: 0.375rem !default;
+// $input-btn-padding-x: 0.75rem !default;
+// $input-btn-line-height: $line-height-base !default;
+
+// $input-btn-focus-width: 0rem !default;
+// $input-btn-focus-color: rgba($color-primary, 0.25) !default;
+// $input-btn-focus-box-shadow: none !default;
+
+// $input-btn-padding-y-xs: 0.375rem !default;
+// $input-btn-padding-x-xs: 0.5rem !default;
+// $input-btn-line-height-xs: $line-height-xs !default;
+
+// $input-btn-padding-y-sm: 0.375rem !default;
+// $input-btn-padding-x-sm: 0.5rem !default;
+// $input-btn-line-height-sm: $line-height-sm !default;
+
+// $input-btn-padding-y-lg: 0.375rem !default;
+// $input-btn-padding-x-lg: 1rem !default;
+// $input-btn-line-height-lg: $line-height-lg !default;
+
+// $input-btn-padding-y-xl: 0.375rem !default;
+// $input-btn-padding-x-xl: 1.125rem !default;
+// $input-btn-line-height-xl: $line-height-xl !default;
+
+// $input-btn-border-width: $border-width !default;
+
+// // Buttons
+// //
+// $btn-font-weight: $font-weight-bold !default;
+// $btn-box-shadow: none !default;
+// $btn-active-box-shadow: none !default;
+
+// // Badges
+// //
+// $badge-font-size: 80% !default;
+// $badge-font-weight: 400 !default;
+// $badge-padding-x: 0.5em !default;
+// $badge-border-radius: $border-radius-sm !default;
+// $badge-pill-padding-x: 0.75em !default;
+
+// // Progress bars
+// //
+// $progress-bg: $color-bg-light !default;
+// $progress-border-radius: $border-radius-sm !default;
+// $progress-box-shadow: none !default;
+
+// // Pagination
+// //
+// $pagination-line-height: 32px !default;
+
+// $pagination-color: $color-text !default;
+// $pagination-border-color: $color-divider !default;
+
+// $pagination-hover-color: $color-text !default;
+// $pagination-hover-bg: $color-bg-gray !default;
+// $pagination-hover-border-color: $color-divider !default;
+
+// // Popovers
+// //
+// $popover-font-size: $font-size-xs !default;
+// $popover-border-color: $color-divider-light !default;
+// $popover-box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5) !default;
+
+// $popover-header-bg: $color-bg-lighter !default;
+
+// $popover-arrow-width: 0.6rem !default;
+// $popover-arrow-height: 0.3rem !default;
+
+// // Tooltips
+// //
+// $tooltip-font-size: $font-size-xs !default;
+
+// // Dropdowns
+// //
+// $dropdown-min-width: 10rem !default;
+// $dropdown-padding-y: 0.5rem !default;
+// $dropdown-spacer: 0.125rem !default;
+// $dropdown-bg: $white !default;
+// $dropdown-border-color: rgba($black, 0.15) !default;
+// $dropdown-border-radius: $border-radius !default;
+// $dropdown-border-width: $border-width !default;
+// $dropdown-divider-bg: $gray-200 !default;
+// $dropdown-box-shadow: 0 0.5rem 1rem rgba($black, 0.175) !default;
+
+// $dropdown-link-color: $gray-900 !default;
+// $dropdown-link-hover-color: darken($gray-900, 5%) !default;
+// $dropdown-link-hover-bg: $gray-100 !default;
+
+// $dropdown-link-active-color: $component-active-color !default;
+// $dropdown-link-active-bg: $component-active-bg !default;
+
+// $dropdown-link-disabled-color: $gray-600 !default;
+
+// $dropdown-item-padding-y: 0.25rem !default;
+// $dropdown-item-padding-x: 1.5rem !default;
+
+// $dropdown-header-color: $gray-600 !default;
+
+// // Modals
+// //
+// $modal-inner-padding: 1.75rem !default;
+// $modal-header-padding: 1.75rem !default;
+// $modal-header-border-color: $color-divider-light !default;
+
+// $modal-md: 540px !default;
+// $modal-sm: 360px !default;
+
+// // Navs
+// //
+// $nav-link-disabled-color: $color-text-disable !default;
+
+// $nav-tabs-border-color: $color-divider-light !default;
+// $nav-tabs-border-radius: 0 !default;
+// $nav-tabs-link-hover-border-color: transparent transparent
+//   $nav-tabs-border-color !default;
+// $nav-tabs-link-active-color: $color-text !default;
+// $nav-tabs-link-active-bg: $body-bg !default;
+// $nav-tabs-link-active-border-color: $color-primary $color-divider-light
+//   $nav-tabs-link-active-bg !default;
+
+// $nav-pills-border-radius: $border-radius-sm !default;
+// $nav-pills-link-active-color: $color-text !default;
+// $nav-pills-link-active-bg: $color-secondary !default;
+
+// // Card
+// //
+// $card-border-width: 0 !default;
+
+// // Form
+// //
+// $input-color: $color-text-light !default;
+// $input-border-color: $color-divider !default;
+// $input-box-shadow: none !default;
+
+// $input-focus-bg: $white !default;
+// $input-focus-border-color: $color-divider-light !default;
+// $input-focus-color: $color-title !default;
+// $input-focus-box-shadow: 0 0 40px rgba(0, 0, 0, 0.045) !default;
+
+// $input-placeholder-color: $color-text-placeholder !default;
+
+// $input-transition: all 0.3s ease-out !default;
+
+// $input-border-radius: 2px !default;
+// $input-border-radius-lg: 2px !default;
+// $input-border-radius-sm: 2px !default;
+
+// $custom-control-indicator-size: 1.125rem !default;
+
+// $custom-control-indicator-bg: $color-bg-gray !default;
+// $custom-control-indicator-box-shadow: none !default;
+// $custom-control-indicator-checked-disabled-bg: $color-bg-gray !default;
+
+// $custom-control-indicator-disabled-bg: $color-bg-gray !default;
+// $custom-control-description-disabled-color: $color-text !default;
+
+// $custom-control-indicator-checked-color: $white !default;
+// $custom-control-indicator-checked-bg: $color-bg-gray !default;
+// $custom-control-indicator-checked-box-shadow: none !default;
+
+// $custom-control-indicator-active-bg: $color-bg-gray !default;
+
+// $custom-checkbox-indicator-border-radius: 0 !default;
+// $custom-checkbox-indicator-icon-checked: none !default;
+
+// $custom-checkbox-indicator-indeterminate-bg: $color-bg-gray !default;
+// $custom-checkbox-indicator-icon-indeterminate: none !default;
+
+// $custom-radio-indicator-icon-checked: none !default;
+
+// // Close
+// //
+// $close-text-shadow: none !default;
+
+// // Popup
+// //
+// $popup-margin: 2rem;
+
+// // Breadcrumbs
+// //
+// $breadcrumb-bg: transparent !default;
+// $breadcrumb-divider-color: $color-text-lighter !default;
+// $breadcrumb-active-color: $color-text !default;
+// $breadcrumb-divider: "" !default;
+
+// // Timeline
+// //
+// $timeline-color: $color-primary;
+
+// // @import "~bootstrap/scss/bootstrap";
+
+// // Bootstrap
+// //
+// @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+
+// @import "~bootstrap/scss/_mixins.scss";
+@import "~bootstrap/scss/vendor/_rfs";
+@import "~bootstrap/scss/mixins/_deprecate";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "~bootstrap/scss/mixins/_hover";
+@import "~bootstrap/scss/mixins/_image";
+@import "~bootstrap/scss/mixins/_badge";
+@import "~bootstrap/scss/mixins/_resize";
+@import "~bootstrap/scss/mixins/_screen-reader";
+@import "~bootstrap/scss/mixins/_size";
+@import "~bootstrap/scss/mixins/_reset-text";
+@import "~bootstrap/scss/mixins/_text-emphasis";
+@import "~bootstrap/scss/mixins/_text-hide";
+@import "~bootstrap/scss/mixins/_text-truncate";
+@import "~bootstrap/scss/mixins/_visibility";
+@import "~bootstrap/scss/mixins/_alert";
+@import "~bootstrap/scss/mixins/_buttons";
+@import "~bootstrap/scss/mixins/_caret";
+@import "~bootstrap/scss/mixins/_pagination";
+@import "~bootstrap/scss/mixins/_lists";
+@import "~bootstrap/scss/mixins/_list-group";
+@import "~bootstrap/scss/mixins/_nav-divider";
+@import "~bootstrap/scss/mixins/_forms";
+@import "~bootstrap/scss/mixins/_table-row";
+@import "~bootstrap/scss/mixins/_background-variant";
+@import "~bootstrap/scss/mixins/_border-radius";
+@import "~bootstrap/scss/mixins/_box-shadow";
+@import "~bootstrap/scss/mixins/_gradients";
+@import "~bootstrap/scss/mixins/_transition";
+@import "~bootstrap/scss/mixins/_clearfix";
+@import "~bootstrap/scss/mixins/_grid-framework";
+@import "~bootstrap/scss/mixins/_grid";
+@import "~bootstrap/scss/mixins/_float";
+
+// @import "./settings.bootstrap.override";
+
+// @import "~bootstrap/scss/_root";
+// @import "~bootstrap/scss/_reboot";
+// @import "~bootstrap/scss/_type";
+// @import "~bootstrap/scss/_images";
+// @import "~bootstrap/scss/_code";
+// @import "~bootstrap/scss/_grid";
+// @import "~bootstrap/scss/_tables";
+// @import "~bootstrap/scss/_forms";
+// @import "~bootstrap/scss/_buttons";
+// @import "~bootstrap/scss/_transitions";
+// @import "~bootstrap/scss/_dropdown";
+// @import "~bootstrap/scss/_button-group";
+// @import "~bootstrap/scss/_input-group";
+// @import "~bootstrap/scss/_custom-forms";
+// @import "~bootstrap/scss/_nav";
+// @import "~bootstrap/scss/_navbar";
+// @import "~bootstrap/scss/_card";
+// @import "~bootstrap/scss/_breadcrumb";
+// @import "~bootstrap/scss/_pagination";
+// @import "~bootstrap/scss/_badge";
+// @import "~bootstrap/scss/_jumbotron";
+// @import "~bootstrap/scss/_alert";
+// @import "~bootstrap/scss/_progress";
+// @import "~bootstrap/scss/_media";
+// @import "~bootstrap/scss/_list-group";
+// @import "~bootstrap/scss/_close";
+// @import "~bootstrap/scss/_modal";
+// @import "~bootstrap/scss/_tooltip";
+// @import "~bootstrap/scss/_popover";
+// @import "~bootstrap/scss/_carousel";
+
+// //@import "~bootstrap/scss/utilities.scss";
+// @import "~bootstrap/scss/utilities/_align";
+// @import "~bootstrap/scss/utilities/_background";
+// @import "~bootstrap/scss/utilities/_borders";
+// @import "~bootstrap/scss/utilities/_clearfix";
+// @import "~bootstrap/scss/utilities/_display";
+// @import "~bootstrap/scss/utilities/_embed";
+// @import "~bootstrap/scss/utilities/_flex";
+// @import "~bootstrap/scss/utilities/_float";
+// @import "~bootstrap/scss/utilities/_overflow";
+// @import "~bootstrap/scss/utilities/_position";
+// @import "~bootstrap/scss/utilities/_screenreaders";
+// @import "~bootstrap/scss/utilities/_shadows";
+// @import "~bootstrap/scss/utilities/_sizing";
+// @import "~bootstrap/scss/utilities/_stretched-link";
+// @import "~bootstrap/scss/utilities/_spacing";
+// @import "~bootstrap/scss/utilities/_text";
+// @import "~bootstrap/scss/utilities/_visibility";
+
+// @import "~bootstrap/scss/_print";

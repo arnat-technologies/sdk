@@ -1,0 +1,51 @@
+/*
+ _____                                       _
+|_   _|                                     | |
+  | |_   _ _ __   ___   __ _ _ __ __ _ _ __ | |__  _   _
+  | | | | | '_ \ / _ \ / _` | '__/ _` | '_ \| '_ \| | | |
+  | | |_| | |_) | (_) | (_| | | | (_| | |_) | | | | |_| |
+  \_/\__, | .__/ \___/ \__, |_|  \__,_| .__/|_| |_|\__, |
+      __/ | |           __/ |         | |           __/ |
+     |___/|_|          |___/          |_|          |___/
+*/
+
+$h1-font-size: $font-size-base * 2.75;
+$h2-font-size: $font-size-base * 2.25;
+$h3-font-size: $font-size-base * 1.875;
+$h4-font-size: $font-size-base * 1.625;
+$h5-font-size: $font-size-base * 1.3125;
+$h6-font-size: $font-size-base * 1.125;
+
+$h1-font-weight: 400;
+$h2-font-weight: 400;
+$h3-font-weight: 400;
+$h4-font-weight: 400;
+$h5-font-weight: 400;
+$h6-font-weight: 500;
+
+$display1-size: 5rem;
+$display2-size: 4rem;
+$display3-size: 3.5rem;
+$display4-size: 3rem;
+
+$display1-weight: 200;
+$display2-weight: 200;
+$display3-weight: 200;
+$display4-weight: 200;
+
+// Base typographical styles.
+
+$it-global-font-size: 16px !default;
+$it-global-line-height: $it-global-spacing-unit !default;
+
+// Check that the chosen font rules are pixel numbers.
+
+@each $it-font-globals in $it-global-font-size $it-global-line-height {
+  @if (type-of($it-font-globals) == number) {
+    @if (unit($it-font-globals) != "px") {
+      @error "`#{$it-font-globals}` needs to be a pixel value.";
+    }
+  } @else {
+    @error "`#{$it-font-globals}` needs to be a number.";
+  }
+}

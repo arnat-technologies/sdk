@@ -1,0 +1,42 @@
+/*
+  ______     _
+|___  /    | |
+   / /_____| |     __ _ _   _  ___ _ __ ___
+  / /______| |    / _` | | | |/ _ \ '__/ __|
+./ /___    | |___| (_| | |_| |  __/ |  \__ \
+\_____/    \_____/\__,_|\__, |\___|_|  |___/
+                         __/ |
+                        |___/
+*/
+
+$z-layers-list: (backdrop, header, nav-mobile, modal);
+$z-layers: ();
+$layer-value: 1000;
+
+@each $layer-name in $z-layers-list {
+  $layer-value: $layer-value + 1;
+  $z-layers: map_merge(
+    $z-layers,
+    (
+      $layer-name: $layer-value,
+    )
+  );
+}
+
+// Z-index master list
+//
+// $zindex-dropdown:                   1000 !default;
+// $zindex-sticky:                     1020 !default;
+// $zindex-fixed:                      1030 !default;
+// $zindex-modal-backdrop:             1040 !default;
+// $zindex-modal:                      1050 !default;
+// $zindex-popover:                    1060 !default;
+// $zindex-tooltip:                    1070 !default;
+
+$zindex-navbar: 1000 !default;
+$zindex-topbar: 1001 !default;
+$zindex-scrolltop: 1000 !default;
+$zindex-drawer: 1000 !default;
+$zindex-sidebar: 1000 !default;
+$zindex-offcanvas: 1010 !default;
+$zindex-popup: 1010 !default;

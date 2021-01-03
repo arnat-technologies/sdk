@@ -1,0 +1,56 @@
+/*
+ _____ _     _           _    ______
+|  _  | |   (_)         | |   | ___ \
+| | | | |__  _  ___  ___| |_  | |_/ / _____  __
+| | | | '_ \| |/ _ \/ __| __| | ___ \/ _ \ \/ /
+\ \_/ / |_) | |  __/ (__| |_  | |_/ / (_) >  <
+ \___/|_.__/| |\___|\___|\__| \____/ \___/_/\_\
+           _/ |
+          |__/
+*/
+
+// $it-box-padding: $it-global-spacing-unit !default;
+// $it-box-tiny-padding: $it-global-spacing-unit-tiny !default;
+// $it-box-small-padding: $it-global-spacing-unit-small !default;
+// $it-box-large-padding: $it-global-spacing-unit-large !default;
+// $it-box-huge-padding: $it-global-spacing-unit-huge !default;
+
+// /**
+//  * The box object simply boxes off content. Extend with cosmetic styles in the
+//  * Components layer.
+//  *
+//  * 1. So we can apply the `.o-box` class to naturally-inline elements.
+//  */
+
+// .o-box {
+//   @include inuit-clearfix();
+//   display: block; /* [1] */
+//   padding: $it-box-padding;
+
+//   > :last-child {
+//     margin-bottom: 0;
+//   }
+// }
+
+// /* Size variants
+//    ========================================================================== */
+
+// .o-box--flush {
+//   padding: 0;
+// }
+
+// .o-box--tiny {
+//   padding: $it-box-tiny-padding;
+// }
+
+// .o-box--small {
+//   padding: $it-box-small-padding;
+// }
+
+// .o-box--large {
+//   padding: $it-box-large-padding;
+// }
+
+// .o-box--huge {
+//   padding: $it-box-huge-padding;
+// }

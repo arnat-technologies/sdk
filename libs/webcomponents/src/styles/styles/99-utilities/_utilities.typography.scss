@@ -1,0 +1,121 @@
+/*
+ _   _ _   _ _ _ _   _
+| | | | | (_) (_) | (_)
+| | | | |_ _| |_| |_ _  ___  ___
+| | | | __| | | | __| |/ _ \/ __|
+| |_| | |_| | | | |_| |  __/\__ \
+ \___/ \__|_|_|_|\__|_|\___||___/
+
+
+ _____                                       _
+|_   _|                                     | |
+  | |_   _ _ __   ___   __ _ _ __ __ _ _ __ | |__  _   _
+  | | | | | '_ \ / _ \ / _` | '__/ _` | '_ \| '_ \| | | |
+  | | |_| | |_) | (_) | (_| | | | (_| | |_) | | | | |_| |
+  \_/\__, | .__/ \___/ \__, |_|  \__,_| .__/|_| |_|\__, |
+      __/ | |           __/ |         | |           __/ |
+     |___/|_|          |___/          |_|          |___/
+*/
+
+/*
+____ ____ _  _ ___    ____ ____ _  _ _ _    _   _
+|___ |  | |\ |  |  __ |___ |__| |\/| | |     \_/
+|    |__| | \|  |     |    |  | |  | | |___   |
+*/
+
+.font-body {
+  font-family: $font-family-base;
+}
+
+.font-title {
+  font-family: $font-family-title;
+}
+
+/*
+____ ____ _  _ ___    ____ _ ___  ____
+|___ |  | |\ |  |  __ [__  |   /  |___
+|    |__| | \|  |     ___] |  /__ |___
+*/
+
+$font-size-list: 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20;
+@each $value in $font-size-list {
+  .fs-#{$value},
+  .font-size-#{$value} {
+    font-size: #{$value}px !important;
+  }
+}
+
+// .lead-*
+//
+@each $step, $size in $font-lead {
+  .lead-#{$step} {
+    font-size: $size !important;
+  }
+}
+
+// .small-*
+//
+@each $step, $size in $font-small {
+  .small-#{$step} {
+    font-size: $size !important;
+  }
+}
+
+/*
+____ ____ _  _ ___    _ _ _ ____ _ ____ _  _ ___
+|___ |  | |\ |  |  __ | | | |___ | | __ |__|  |
+|    |__| | \|  |     |_|_| |___ | |__] |  |  |
+*/
+
+$font-weight-list: 100 200 300 400 500 600 700 800 900;
+@each $value in $font-weight-list {
+  .fw-#{$value},
+  .font-weight-#{$value} {
+    font-weight: #{$value} !important;
+  }
+}
+
+/*
+_    _ _  _ ____    _  _ ____ _ ____ _  _ ___
+|    | |\ | |___ __ |__| |___ | | __ |__|  |
+|___ | | \| |___    |  | |___ | |__] |  |  |
+*/
+
+.lh-1,
+.line-height-1 {
+  line-height: 1;
+}
+
+@for $i from 2 through 9 {
+  .lh-#{$i},
+  .line-height-#{$i} {
+    line-height: 1 + $i * 1.5/10;
+  }
+}
+
+/*
+_    ____ ___ ___ ____ ____    ____ ___  ____ ____ _ _  _ ____
+|    |___  |   |  |___ |__/ __ [__  |__] |__| |    | |\ | | __
+|___ |___  |   |  |___ |  \    ___] |    |  | |___ | | \| |__]
+*/
+
+$letter-spacing-list: 0 1 2 3 4 5;
+@each $value in $letter-spacing-list {
+  .ls-#{$value},
+  .letter-spacing-#{$value} {
+    letter-spacing: #{$value}px;
+  }
+}
+
+/*
+_  _ _ ____ ____
+|\/| | [__  |
+|  | | ___] |___
+*/
+
+.text-truncate {
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,5 @@
+# https://github.com/npm/npm/issues/17161
+package*.json text eol=lf
+
+# Auto-Formatting
+* text=auto

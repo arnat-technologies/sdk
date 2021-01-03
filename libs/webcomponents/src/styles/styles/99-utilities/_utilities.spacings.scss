@@ -1,0 +1,59 @@
+/*
+  _   _ _   _ _ _ _   _             _____                  _
+| | | | | (_) (_) | (_)           /  ___|                (_)
+| | | | |_ _| |_| |_ _  ___  ___  \ `--. _ __   __ _  ___ _ _ __   __ _ ___
+| | | | __| | | | __| |/ _ \/ __|  `--. \ '_ \ / _` |/ __| | '_ \ / _` / __|
+| |_| | |_| | | | |_| |  __/\__ \ /\__/ / |_) | (_| | (__| | | | | (_| \__ \
+ \___/ \__|_|_|_|\__|_|\___||___/ \____/| .__/ \__,_|\___|_|_| |_|\__, |___/
+                                        | |                        __/ |
+                                        |_|                       |___/
+*/
+
+// /**
+//  * Utility classes to put specific spacing values onto elements. The below loop
+//  * will generate us a suite of classes like:
+//  *
+//  *   .u-margin-top {}
+//  *   .u-padding-left-large {}
+//  *   .u-margin-right-small {}
+//  *   .u-padding {}
+//  *   .u-padding-right-none {}
+//  *   .u-padding-horizontal {}
+//  *   .u-padding-vertical-small {}
+//  */
+
+// $it-spacing-directions: (
+//   null: null,
+//   "-top": "-top",
+//   "-right": "-right",
+//   "-bottom": "-bottom",
+//   "-left": "-left",
+//   "-horizontal": "-left" "-right",
+//   "-vertical": "-top" "-bottom",
+// ) !default;
+
+// $it-spacing-properties: (
+//   "padding": "padding",
+//   "margin": "margin",
+// ) !default;
+
+// $it-spacing-sizes: (
+//   null: $it-global-spacing-unit,
+//   "-tiny": $it-global-spacing-unit-tiny,
+//   "-small": $it-global-spacing-unit-small,
+//   "-large": $it-global-spacing-unit-large,
+//   "-huge": $it-global-spacing-unit-huge,
+//   "-none": 0,
+// ) !default;
+
+// @each $property-namespace, $property in $it-spacing-properties {
+//   @each $direction-namespace, $direction-rules in $it-spacing-directions {
+//     @each $size-namespace, $size in $it-spacing-sizes {
+//       .u-#{$property-namespace}#{$direction-namespace}#{$size-namespace} {
+//         @each $direction in $direction-rules {
+//           #{$property}#{$direction}: $size !important;
+//         }
+//       }
+//     }
+//   }
+// }

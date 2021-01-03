@@ -1,0 +1,68 @@
+/*
+ _____ _     _           _    ______ _            _
+|  _  | |   (_)         | |   | ___ \ |          | |
+| | | | |__  _  ___  ___| |_  | |_/ / | ___   ___| | __
+| | | | '_ \| |/ _ \/ __| __| | ___ \ |/ _ \ / __| |/ /
+\ \_/ / |_) | |  __/ (__| |_  | |_/ / | (_) | (__|   <
+ \___/|_.__/| |\___|\___|\__| \____/|_|\___/ \___|_|\_\
+           _/ |
+          |__/
+*/
+
+// $it-block-spacing: $it-global-spacing-unit !default;
+// $it-block-tiny-spacing: $it-global-spacing-unit-tiny !default;
+// $it-block-small-spacing: $it-global-spacing-unit-small !default;
+// $it-block-large-spacing: $it-global-spacing-unit-large !default;
+// $it-block-huge-spacing: $it-global-spacing-unit-huge !default;
+
+// /**
+//  * Stacked image-with-text object. A simple abstraction to cover a very commonly
+//  * occurring design pattern.
+//  */
+
+// .o-block {
+//   display: block;
+//   text-align: center;
+// }
+
+// .o-block__img {
+//   margin-bottom: $it-block-spacing;
+
+//   /* Size variants
+//        ====================================================================== */
+
+//   .o-block--flush > & {
+//     margin-bottom: 0;
+//   }
+
+//   .o-block--tiny > & {
+//     margin-bottom: $it-block-tiny-spacing;
+//   }
+
+//   .o-block--small > & {
+//     margin-bottom: $it-block-small-spacing;
+//   }
+
+//   .o-block--large > & {
+//     margin-bottom: $it-block-large-spacing;
+//   }
+
+//   .o-block--huge > & {
+//     margin-bottom: $it-block-huge-spacing;
+//   }
+// }
+
+// .o-block__body {
+//   display: block;
+// }
+
+// /* Alignment variants
+//    ========================================================================== */
+
+// .o-block--right {
+//   text-align: right;
+// }
+
+// .o-block--left {
+//   text-align: left;
+// }

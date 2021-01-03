@@ -1,0 +1,43 @@
+/*
+ _   _ _   _ _ _ _   _             _   _                _ _
+| | | | | (_) (_) | (_)           | | | |              | (_)
+| | | | |_ _| |_| |_ _  ___  ___  | |_| | ___  __ _  __| |_ _ __   __ _ ___
+| | | | __| | | | __| |/ _ \/ __| |  _  |/ _ \/ _` |/ _` | | '_ \ / _` / __|
+| |_| | |_| | | | |_| |  __/\__ \ | | | |  __/ (_| | (_| | | | | | (_| \__ \
+ \___/ \__|_|_|_|\__|_|\___||___/ \_| |_/\___|\__,_|\__,_|_|_| |_|\__, |___/
+                                                                   __/ |
+                                                                  |___/
+*/
+
+// /**
+//  * Redefine all of our basic heading styles against utility classes so as to
+//  * allow for double stranded heading hierarchy, e.g. we semantically need an H2,
+//  * but we want it to be sized like an H1:
+//  *
+//  *   <h2 class="u-h1"></h2>
+//  *
+//  */
+
+// .u-h1 {
+//   @include inuit-font-size($it-font-size-h1, $important: true);
+// }
+
+// .u-h2 {
+//   @include inuit-font-size($it-font-size-h2, $important: true);
+// }
+
+// .u-h3 {
+//   @include inuit-font-size($it-font-size-h3, $important: true);
+// }
+
+// .u-h4 {
+//   @include inuit-font-size($it-font-size-h4, $important: true);
+// }
+
+// .u-h5 {
+//   @include inuit-font-size($it-font-size-h5, $important: true);
+// }
+
+// .u-h6 {
+//   @include inuit-font-size($it-font-size-h6, $important: true);
+// }

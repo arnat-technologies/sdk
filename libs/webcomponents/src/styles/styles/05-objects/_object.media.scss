@@ -1,0 +1,123 @@
+/*
+ _____ _     _           _    ___  ___         _ _
+|  _  | |   (_)         | |   |  \/  |        | (_)
+| | | | |__  _  ___  ___| |_  | .  . | ___  __| |_  __ _
+| | | | '_ \| |/ _ \/ __| __| | |\/| |/ _ \/ _` | |/ _` |
+\ \_/ / |_) | |  __/ (__| |_  | |  | |  __/ (_| | | (_| |
+ \___/|_.__/| |\___|\___|\__| \_|  |_/\___|\__,_|_|\__,_|
+           _/ |
+          |__/
+*/
+
+// $it-media-spacing: $it-global-spacing-unit !default;
+// $it-media-tiny-spacing: $it-global-spacing-unit-tiny !default;
+// $it-media-small-spacing: $it-global-spacing-unit-small !default;
+// $it-media-large-spacing: $it-global-spacing-unit-large !default;
+// $it-media-huge-spacing: $it-global-spacing-unit-huge !default;
+
+// /**
+//  * Place any image- and text-like content side-by-side, as per:
+//  * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+//  */
+
+// .o-media {
+//   @include inuit-clearfix();
+//   display: block;
+// }
+
+// .o-media__img {
+//   float: left;
+//   margin-right: $it-media-spacing;
+
+//   > img {
+//     display: block;
+//   }
+// }
+
+// .o-media__body {
+//   overflow: hidden;
+//   display: block;
+
+//   &,
+//   > :last-child {
+//     margin-bottom: 0;
+//   }
+// }
+
+// /* Size variants
+//    ========================================================================== */
+
+// /**
+//  * Modify the amount of space between our image and our text. We also have
+//  * reversible options for all available sizes.
+//  */
+
+// .o-media--flush {
+//   > .o-media__img {
+//     margin-right: 0;
+//     margin-left: 0;
+//   }
+// }
+
+// .o-media--tiny {
+//   > .o-media__img {
+//     margin-right: $it-media-tiny-spacing;
+//   }
+
+//   &.o-media--reverse {
+//     > .o-media__img {
+//       margin-right: 0;
+//       margin-left: $it-media-tiny-spacing;
+//     }
+//   }
+// }
+
+// .o-media--small {
+//   > .o-media__img {
+//     margin-right: $it-media-small-spacing;
+//   }
+
+//   &.o-media--reverse {
+//     > .o-media__img {
+//       margin-right: 0;
+//       margin-left: $it-media-small-spacing;
+//     }
+//   }
+// }
+
+// .o-media--large {
+//   > .o-media__img {
+//     margin-right: $it-media-large-spacing;
+//   }
+
+//   &.o-media--reverse {
+//     > .o-media__img {
+//       margin-right: 0;
+//       margin-left: $it-media-large-spacing;
+//     }
+//   }
+// }
+
+// .o-media--huge {
+//   > .o-media__img {
+//     margin-right: $it-media-huge-spacing;
+//   }
+
+//   &.o-media--reverse {
+//     > .o-media__img {
+//       margin-right: 0;
+//       margin-left: $it-media-huge-spacing;
+//     }
+//   }
+// }
+
+// /* Reversed media objects
+//    ========================================================================== */
+
+// .o-media--reverse {
+//   > .o-media__img {
+//     float: right;
+//     margin-right: 0;
+//     margin-left: $it-media-spacing;
+//   }
+// }

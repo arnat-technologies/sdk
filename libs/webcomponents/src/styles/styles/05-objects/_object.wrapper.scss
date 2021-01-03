@@ -1,0 +1,31 @@
+/*
+ _____ _     _           _     _    _
+|  _  | |   (_)         | |   | |  | |
+| | | | |__  _  ___  ___| |_  | |  | |_ __ __ _ _ __  _ __   ___ _ __
+| | | | '_ \| |/ _ \/ __| __| | |/\| | '__/ _` | '_ \| '_ \ / _ \ '__|
+\ \_/ / |_) | |  __/ (__| |_  \  /\  / | | (_| | |_) | |_) |  __/ |
+ \___/|_.__/| |\___|\___|\__|  \/  \/|_|  \__,_| .__/| .__/ \___|_|
+           _/ |                                | |   | |
+          |__/                                 |_|   |_|
+
+*/
+
+// $it-wrapper-width: 1200px !default;
+// $it-wrapper-padding: $it-global-spacing-unit !default;
+
+/**
+ * Page-level constraining and wrapping elements.
+ */
+
+// @if (type-of($it-wrapper-width) != number) {
+//   @error "`#{$it-wrapper-width}` needs to be a number.";
+// }
+
+// .o-wrapper {
+//   @include inuit-clearfix();
+//   padding-right: $it-wrapper-padding;
+//   padding-left: $it-wrapper-padding;
+//   margin-right: auto;
+//   margin-left: auto;
+//   max-width: $it-wrapper-width;
+// }
