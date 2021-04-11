@@ -1,0 +1,105 @@
+/*!
+ * Sprite mixins
+ *
+ * Mixins for creating and styling sprites. As a practice, we are favoring
+ * SVG sprites over icon fonts, and favoring inline SVG sprites rather than
+ * external SVG files when possible. Mixins exist for applying icons with
+ * external SVG files in the cases where it is better to use a pseudo-element
+ * rather than adding an inline SVG element into the HTML structure
+ *
+ * When using an inline SVG element in the HTML, the structure is expected to
+ * be as follows:
+ * 	<span class="{{sitePrefix}}sprite {{sitePrefix}}sprite--close">
+ * 		<svg ...>
+ * 			<path .../>
+ * 		</svg>
+ * 	</span>
+ */
+
+// Defaults
+$icon-size-default: 20px !default;
+
+/* ---------------------------------------- */
+/* Utility mixins for inline SVG sprites	*/
+
+// set-sprite-size
+// Sets the size of an inline SVG sprite
+//
+// Parameters:
+// - $width: Width of the sprite image
+// - $height: Height of the sprite image, if different from the width
+@mixin set-sprite-size($width: $icon-size-default, $height: $width) {
+	&,
+	& > svg,
+	& > img {
+		display: inline-block;
+		width: $width;
+		height: $height;
+	}
+}
+
+// set-sprite-color
+// Sets the color of an inline SVG sprite
+//
+// Parameters:
+// - $color: The color to which the sprite's paths should be set; all paths are set to the same color
+@mixin set-sprite-color($color) {
+	& > svg path {
+		fill: $color;
+	}
+}
+
+/* ---------------------------------------- */
+/* Mixins for creating dot and circle icons with pure CSS */
+
+// sprite-circle - Creates an unfilled circle, recommend applying to an empty <span>
+//
+// Parameters:
+// - $color: Any hex or rgb color
+// - $size: Width and height of the circle
+@mixin sprite-circle($color, $size: $icon-size-default) {
+	display: inline-block;
+	width: $size;
+	height: $size;
+	padding: 0;
+	background: transparent;
+	border: 1px solid $color;
+	border-radius: 100%;
+}
+
+// sprite-dot - Creates a filled circle, recommend applying to an empty <span>
+//
+// Parameters:
+// - $color: Any hex or rgb color
+// - $size: Width and height of the dot
+@mixin sprite-dot($color, $size: $icon-size-default) {
+	@include sprite-circle($color, $size);
+	background: $color;
+}
+
+/* ---------------------------------------- */
+/* External file SVG mixins for use in pseudo-elements (:before or :after) */
+
+// external-sprite - Creates a sprite from an external image file; intended
+//                   to be used in a :before or :after pseudo-element
+//
+// Parameters:
+// - $spriteName: Any hex or rgb color
+// - $width: Width of the sprite image
+// - $height: Height of the sprite image, if different from the width
+@mixin external-sprite($spriteName, $width: $icon-size-default, $height: $width) {
+	display: inline-block;
+	content: '';
+	height: $height;
+	width: $width;
+	background-image: url('#{$common_img-path}/#{$spriteName}.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+// sprite-carat
+// Example of setting up a mixin for a specific external SVG image sprite
+@mixin sprite-carat($width: $icon-size-default, $height: $width) {
+	@include external-sprite($spriteName: "carat", $width: $width, $height: $height);
+}

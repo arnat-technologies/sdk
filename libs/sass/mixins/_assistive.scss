@@ -1,0 +1,84 @@
+/*!
+ * Assistive styling mixins
+ *
+ * Helper mixins for styling for accessibility. This includes mixins/placeholders
+ * for hiding things visually while still making them available to screen readers,
+ * and also some recommended styling for accessibility jumplinks
+ */
+
+// sr-only - Hides an element in such a way as it is still available to screen readers
+@mixin sr-only() {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	border: 0;
+}
+
+// un-sr-only - Undoes the changes applied by the sr-only mixin; good for inheriting
+//              in pseudo elements (e.g. :focus) or at different media queries
+@mixin un-sr-only() {
+	width: auto;
+	height: auto;
+	margin: 0;
+	overflow: inherit;
+	clip: auto;
+}
+
+// %sr-only - Extendable placeholder version of the sr-only mixin
+%sr-only {
+	@include sr-only();
+}
+
+// %un-sr-only - Extendable placeholder version of the un-sr-only mixin
+%un-sr-only {
+	@include un-sr-only();
+}
+
+// assistive - Hides an element for screen reader only, and optionally makes it
+//             reappear when it has focus
+//
+// Parameters:
+//  - $showOnFocus: Whether to have the element reappear when it has focus
+@mixin assistive($showOnFocus: false) {
+	@include sr-only();
+	
+	@if $showOnFocus == true {
+		&:focus {
+			@include un-sr-only();
+		}
+	}
+}
+
+// jumplink - Styling for accessibilily jumplinks
+//
+// WCAG includes two requirements:
+//		1) a way to jump between sections of content
+//		2) a way to navigate everything via keyboard
+// To support this, one can add anchor links from one section to the next
+// on a page, which are hidden visually, but still available for screen readers
+// and also become visible when they have focus for keyboard navigation. This
+// mixin proposes styling for those links
+//
+// Parameters:
+//  - $colors: A color list. Must have at least (background,foreground)
+//  - $zindex: The zindex at which the visible link should be displayed;
+//             pass in an appropriate value from your centrally managed zindices
+@mixin jumplink($colors: (#FFFFFF,#000000), $zindex: 10000) {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: $zindex;
+
+	@include assistive(true);
+
+	&:focus {
+		background-color: background($colors);
+		color: foreground($colors);
+		padding: 2px 4px;
+	}
+}

@@ -1,0 +1,35 @@
+/*!
+ * SCSS variables for managing media query breakpoints
+ *
+ * Generalized variables are set up at the top of the file. Context-specific
+ * variables are below. Not all context-specific locations will have a custom
+ * variable; this will mostly be used in cases where there will be many uses of
+ * a media query that need to be kept in synch, e.g. the mobile-vs-desktop
+ * breakpoint for global navigation
+ */
+
+// General media breakpoints
+$media-sz0-min: 400px;
+$media-sz1-min: 500px;
+$media-sz2-min: 600px;
+$media-sz3-min: 650px;
+$media-sz4-min: 700px;
+$media-sz5-min: 768px; // Equivalent to Bootstrap $screen-sm-min
+$media-sz6-min: 850px;
+$media-sz7-min: 992px; // Equivalent to Bootstrap $screen-md-min
+$media-sz8-min: 1200px; // Equivalent to Bootstrap $screen-lg-min
+
+// Breakpoints map for text size settings
+$font-breakpoints: (0: $media-sz0-min,
+					1: $media-sz1-min,
+					2: $media-sz2-min,
+					3: $media-sz3-min,
+					4: $media-sz4-min,
+					5: $media-sz5-min,
+					6: $media-sz6-min,
+					7: $media-sz7-min,
+					8: $media-sz8-min);
+
+// Header/Footer breakpoints
+
+// Component-specific breakpoints

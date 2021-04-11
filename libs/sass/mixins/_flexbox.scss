@@ -1,0 +1,211 @@
+/*!
+ * Flexbox Mixins SCSS
+ *
+ * Styling to support flexbox in browser that support it, and graceful fallbacks
+ * for any non-flexbox browsers. Uses Modernizr with mod_ prefix for feature
+ * detection.
+ */
+
+// Wrapper mixins for when flexbox is on vs off
+// Default if Modernizr is not available at all is "off"
+// Change these to alternate feature detection classes as needed
+@mixin flexbox-off() {
+	&,
+	.mod_no-js &,
+	.mod_no-flexbox & {
+		@content;
+	}
+}
+
+@mixin flexbox-on() {
+	.mod_js.mod_flexbox & {
+		@content;
+	}
+}
+
+// Flexbox mixins
+
+// flex-row - Apply to the parent wrapper element around a set of child items that
+//            should appear in a row
+//
+// Parameters:
+// - $wrap: Set to wrap or nowrap depending on whether items should be forced to a single row
+// - $justify: Horizontal alignment; set to one of the flexbox justify-content values
+// - $float: Set to left, right, or none; used in part of the fallback for non-flexbox browsers
+// - $align-items: Vertical alignment of items in a row relative to each other; set to one of the flexbox align-items values
+// - $align-content: Vertical alignment of all items within the parent; set to one of the flexbox align-content values
+@mixin flex-row($wrap: wrap, $justify: space-between, $float: none, $align-items: stretch, $align-content: $justify) {
+	@include flexbox-off() {
+		@if $wrap == wrap {
+			display: block;
+		}
+
+		@if $wrap == nowrap {
+			display: table;
+		}
+
+		float: $float;
+	}
+
+	@include flexbox-on() {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: $wrap;
+		justify-content: $justify;
+		align-items: $align-items;
+		align-content: $align-content;
+	}
+}
+
+// flex-col - Apply to the parent wrapper element around a set of child items that
+//            should appear in a row
+//
+// Parameters:
+// - $wrap: Set to wrap or nowrap depending on whether items should be forced to a single row
+// - $justify: Vertical alignment; set to one of the flexbox justify-content values
+// - $align-items: Horizontal alignment of items in a column relative to each other; set to one of the flexbox align-items values
+// - $align-content: Horizontal alignment of all items within the parent; set to one of the flexbox align-content values
+@mixin flex-col($wrap: wrap, $justify: space-between, $align-items: stretch, $align-content: $justify) {
+	@include flexbox-off() {
+		display: block;
+	}
+
+	@include flexbox-on() {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: $wrap;
+		justify-content: $justify;
+		align-items: $align-items;
+		align-content: $align-content;
+	}
+}
+
+// flex-row-item - Apply to the child of a parent with flex-row applied
+//
+// Parameters:
+// - $wrap: Set to wrap or nowrap depending on whether items should be forced to a single row
+// - $basis: The starting width for flex; may grow or shrink from this depending on the $grow and $shrink settings
+// - $width: The width for non-flex; usually the same as $basis, but not always
+// - $float: Left or right for positioning of non-flex wrap items
+// - $order: Flex order; has no effect on non-flex
+// - $grow: Flex grow; has no effect on non-flex
+// - $shrink: Flex shrink; has no effect on non-flex
+// - $align: Vertical alignment for non-flex
+// - $align-self: Vertical alignment for flex if you want to override the default from the parent
+@mixin flex-row-item($wrap: wrap, $basis: auto, $width: $basis, $float: left, $order: -1, $grow: 0, $shrink: 0, $align: top, $align-self: auto) {
+	@include flexbox-off() {
+		width: $width;
+		vertical-align: $align;
+
+		@if $wrap == wrap {
+			display: block;
+			float: $float;
+		}
+
+		@if $wrap == nowrap {
+			display: table-cell;
+			white-space: nowrap;
+		}
+	}
+
+	@include flexbox-on() {
+		display: block;
+		flex-basis: $basis;
+		align-self: $align-self;
+		flex-grow: $grow;
+		flex-shrink: $shrink;
+		@if $order > -1 {
+			order: $order;
+		}
+	}
+}
+
+// flex-row-item - Apply to the child of a parent with flex-row applied
+//
+// Parameters:
+// - $basis: The starting width for flex; may grow or shrink from this depending on the $grow and $shrink settings
+// - $height: The height for non-flex; usually the same as $basis, but not always
+// - $order: Flex order; has no effect on non-flex
+// - $grow: Flex grow; has no effect on non-flex
+// - $shrink: Flex shrink; has no effect on non-flex
+// - $align: Vertical alignment for non-flex
+// - $align-self: Horizontal alignment for flex if you want to override the default from the parent
+@mixin flex-col-item($basis: auto, $height: $basis, $order: -1, $grow: 0, $shrink: 0, $align: top, $align-self: auto) {
+	@include flexbox-off() {
+		display: block;
+		height: $height;
+		vertical-align: $align;
+	}
+
+	@include flexbox-on() {
+		flex-basis: $basis;
+		align-self: $align-self;
+		flex-grow: $grow;
+		flex-shrink: $shrink;
+		@if $order > -1 {
+			order: $order;
+		}
+	}
+}
+
+// hide-flex-item - Simple mixin to assist in hiding a flexbox child item at larger media breakpoints or
+//                  other conditions when it's necessary to override the flex display
+@mixin hide-flex-item() {
+	@include flexbox-off() {
+		display: none;
+	}
+
+	@include flexbox-on() {
+		display: none;
+	}
+}
+
+// flex-item-width - Helper mixin for changing just the width of a flex-row-item. Used to override
+//                   width at higher media query breakpoints. Apply to same element as flex-row-item
+//
+// Parameters:
+// - $basis: The starting width for flex; may grow or shrink from this depending on the $grow and $shrink settings
+// - $width: The width for non-flex; usually the same as $basis, but not always
+@mixin flex-item-width($width: $basis, $basis: auto) {
+	@include flexbox-off() {
+		width: $width;
+	}
+
+	@include flexbox-on() {
+		flex-basis: $basis;
+	}
+}
+
+// flex-items-per-row - Helper mixin for controlling the number of flex items per row when you don't want
+//                      to set the width. Apply to the same element as flex-row
+//
+// Parameters:
+// - $per-row: Number of items per row
+// - $direction: left or right depending on the configuration of the
+@mixin flex-items-per-row($per-row, $direction: left) {
+	@include flexbox-on() {
+		&:nth-child(n) {
+			clear: none;
+		}
+
+		&:nth-child(#{$per-row}n+1) {
+			clear: $direction;
+		}
+	}
+}
+
+// flex-row-item-justify - Helper mixin for changing just the alignment of a flex-row-item. Used to override
+//                         at higher media query breakpoints. Apply to same element as flex-row-item
+//
+// Parameters:
+// - $align: Vertical alignment for non-flex
+// - $align-self: Vertical alignment for flex if you want to override the default from the parent
+@mixin flex-row-item-justify($align: top, $align-self: auto) {
+	@include flexbox-off() {
+		vertical-align: $align;
+	}
+
+	@include flexbox-on() {
+		align-self: $align-self;
+	}
+}

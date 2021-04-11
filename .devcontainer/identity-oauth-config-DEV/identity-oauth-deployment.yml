@@ -1,0 +1,50 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: identity-oauth
+  labels:
+    app: identity-oauth
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: identity-oauth
+    spec:
+      containers:
+      - image: acreu1c002ibiddev01.azurecr.io/identity-oauth:latest
+        name: identity-oauth
+        imagePullPolicy: Always
+        resources:
+            requests:
+              memory: "300Mi"
+              cpu: "200m"
+            limits:
+              memory: "800Mi"
+              cpu : "2"         
+        ports:
+        - containerPort: 8080
+          name: http
+        volumeMounts:
+        - mountPath: /identity-oauth
+          name: oauth-path          
+      volumes:
+      - name: oauth-path
+        azureFile:
+          secretName: identity-fileshare-secret
+          shareName: properties-volume
+          readOnly: false
+---      
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: identity-oauth-hpa
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: identity-oauth
+  minReplicas: 2
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 50

@@ -1,0 +1,19 @@
+/*!
+ * SCSS variables for managing z-index values
+ *
+ * Generalized variables are set up at the top of the file. Context-specific
+ * variables are below. As a general rule, only the context-specific variables
+ * should be used outside of this file.
+ */
+
+// General z-index settings
+$zindex-base:              1;
+$zindex-navbar:            1000;
+$zindex-dropdown:          1000;
+$zindex-popover:           1060;
+$zindex-tooltip:           1070;
+$zindex-navbar-fixed:      1030;
+$zindex-modal-background:  1040;
+$zindex-modal:             1050;
+
+// Use case specific z-index settings

@@ -1,0 +1,172 @@
+/*!
+ * BEM (Block, Element, Modifier) Mixins SCSS
+ *
+ * Custom mixins for handling BEM-style class naming. Have tried this using existing
+ * third-party SCSS libraries, but the way we apply variations in Hippo-based site
+ * structure, those make a mess of nesting of things. The goal of these mixins is to
+ * remove some of the ugly nesting issues while still making it easy to apply BEM-style
+ * class naming (which has some good benefits)
+ */
+
+// Site prefix
+// This value should remain set to "SITE_PREFIX" because this value will
+// be replaced by the prefix from the site-config.json during the build
+$site-prefix: "SITE_PREFIX";
+
+// Separators
+
+// .block[separator]element:
+$element-separator:        "_" !default;
+
+// .block[separator]modifier:
+$modifier-separator:       "--" !default;
+
+// The default prefix for state modifier selectors, will be combined with $modifier-separator:
+$state-prefix:             "is" !default;
+
+// Functions for assembling naming scheme
+@function componentClass($component) {
+	@return $site-prefix + $component;
+}
+
+@function elementClass($component, $element) {
+	@return componentClass($component) + $element-separator + $element;
+}
+
+@function modifierClass($component, $modifier, $element: '') {
+	@if $element != '' {
+		@return elementClass($component, $element) + $modifier-separator + $modifier;
+	}
+	@else {
+		@return componentClass($component) + $modifier-separator + $modifier;
+	}
+}
+
+@function componentSelector($component, $variants: '') {
+	$componentClass: componentClass($component);
+	$selector: "." + $componentClass;
+	@if $variants != '' {
+		@if type-of($variants) == 'string' {
+			$selector: "." + $componentClass + $modifier-separator + $variants;
+		}
+		@else if type-of($variants) == 'list' {
+			$selector: '';
+			@each $variant in $variants {
+				$selector: $selector + "." + $componentClass + $modifier-separator + $variant;
+			}
+		}
+	}
+	@return $selector;
+}
+
+@function elementSelector($component, $element, $modifiers: '') {
+	$elementClass: elementClass($component, $element);
+	$selector: "." + $elementClass;
+	@if $modifiers != '' {
+		@if type-of($modifiers) == 'string' {
+			$selector: "." + $elementClass + $modifier-separator + $modifiers;
+		}
+		@else if type-of($modifiers) == 'list' {
+			$selector: '';
+			@each $modifier in $modifiers {
+				$selector: $selector + "." + $elementClass + $modifier-separator + $modifier;
+			}
+		}
+	}
+	@return $selector;
+}
+
+// Helper mixins
+@mixin nest-or-root($nested: true) {
+	@if $nested == false {
+		@at-root {
+			@content;
+		}
+	}
+	@else {
+		@content;
+	}
+}
+
+// Mixins to use
+
+// component
+// Handles creating the selector for the outer component wrapper of a self-contained
+// component section of the page. Usually corresponds to a Hippo component.
+// Produces a selector of the form .siteprefix-component or .siteprefix-component--variant
+//
+// Parameters:
+// - $c: Component name
+// - $v: Variant name. Can also be a list of variant names
+// - $nested: true or false; default is false to keep as much as possible at root,
+//            set to true in the rare case where nested selectors are absolutely required
+@mixin component($c, $v: '', $nested: false) {
+	$component: $c;
+	$variants: $v;
+
+	$selector: componentSelector($component, $variants);
+
+	@include nest-or-root($nested) {
+		//@debug $selector;
+		#{$selector} {
+			@content;
+		}
+	}
+}
+
+// element
+// Handles creating the selector for an element inside a self-contained
+// component section of the page.
+// Produces a selector of one of the following forms:
+// .siteprefix-component_element
+// .siteprefix-component_element--modifier
+// .siteprefix-component--variant .siteprefix-component_element
+// .siteprefix-component--variant .siteprefix-component_element--modifier
+//
+// Parameters:
+// - $c: Component name
+// - $v: Variant name. Can also be a list of variant names
+// - $e: Element name
+// - $m: Modifier name. Can also be a list of modifier names
+// - $nested: true or false; default is false to keep as much as possible at root,
+//            set to true in the rare case where nested selectors are absolutely required.
+//            DO NOT combine a $v value with $nested: true
+@mixin element($c, $e, $v: '', $m: '', $nested: false) {
+	$component: $c;
+	$variants: $v;
+	$element: $e;
+	$modifiers: $m;
+
+	$selector: elementSelector($component, $element, $modifiers);
+
+	@include nest-or-root($nested) {
+		@if $variants != '' {
+			$componentSelector: componentSelector($component, $variants);
+
+			//@debug "#{$componentSelector} #{$selector}";
+			#{$componentSelector} #{$selector} {
+				@content;
+			}
+		}
+		@else {
+			//@debug $selector;
+			#{$selector} {
+				@content;
+			}
+		}
+	}
+}
+
+// state
+// Handles creating the selector for a state of an element, e.g. is-hidden, is-open, has-contents
+//
+// Parameters:
+// - $state: State name
+// - $prefix: Defaults to 'is' but can be overridden to something else if 'is' isn't appropriate for the context
+@mixin state($state, $prefix: $state-prefix) {
+	@at-root {
+		&.#{$prefix}-#{$state} {
+			@content;
+		}
+	}
+}

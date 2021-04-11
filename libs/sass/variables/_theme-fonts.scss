@@ -1,0 +1,21 @@
+/*!
+ * Theme Fonts and Text Sizes
+ *
+ * The variables in this file represent all font families and text sizes used
+ * throughout the project. Keeping these centrally managed makes it easier to
+ * maintain over the life of the project. At the top are general font variables,
+ * which can and should be used to set the context-specific variables later in
+ * the file. As a general rule, only the context-specific variables should be
+ * used outside of this file.
+ *
+ * Text size variables can be either a single value, a list of values, or a map.
+ * Font style variables can be either a single value or a list of values. See the
+ * documentation of the mixin set-text-style in /scss/globals/mixins/_text-display.scss
+ * for details of how these variables will be used.
+ */
+
+$theme_font-family: sans-serif;
+$theme_normal-text: (family: $theme_font-family, weight: 400);
+$theme_bold-text: (family: $theme_font-family, weight: 600);
+
+$theme_textsize-base: #{$basetextsize}px;

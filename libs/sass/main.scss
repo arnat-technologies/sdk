@@ -1,0 +1,50 @@
+/*!
+ * Main.scss
+ *
+ * Master SCSS file for the project. Includes global project path settings,
+ * as well as all project imports. The output from this file, main.css, is
+ * the file that will be included for any site pages that use the common base
+ * theme
+ */
+
+/* Global project path settings; primarily for paths to fonts and images */
+// Font imports and family names
+$common_font-path: "../fonts" !default;
+$theme_font-path: $common_font-path !default;
+@import "fonts/fonts";
+
+// Image locations
+$common_img-path: "../images" !default;
+$theme_img-path: $common_img-path !default;
+
+/* Variables and Mixins
+   These files should not contain any output CSS, only variables,
+   functions, and/or mixins
+*/
+@import "globals/functions/color-lists";
+@import "globals/functions/font-units";
+
+@import "globals/variables/breakpoints";
+@import "globals/variables/theme-colors";
+@import "globals/variables/theme-fonts";
+@import "globals/variables/zindices";
+
+@import "globals/mixins/bem";
+@import "globals/mixins/buttons";
+@import "globals/mixins/clearfix";
+@import "globals/mixins/colors";
+@import "globals/mixins/flexbox";
+@import "globals/mixins/lists";
+@import "globals/mixins/responsive-square";
+@import "globals/mixins/sprites";
+@import "globals/mixins/text-display";
+
+// Rich text mixins must come after all other mixins due to dependencies
+@import "globals/mixins/richtext";
+
+@import "libs/angular-custom";
+@import "libs/normalize-custom";
+
+/* Page Framework
+   Styling for basic page framework, and page templates
+*/

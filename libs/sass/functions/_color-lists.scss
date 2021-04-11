@@ -1,0 +1,60 @@
+/*!
+ * Color helper functions
+ *
+ * Color variables can be either a single value or a list of values. In the case of a
+ * list, the list is treated as (background, foreground, border). You can leave
+ * off values from the list, but not skip values. For example, a list of two colors
+ * will be treated as (background, foreground).
+ *
+ * The functions in this file are to make it easier to read specific colors out
+ * of a color list variable
+ */
+
+// Detection functions - determines if a color variable contains the color setting
+@function hasBackground($colors) {
+	@return ((type-of($colors) == 'list' and length($colors) >= 1 and type-of(nth($colors, 1)) == 'color') or (type-of($colors) == 'color'));
+}
+
+@function hasForeground($colors) {
+	@return (type-of($colors) == 'list' and length($colors) >= 2 and type-of(nth($colors, 2)) == 'color');
+}
+
+@function hasBorderColor($colors) {
+	@return (type-of($colors) == 'list' and length($colors) >= 3 and type-of(nth($colors, 3)) == 'color');
+}
+
+// Retrieval functions - retrieves the requested color setting from a list
+@function background($colors) {
+	@if hasBackground($colors) {
+		@if type-of($colors) == 'list' and length($colors) >= 1 {
+			@return nth($colors, 1);
+		}
+		@else if type-of($colors) == 'color' {
+			@return $colors;
+		}
+	}
+	@else {
+		@error "background function: `#{$colors}` is not a valid $colors value for this function";
+		@return inherit;
+	}
+}
+
+@function foreground($colors) {
+	@if hasForeground($colors) {
+		@return nth($colors, 2);
+	}
+	@else {
+		@error "foreground function: `#{$colors}` is not a valid $colors value for this function";
+		@return inherit;
+	}
+}
+
+@function borderColor($colors) {
+	@if hasBorderColor($colors) {
+		@return nth($colors, 3);
+	}
+	@else {
+		@error "borderColor function: `#{$colors}` is not a valid $colors value for this function";
+		@return inherit;
+	}
+}

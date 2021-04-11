@@ -1,0 +1,133 @@
+/*!
+ * Mixins for applying font/text styles
+ */
+
+// Must define the following variables somewhere in the project
+$theme_textsize-base: 1em !default;
+$theme_lineheight-base: 1em !default;
+$font-breakpoints: () !default;
+$theme_normal-text: (family: sans-serif, weight: 400) !default;
+$theme_bold-text: (family: sans-serif, weight: 600) !default;
+
+// set-text-style - function applies text styling to the element
+//
+// Parameters:
+//  - $font: The font family and weight to apply, or '' to inherit font family from parent
+//  - $sizes: The text size(s) to apply, or '' to inherit text size from parent
+//  - $breakpoint-map: Media query breakpoints at which different text sizes may be applied
+//  - $location: Optional parameter indicating where the mixin is being used, for
+//               debugging purposes only
+//
+// $font can either be a single string value or a Sass map. If it is a single string value,
+// it is assumed that it contains the font family and will be used as such. If it is a map,
+// the mixin will look for two specific map keys: family and weight. If found, it will use
+// those values to set the font family and font weight respectively.
+//
+// $sizes can be either a single value, a list of values, or a map. If it is a single
+// string value, it is assumed that it contains the font-size and will be used as such.
+// If it is a list of values, it is assumed that it contains two values as
+// (font-size,line-height) and both values will be applied. If it is a map, the key
+// should be one of the keys in $breakpoint-map, and the values should be either a single
+// value or a list of values as described above.
+@mixin set-text-style($font: $theme_normal-text, $sizes: $theme_textsize-base, $breakpoint-map: $font-breakpoints, $location: '') {
+	@if $font != '' {
+		@if type-of($font) == 'string' {
+			font-family: $font;
+		}
+		@else if type-of($font) == 'map' {
+			@if map-has-key($font,'family') {
+				font-family: map-get($font,'family');
+			}
+
+			@if map-has-key($font,'weight') {
+				font-weight: map-get($font,'weight');
+			}
+		}
+	} // end if $font != ''
+
+	@if $sizes != '' {
+		@if type-of($sizes) == 'number' or type-of($sizes) == 'string' {
+			font-size: $sizes;
+			line-height: $theme_lineheight-base;
+		}
+		@else if type-of($sizes) == 'list' {
+			font-size: nth($sizes,1);
+			line-height: nth($sizes,2);
+		}
+		@else if type-of($sizes) == 'map' {
+			@each $breakpoint, $size in $sizes {
+				$font-size: '';
+				$line-height: '';
+
+				@if type-of($size) == 'number' or type-of($size) == 'string' {
+					$font-size: $size;
+					$line-height: $theme_lineheight-base;
+				}
+				@else if type-of($size) == 'list' {
+					$font-size: nth($size,1);
+					$line-height: nth($size,2);
+				}
+
+				@if $location != '' {
+					@if $font-size == '' {
+						@warn "At #{$location}: Font size is empty; no font being set";
+					}
+
+					@if $line-height == '' {
+						@warn "At #{$location}: Line height is empty; no line-height being set";
+					}
+				}
+
+				@if $breakpoint == 'base' {
+					@if $font-size != '' {
+						font-size: $font-size;
+					}
+
+					@if $line-height != '' {
+						line-height: $line-height;
+					}
+				}
+				@else if ( map-has-key($breakpoint-map, $breakpoint) ) {
+					@media ( min-width: map-get($breakpoint-map, $breakpoint) ) {
+						@if $font-size != '' {
+							font-size: $font-size;
+						}
+
+						@if $line-height != '' {
+							line-height: $line-height;
+						}
+					}
+				}
+				@else {
+					@warn "Unidentified breakpoint used in cfp-text-style";
+				}
+			}
+		}
+	} // end if $sizes != ''
+}
+
+// set-text-base
+// Calls set-text-style with the default base values. May be extended in the future
+// to make other changes to the base font/text.
+@mixin set-text-base() {
+	@include set-text-style();
+}
+
+// set-text-normal
+// Same $sizes and $location parameter as set-text-style, but defaults to normal text
+@mixin set-text-normal($sizes: $theme_textsize-base, $location: '') {
+	@include set-text-style($font: $theme_normal-text, $sizes: $sizes, $location: $location);
+}
+
+// set-text-bold
+// Same $sizes and $location parameter as set-text-style, but defaults to bold text
+@mixin set-text-bold($sizes: $theme_textsize-base, $location: '') {
+	@include set-text-style($font: $theme_bold-text, $sizes: $sizes, $location: $location);
+}
+
+// set-text-sizes
+// Same $sizes and $location parameter as set-text-style, but defaults to not setting the
+// font family or weight; only changes the size.
+@mixin set-text-sizes($sizes: $theme_textsize-base, $location: '') {
+	@include set-text-style($font: '', $sizes: $sizes, $location: $location);
+}

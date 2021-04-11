@@ -1,0 +1,32 @@
+/*!
+ * Responsive Square Mixins SCSS
+ *
+ * Apply to something you want to be responsively square. Magic trick that
+ * makes a container height always match its width.
+ *
+ * Assumes an HTML structure like:
+ * <div class="square">
+ *     <div class="content">
+ *         Hello!
+ *     </div>
+ * </div>
+ *
+ * The responsive-square mixin is called on the outer div, not to the inner content
+ */
+
+@mixin responsive-square($width) {
+	position: relative;
+	width: $width;
+
+	&::after {
+		content: "";
+		display: block;
+		padding-bottom: 100%;
+	}
+
+	> * {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+}

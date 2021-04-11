@@ -1,0 +1,26 @@
+/*!
+ * Normalize-CSS Custom Imports
+ *
+ * Paths here are relative to /node_modules/normalize.css/normalize.css
+ * Must include that path in includePaths option of node-sass to compile
+ */
+
+// Override any Normalize-CSS variables here if needed
+
+
+// Import
+// normalize puts css, sass, and scss versions in the same folder,
+// so the file extension is required here
+@import "normalize.scss";
+
+// Additional custom normalization
+// In general, this should be the only place in our code that styling is
+// applied globally to elements with no classes or namespacing
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+iframe {
+	border: none;
+}

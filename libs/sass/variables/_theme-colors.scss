@@ -1,0 +1,30 @@
+/*!
+ * Theme Colors
+ *
+ * The variables in this file represent all colors applied throughout the
+ * project. Variables should be context-specific and unique per location.
+ * At the top is the general color palette, which can and should be used to
+ * set the context-specific variables later in the file. As a general rule,
+ * only the context-specific variables should be used outside of this file.
+ *
+ * Variables can be either a single value or a list of values. In the case of a
+ * list, the list is treated as (background, foreground, border). You can leave
+ * off values from the list, but not skip values. For example, a list of two colors
+ * will be treated as (background, foreground).
+ */
+
+/* Basic color palette */
+$blue:  	#009DDC;
+$green: 	#24B776;
+$orange:	#F98027;
+$navy:		#193947;
+$navy-dark: #1C232D;
+$navy-darker: #0B1F28;
+$gray-light: #F1F3F4;
+$gray: 		#A5A5A5;
+$gray-dark: #666666;
+
+
+/* Context-specific color variables */
+
+$theme_header_colors: (#FFFFFF, #000000);

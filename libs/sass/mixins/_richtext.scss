@@ -1,0 +1,287 @@
+/*!
+ * Rich Text Area
+ *
+ * Placeholders to set up all the defaults for use in a rich text area
+ */
+
+ // Rich Text Area default settings
+$rte-site-prefix: "SITE_PREFIX"; // do not change; will be managed by build process
+
+$theme_rte_pre-text-color: #666666 !default;
+$theme_rte_pre-border-color: #CCCCCC !default;
+$theme_rte_table-default-bg: #FFFFFF !default;
+$theme_rte_table-default-fg: #000000 !default;
+$theme_rte_table-default-heading-bg: #CCCCCC !default;
+$theme_rte_table-default-heading-fg: #000000 !default;
+$theme_rte_table-default-border: #666666 !default;
+$theme_rte_table-variant1-caption: #333333 !default;
+$theme_rte_table-variant1-heading-bg: #999999 !default;
+$theme_rte_table-variant1-heading-fg: #000000 !default;
+$theme_rte_table-variant1-bg: #FFFFFF !default;
+$theme_rte_table-variant1-fg: #000000 !default;
+$theme_rte_table-variant1-border: #999999 !default;
+$theme_rte_table-variant2-caption: #333333 !default;
+$theme_rte_table-variant2-heading-bg: #999999 !default;
+$theme_rte_table-variant2-heading-fg: #000000 !default;
+$theme_rte_table-variant2-bg: #FFFFFF !default;
+$theme_rte_table-variant2-fg: #000000 !default;
+$theme_rte_table-variant2-border: #999999 !default;
+$theme_rte_img-margin: 0.75em !default;
+$theme_rte_blockquote-border-color: #EEEEEE !default;
+$theme_rte_hr-size: 1px !default;
+$theme_rte_hr-color: #EEEEEE !default;
+$theme_rte_textsize-headings:  (h1: 1.25em,
+								h2: 1.2em,
+								h3: 1.15em,
+								h4: 1.1em,
+								h5: 1.05em,
+								h6: 1em) !default;
+
+// Rich Text Area mixins and placeholders
+@mixin rte-field-baseline() {
+	@include set-text-normal($sizes: '');
+
+	strong {
+		@include set-text-bold($sizes: '');
+	}
+
+	u {
+		text-decoration: underline;
+	}
+
+	em {
+		font-style: italic;
+	}
+
+	s {
+		text-decoration: line-through;
+	}
+
+	sub {
+		font-size: 0.8em;
+	}
+
+	sup {
+		font-size: 0.8em;
+	}
+
+ 	*:first-child {
+		margin-top: 0;
+	}
+
+	*:last-child {
+		margin-bottom: 0;
+	}
+ }
+
+%inline-rte-field {
+	// Allowed tags are: p, strong, u, em, s, sub, sup
+	// Anything else is not allowed and should be treated as neutral
+	* {
+		margin: 0;
+		border: 0;
+		padding: 0;
+	}
+
+	*:not(p) {
+		display: inline;
+	}
+
+	// Set up defaults for this field type
+	@include rte-field-baseline();
+
+	p {
+		display: block;
+		margin: 0 0 0.5em 0;
+		border: 0;
+		padding: 0;
+	}
+}
+
+%full-rte-field {
+ 	// sass-lint:disable no-qualifying-elements
+
+	// Set up defaults for this field type
+	@include rte-field-baseline();
+	@include clearfix();
+
+	p, h1, h2, h3, h4, h5, h6 {
+		display: block;
+		margin: 0 0 1em 0;
+		border: 0;
+		padding: 0;
+	}
+
+	@each $heading, $size in $theme_rte_textsize-headings {
+		#{$heading} {
+			@include set-text-bold($sizes: $size);
+		}
+	}
+
+	pre {
+		font-family: "Courier New", Courier, monospace, sans-serif;
+		text-align: left;
+		color: $theme_rte_pre-text-color;
+
+		padding: 0.1em 0.5em 0.3em 0.7em;
+		border-left: 11px solid $theme_rte_pre-border-color;
+		margin: 1.7em 0 1.7em 0.3em;
+		overflow: auto;
+		width: 93%;
+	}
+
+	address {
+		margin: 0 0 1em 0;
+
+		p {
+			margin: 0 0 0.25em 0;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+
+	hr {
+		border-top: $theme_rte_hr-size solid $theme_rte_hr-color;
+		margin: 1em 0;
+	}
+
+	/* Blockquotes */
+	blockquote {
+		margin: 0 0 1em 0;
+		border-left: 5px solid $theme_rte_blockquote-border-color;
+	}
+	/* End Blockquotes */
+
+	/* List Styles */
+	ul, ol {
+		padding: 0 0 0 1em;
+		margin: 0 0 1em 0;
+
+		ul, ol {
+			margin: 0;
+		}
+
+		li > ul:first-child,
+		li > ol:first-child {
+			margin: 0.5em 0 0 0;
+		}
+
+		li {
+			margin: 0 0 0.5em 0;
+		}
+	}
+	/* End List Styles */
+
+	/* Table Styles */
+	table {
+		width: 100%;
+		padding: 0;
+		margin-top: 0;
+		margin-bottom: 1em;
+		border-collapse: collapse;
+		border-color: $theme_rte_table-default-border;
+
+		caption {
+			margin-top: 0;
+			margin-bottom: 0.25em;
+		}
+
+		tr {
+			border: 0;
+		}
+
+		th {
+			background: $theme_rte_table-default-heading-bg;
+			color: $theme_rte_table-default-heading-fg;
+			border-color: $theme_rte_table-default-border;
+		}
+
+		td {
+			background: $theme_rte_table-default-bg;
+			color: $theme_rte_table-default-fg;
+			border-color: $theme_rte_table-default-border;
+		}
+	}
+
+	table.#{$rte-site-prefix}rte_table--variant1 {
+		border-color: $theme_rte_table-variant1-border;
+
+		caption {
+			color: $theme_rte_table-variant1-caption;
+		}
+
+		th {
+			background: $theme_rte_table-variant1-heading-bg;
+			color: $theme_rte_table-variant1-heading-fg;
+			border-color: $theme_rte_table-variant1-border;
+		}
+
+		td {
+			background: $theme_rte_table-variant1-bg;
+			color: $theme_rte_table-variant1-fg;
+			border-color: $theme_rte_table-variant1-border;
+		}
+	}
+
+	table.#{$rte-site-prefix}rte_table--variant2 {
+		border-color: $theme_rte_table-variant2-border;
+
+		caption {
+			color: $theme_rte_table-variant2-caption;
+		}
+
+		th {
+			background: $theme_rte_table-variant2-heading-bg;
+			color: $theme_rte_table-variant2-heading-fg;
+			border-color: $theme_rte_table-variant2-border;
+		}
+
+		td {
+			background: $theme_rte_table-variant2-bg;
+			color: $theme_rte_table-variant2-fg;
+			border-color: $theme_rte_table-variant2-border;
+		}
+	}
+	/* End Table Styles */
+
+	/* Image Styles */
+	img {
+		margin: 0 0 $theme_rte_img-margin 0;
+
+		&[align="top"] {
+			margin: 0 0 $theme_rte_img-margin 0;
+			vertical-align: top;
+		}
+
+		&[align="bottom"] {
+			margin: 0 0 $theme_rte_img-margin 0;
+			vertical-align: baseline;
+		}
+
+		&[align="middle"] {
+			margin: 0 0 $theme_rte_img-margin 0;
+			vertical-align: middle;
+		}
+
+		&[align="left"],
+		&[style*="float:left"] {
+			margin: 0 $theme_rte_img-margin $theme_rte_img-margin 0;
+		}
+
+		&[align="right"],
+		&[style*="float:right"] {
+			margin: 0 0 $theme_rte_img-margin $theme_rte_img-margin;
+		}
+	}
+	/* End Image Styles */
+
+	/* YouTube Embedded Videos */
+	iframe {
+		display: block;
+		padding: 0;
+		margin: 0 0 1em 0;
+	}
+	/* End YouTube Embedded Videos */
+}

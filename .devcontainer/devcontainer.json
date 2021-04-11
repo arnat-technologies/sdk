@@ -1,0 +1,22 @@
+{
+  "name": "Patient Portal Resources VSCode Remote Container",
+  "dockerFile": "Dockerfile",
+  "appPort": [],
+  "runArgs": [
+    "--tmpfs",
+    "${containerWorkspaceFolder}/node_modules:exec",
+    "-u",
+    "node"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "dotfiles.repository": "rsurjano/dotfiles",
+    "dotfiles.targetPath": "~/.user/dotfiles"
+  },
+  "postStartCommand": "/bin/zsh ./.devcontainer/postinstall.sh",
+  "initializeCommand": "/bin/zsh ./.devcontainer/preinstall.sh",
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}

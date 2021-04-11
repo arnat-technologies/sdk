@@ -1,0 +1,29 @@
+/*!
+ * Color mixins
+ *
+ * Helper mixins for handling the application of color lists
+ */
+
+// Dependencies
+// - /globals/functions/_color-lists.scss
+
+// set-colors - apply colors from a color list
+//
+// Parameters:
+//  - $colors: A color list. A single value will be interpretted as background,
+//             a list of two colors will be interpretted as (background,foreground),
+//             and a list of three colors as (background,foreground,border-color)
+//
+@mixin set-colors($colors) {
+	@if hasBackground($colors) {
+		background-color: background($colors);
+	}
+
+	@if hasForeground($colors) {
+		color: foreground($colors);
+	}
+
+	@if hasBorderColor($colors) {
+		border-color: borderColor($colors);
+	}
+}

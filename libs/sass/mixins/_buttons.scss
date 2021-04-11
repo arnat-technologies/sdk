@@ -1,0 +1,94 @@
+/*!
+ * Button mixins
+ *
+ * Mixins for defining standard button look-and-feel to be used throughout
+ * the site. The exact rendering of these will vary project to project. Some
+ * may have exactly one button mixin if all buttons are consistent. Some may
+ * have more than one.
+ *
+ * In all cases, one of the following HTML structures is assumed:
+ *
+ * 1. <span class="outer"><a href="">Button Text</a></span>
+ * 2. <span class="outer"><input type="button" value="Button Text" /></span>
+ * 3. <span class="outer"><button>Button Text</button></span>
+ * 4. <span class="outer"><span>Button Text</span></span>
+ *
+ * The class "outer" is arbitrary and is used merely to identify the outer wrapper
+ * in these examples. The button mixin should be called on the "outer" wrapper span.
+ * For the input example, any valid button input type is acceptable. Example 4
+ * represents the case where something looks like a button but is non-functional.
+ * This should be used sparingly, and with colors to indicate a disabled appearance.
+ */
+
+// Dependencies
+// - /globals/functions/_color-lists.scss
+
+// Defaults; can be overridden in project theme variables, or changed here
+$button_padding-h: 20px !default;
+$button_padding-v: 10px !default;
+$button_radius: 0 !default;
+$button_border-width: 0 !default;
+$button_border-style: solid !default;
+
+// button
+// Styling for a button; see comments at top of file for HTML structure details
+//
+// This mixin gets called on a <span> wrapper around another element. The inner
+// element can be an <a>, <input>, <button>, or <span>. It is important that the
+// wrapper and the inner element stay the same size; the wrapper is just to make
+// it easier to have this mixin work on multiple types of button elements
+//
+// $width: Width of the button; can be set to any valid CSS width value
+// $colors: Color list variable to be used for the regular state of the button
+// $hoverColors: Color list variable to be used for the hover state of the button
+// $activeColors: Color list variable to be used for the active state of the button
+// $cornerRadius: Border radius for the button corners; can be any combined border-radius value
+// $borderSize: Border width for the button; can be any combined border-width value
+// $useOutline: Set to true to use all the border properties (color, style, width) for an outline
+@mixin button($width: auto,
+			  $colors: (#FFFFFF,#000000,#C0C0C0),
+			  $hoverColors: $colors,
+			  $activeColors: $hoverColors,
+			  $padding-h: $button_padding-h,
+			  $padding-v: $button_padding-v,
+			  $cornerRadius: $button_radius,
+			  $borderSize: $button_border-width,
+			  $useOutline: false) {
+	display: inline-block;
+	position: relative;
+	padding: 0;
+	width: $width;
+
+	@include set-colors($colors);
+	@if $useOutline {
+		outline-color: borderColor($colors);
+		outline-style: $button_border-style;
+		outline-width: $borderSize;
+		border-radius: $cornerRadius;
+	}
+
+	& > a,
+	& > input,
+	& > button,
+	& > span {
+		padding: $padding-v $padding-h;
+		@include set-colors($colors);
+		@if not $useOutline {
+			border-width: $borderSize;
+			border-style: $button_border-style;
+			border-radius: $cornerRadius;
+		}
+	}
+
+	& > a,
+	& > input,
+	& > button {
+		&:hover {
+			@include set-colors($hoverColors);
+		}
+
+		&:active {
+			@include set-colors($activeColors);
+		}
+	}
+}

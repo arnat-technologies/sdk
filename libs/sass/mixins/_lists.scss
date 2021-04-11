@@ -1,0 +1,43 @@
+/*!
+ * List mixins
+ *
+ * Mixins for helping to style ordered and unordered lists
+ */
+
+// unmarked-list
+// Styling for a list with no markers (e.g. no numbers or bullets)
+// Apply this mixin to the <ul> or <ol>
+@mixin unmarked-list() {
+	padding-left: 0;
+	list-style: none;
+}
+
+// inline-list
+// Styling for an inline list with no markers (e.g. no numbers or bullets)
+// Apply this mixin to the <ul> or <ol>
+//
+// $useFloats: Set to left or right to have the list items floated, false for no floating
+//             It is sometimes preferrable to float inline list elements
+@mixin inline-list($useFloats: false) {
+	@include unmarked-list();
+
+	// If using floats, clearfix on the parent <ul> or <ol>
+	@if $useFloats == left or $useFloats == right {
+		&::before,
+		&::after {
+			content: " "; // 1
+			display: table; // 2
+		}
+
+		&::after {
+			clear: both;
+		}
+	}
+
+	> li {
+		display: inline-block;
+		@if $useFloats == left or $useFloats == right {
+			float: $useFloats;
+		}
+	}
+}
